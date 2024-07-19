@@ -1,0 +1,12 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+
+# bazel run //:buildifier
+# .. or warn
+buildifier(
+    name = "buildifier",
+    exclude_patterns = [
+        "./bazel-*/*",
+        "./.git/*",
+    ],
+    lint_mode = "fix",
+)

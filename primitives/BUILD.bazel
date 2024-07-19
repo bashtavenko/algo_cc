@@ -1,0 +1,23 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+# bazel run //:buildifier
+# .. or warn
+buildifier(
+    name = "buildifier",
+    exclude_patterns = [
+        "./bazel-*/*",
+        "./.git/*",
+    ],
+    lint_mode = "fix",
+)
+
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
+)
