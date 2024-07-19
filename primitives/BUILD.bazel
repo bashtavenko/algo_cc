@@ -1,16 +1,4 @@
-load("@buildifier_prebuilt//:rules.bzl", "buildifier")
-load("@rules_cc//cc:defs.bzl", "cc_binary")
-
-# bazel run //:buildifier
-# .. or warn
-buildifier(
-    name = "buildifier",
-    exclude_patterns = [
-        "./bazel-*/*",
-        "./.git/*",
-    ],
-    lint_mode = "fix",
-)
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 cc_binary(
     name = "bootcamp_main",
@@ -19,5 +7,56 @@ cc_binary(
         "@absl//absl/strings:str_format",
         "@gflags",
         "@glog",
+    ],
+)
+
+cc_library(
+    name = "parity",
+    srcs = ["parity.cc"],
+    hdrs = ["parity.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "parity_test",
+    srcs = ["parity_test.cc"],
+    deps = [
+        ":parity",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "reverse_digits",
+    srcs = ["reverse_digits.cc"],
+    hdrs = ["reverse_digits.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "reverse_digits_test",
+    srcs = ["reverse_digits_test.cc"],
+    deps = [
+        ":reverse_digits",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "rectangle",
+    hdrs = ["rectangle.h"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@absl//absl/types:optional",
+    ],
+)
+
+cc_test(
+    name = "rectangle_test",
+    srcs = ["rectangle_test.cc"],
+    deps = [
+        ":rectangle",
+        "@absl//absl/types:optional",
+        "@googletest//:gtest_main",
     ],
 )

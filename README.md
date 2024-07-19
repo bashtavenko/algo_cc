@@ -1,4 +1,19 @@
 # algo_cc
-Basic data structures, algorithms and interview problems in C++
 
-This is largely based on [EPI](https://elementsofprogramminginterviews.com/) with recent c++, bazel and Google styles.
+Code snippets, basic data structures, algorithms and interview problems in C++
+
+This is largely based from [EPI](https://elementsofprogramminginterviews.com/) with recent c++, bazel and Google styles.
+
+## Clion
+
+```
+bazel run //:buildifier
+```
+
+ClangFormat
+Settings | Editor | Code Style
+Enable ClangFormat
+
+Version Control | Commit Checks
+
+Tools | Action on Save

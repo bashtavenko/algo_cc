@@ -42,6 +42,7 @@ int main(int argc, char **argv) {
   std::swap(x, y);
   LOG(INFO) << absl::StreamFormat("x = %v y = %v", x, y);
 
+  // XOR of two bits is equivalent of mod 2
 
   return EXIT_SUCCESS;
 }
