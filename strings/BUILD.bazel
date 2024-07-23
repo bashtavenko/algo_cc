@@ -1,0 +1,77 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = ["@absl//absl/strings:str_format",
+                    "@gflags",
+                    "@glog"],
+)
+
+cc_library(
+    name = "strings_int",
+    srcs = ["strings_int.cc"],
+    hdrs = ["strings_int.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "strings_int_test",
+    srcs = ["strings_int_test.cc"],
+    deps = [":strings_int",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "base_conversion",
+    srcs = ["base_conversion.cc"],
+    hdrs = ["base_conversion.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "base_conversion_test",
+    srcs = ["base_conversion_test.cc"],
+    deps = [":base_conversion",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "replace_remove",
+    srcs = ["replace_remove.cc"],
+    hdrs = ["replace_remove.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "replace_remove_test",
+    srcs = ["replace_remove_test.cc"],
+    deps = [":replace_remove",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "reverse_words",
+    srcs = ["reverse_words.cc"],
+    hdrs = ["reverse_words.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "reverse_words_test",
+    srcs = ["reverse_words_test.cc"],
+    deps = [":reverse_words",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "mnemonic",
+    srcs = ["mnemonic.cc"],
+    hdrs = ["mnemonic.h"],
+    deps = ["@absl//absl/strings:string_view"],
+)
+
+cc_test(
+    name = "mnemonic_test",
+    srcs = ["mnemonic_test.cc"],
+    deps = [":mnemonic",
+            "@googletest//:gtest_main"],
+)

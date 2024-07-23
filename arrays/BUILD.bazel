@@ -1,0 +1,84 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_library(
+    name = "dutch",
+    srcs = ["dutch.cc"],
+    hdrs = ["dutch.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "dutch_test",
+    srcs = ["dutch_test.cc"],
+    deps = [":dutch",
+            "@googletest//:gtest_main",
+            "@absl//absl/strings:str_format"
+            ]
+)
+
+cc_library(
+    name = "delete_dups",
+    srcs = ["delete_dups.cc"],
+    hdrs = ["delete_dups.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "delete_dups_test",
+    srcs = ["delete_dups_test.cc"],
+    deps = [":delete_dups",
+            "@googletest//:gtest_main"],
+)
+
+
+cc_library(
+    name = "plus_one",
+    srcs = ["plus_one.cc"],
+    hdrs = ["plus_one.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "plus_one_test",
+    srcs = ["plus_one_test.cc"],
+    deps = [":plus_one",
+            "@googletest//:gtest_main"]
+)
+
+
+cc_library(
+    name = "spiral",
+    srcs = ["spiral.cc"],
+    hdrs = ["spiral.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "spiral_test",
+    srcs = ["spiral_test.cc"],
+    deps = [
+        ":spiral",
+        "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "primes",
+    srcs = ["primes.cc"],
+    hdrs = ["primes.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "primes_test",
+    srcs = ["primes_test.cc"],
+    deps = [":primes",
+            "@googletest//:gtest_main"],
+)
