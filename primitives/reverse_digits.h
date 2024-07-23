@@ -11,8 +11,8 @@ namespace algo {
 // 113 % 10 = 3    2 * 10 + 3 = 23
 // 11 % 10 = 1     23 * 10 + 1 = 231
 // 1 % 10 = 1      231 * 10 + 1 = 2311
-int64_t Reverse (int32_t x);
+int64_t Reverse(int32_t x);
 
-} // namespace algo
+}  // namespace algo
 
-#endif //ALGO_CC_PRIMITIVES_REVERSE_DIGITS_H_
+#endif  // ALGO_CC_PRIMITIVES_REVERSE_DIGITS_H_

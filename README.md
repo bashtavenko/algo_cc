@@ -17,3 +17,8 @@ Enable ClangFormat
 Version Control | Commit Checks
 
 Tools | Action on Save
+
+## GTest
+
+Run a specific test
+--test_arg=--gest_filter=Diagonal.Works

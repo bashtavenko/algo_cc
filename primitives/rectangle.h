@@ -43,7 +43,7 @@ struct Rectangle {
   }
 
  private:
-  bool IsIntersectCheck(Rectangle const& other) {
+  bool IsIntersectCheck(Rectangle const& other) const {
     return x <= other.x + other.width && x + width >= other.x &&
            y <= other.y + other.height && y + height > other.y;
   }
