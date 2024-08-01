@@ -7,7 +7,7 @@
 namespace algo {
 
 // Converts num_as_string in base b1 to another base b2 and returns string.
-std::string ConvertBase(std::string const& num_as_string, uint16_t b1,
+std::string ConvertBase(const std::string& num_as_string, uint16_t b1,
                         uint16_t b2);
 
 }  // namespace algo

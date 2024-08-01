@@ -13,7 +13,7 @@ struct Rectangle {
   int32_t width;
   int32_t height;
 
-  absl::optional<Rectangle> IsIntersect(Rectangle const& other) {
+  absl::optional<Rectangle> IsIntersect(const Rectangle& other) {
     if (!IsIntersectCheck(other)) return {};
 
     return Rectangle{
@@ -26,24 +26,24 @@ struct Rectangle {
     };
   }
 
-  bool operator==(Rectangle const& other) const {
+  bool operator==(const Rectangle& other) const {
     return (x == other.x && y == other.y && width == other.width &&
             height == other.height);
   }
 
   template <typename Sink>
-  friend void AbslStringify(Sink& sink, Rectangle const& r) {
+  friend void AbslStringify(Sink& sink, const Rectangle& r) {
     absl::Format(&sink, "(x = %i, y = %i, width = %i, height = %i)", r.x, r.y,
                  r.width, r.height);
   }
 
-  friend std::ostream& operator<<(std::ostream& os, Rectangle const& r) {
+  friend std::ostream& operator<<(std::ostream& os, const Rectangle& r) {
     os << absl::StreamFormat("%v", r);
     return os;
   }
 
  private:
-  bool IsIntersectCheck(Rectangle const& other) const {
+  bool IsIntersectCheck(const Rectangle& other) const {
     return x <= other.x + other.width && x + width >= other.x &&
            y <= other.y + other.height && y + height > other.y;
   }

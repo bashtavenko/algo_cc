@@ -1,0 +1,16 @@
+cc_library(
+    name = "list_node",
+    hdrs = ["list_node.h"],
+    deps = [],
+)
+
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [
+            ":list_node",
+            "@glog",
+            "@gflags",
+            "@absl//absl/strings:str_format"
+            ],
+)

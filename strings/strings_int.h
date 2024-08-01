@@ -7,7 +7,7 @@
 namespace algo {
 
 std::string IntToString(int32_t x);
-int32_t StringToInt(std::string const& s);
+int32_t StringToInt(const std::string& s);
 
 }  // namespace algo
 

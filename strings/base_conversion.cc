@@ -15,7 +15,7 @@ std::string ConstructFromBase(u_int16_t num_as_int, u_int16_t base) {
   return num_as_int == 0 ? "" : ConstructFromBase(num_as_int / base, base) + c;
 }
 
-std::string ConvertBase(std::string const& num_as_string, u_int16_t b1,
+std::string ConvertBase(const std::string& num_as_string, u_int16_t b1,
                         u_int16_t b2) {
   bool is_negative = num_as_string.front() == '-';
   // Reduction - each digit multiplies by b1 and added

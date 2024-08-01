@@ -4,7 +4,7 @@
 namespace algo {
 
 std::vector<int32_t> Compute(
-    std::vector<std::vector<int32_t>> const& square_matrix) {
+    const std::vector<std::vector<int32_t>>& square_matrix) {
   std::vector<std::vector<int32_t>> data(square_matrix.begin(),
                                          square_matrix.end());
   std::vector<int32_t> result;

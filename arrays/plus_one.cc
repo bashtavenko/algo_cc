@@ -3,7 +3,7 @@
 
 namespace algo {
 
-std::vector<int32_t> PlusOne(std::vector<int32_t> const& data) {
+std::vector<int32_t> PlusOne(const std::vector<int32_t>& data) {
   std::vector<int32_t> result(data.begin(), data.end());
   ++result.back();
 
