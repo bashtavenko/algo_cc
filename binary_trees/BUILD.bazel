@@ -1,0 +1,85 @@
+cc_library(
+    name = "binary_tree_node",
+    hdrs = ["binary_tree_node.h"],
+    deps = [],
+)
+
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [":binary_tree_node",
+            "@glog",
+            "@gflags"],
+)
+
+cc_library(
+    name = "height_balanced",
+    srcs = ["height_balanced.cc"],
+    hdrs = ["height_balanced.h"],
+    deps = [":binary_tree_node"],
+)
+
+cc_test(
+    name = "height_balanced_test",
+    srcs = ["height_balanced_test.cc"],
+    deps = [":height_balanced",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "symmetric",
+    srcs = ["symmetric.cc"],
+    hdrs = ["symmetric.h"],
+    deps = [":binary_tree_node"],
+)
+
+cc_test(
+    name = "symmetric_test",
+    srcs = ["symmetric_test.cc"],
+    deps = [":symmetric",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "lca_parent",
+    srcs = ["lca_parent.cc"],
+    hdrs = ["lca_parent.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "lca_parent_test",
+    srcs = ["lca_parent_test.cc"],
+    deps = [":lca_parent",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "reconstruct",
+    srcs = ["reconstruct.cc"],
+    hdrs = ["reconstruct.h"],
+    deps = ["binary_tree_node",
+            "@absl//absl/container:flat_hash_map"],
+)
+
+cc_test(
+    name = "reconstruct_test",
+    srcs = ["reconstruct_test.cc"],
+    deps = [":reconstruct",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "reconstruct_markers",
+    srcs = ["reconstruct_markers.cc"],
+    hdrs = ["reconstruct_markers.h"],
+    deps = [":binary_tree_node",
+            "@absl//absl/types:optional"],
+)
+
+cc_test(
+    name = "reconstruct_markers_test",
+    srcs = ["reconstruct_markers_test.cc"],
+    deps = [":reconstruct_markers",
+            "@googletest//:gtest_main"],
+)

@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
   ListNode l3(3);
   ListNode l2(2, l3);
   ListNode l1(1, l2);
-  auto head = std::make_shared<ListNode>(l1);
+  auto head = ListNode::Create(l1);
 
   // Search
   auto result = SearchList(head, 12);

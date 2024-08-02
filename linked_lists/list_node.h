@@ -18,6 +18,10 @@ struct ListNode {
   ListNode(int32_t value) : data(value), next(nullptr) {}
   ListNode(int32_t value, const ListNode& next_node)
       : data(value), next(std::make_shared<ListNode>(next_node)){};
+
+  static std::shared_ptr<ListNode> Create(const ListNode& node) {
+    return std::make_shared<ListNode>(node);
+  }
 };
 }  // namespace algo
 
