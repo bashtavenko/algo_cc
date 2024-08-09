@@ -20,7 +20,7 @@ class CircularBuffer {
  private:
   static constexpr int32_t kScaleFactor = 2;
   int32_t head_ = 0;
-  int32_ t tail_ = 0;
+  int32_t tail_ = 0;
   size_t num_entries_ = 0;
   std::vector<int32_t> entries_;
 };

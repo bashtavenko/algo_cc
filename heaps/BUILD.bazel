@@ -1,0 +1,63 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = ["@glog",
+            "@gflags",
+            "@absl//absl/strings:str_format"],
+)
+
+cc_library(
+    name = "sorted_arrays",
+    srcs = ["sorted_arrays.cc"],
+    hdrs = ["sorted_arrays.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "sorted_arrays_test",
+    srcs = ["sorted_arrays_test.cc"],
+    deps = [":sorted_arrays",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "almost_sorted",
+    srcs = ["almost_sorted.cc"],
+    hdrs = ["almost_sorted.h"],
+    deps = [],
+)
+
+
+cc_test(
+    name = "almost_sorted_test",
+    srcs = ["almost_sorted_test.cc"],
+    deps = [":almost_sorted",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "closest_stars",
+    srcs = ["closest_stars.cc"],
+    hdrs = ["closest_stars.h"],
+    deps = ["@absl//absl/strings:str_format",],
+)
+
+cc_test(
+    name = "closest_stars_test",
+    srcs = ["closest_stars_test.cc"],
+    deps = [":closest_stars",
+        "@googletest//:gtest_main"],
+)
+cc_library(
+    name = "median",
+    srcs = ["median.cc"],
+    hdrs = ["median.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "median_test",
+    srcs = ["median_test.cc"],
+    deps = [":median",
+            "@googletest//:gtest_main"],
+)
