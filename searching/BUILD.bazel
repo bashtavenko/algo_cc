@@ -1,0 +1,91 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = ["@glog",
+            "@gflags",
+            "@absl//absl/strings:str_format"],
+)
+
+cc_library(
+    name = "first_occurrence",
+    srcs = ["first_occurrence.cc"],
+    hdrs = ["first_occurrence.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "first_occurrence_test",
+    srcs = ["first_occurrence_test.cc"],
+    deps = [":first_occurrence",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "search_smallest",
+    srcs = ["search_smallest.cc"],
+    hdrs = ["search_smallest.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "search_smallest_test",
+    srcs = ["search_smallest_test.cc"],
+    deps = [":search_smallest",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "int_square_root",
+    srcs = ["int_square_root.cc"],
+    hdrs = ["int_square_root.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "int_square_root_test",
+    srcs = ["int_square_root_test.cc"],
+    deps = [":int_square_root",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "square_root",
+    srcs = ["square_root.cc"],
+    hdrs = ["square_root.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "square_root_test",
+    srcs = ["square_root_test.cc"],
+    deps = [":square_root",
+        "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "k_largest",
+    srcs = ["k-largest.cc"],
+    hdrs = ["k-largest.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "k_largest_test",
+    srcs = ["k-largest_test.cc"],
+    deps = [":k_largest",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "duplicate_missing",
+    srcs = ["duplicate_missing.cc"],
+    hdrs = ["duplicate_missing.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "dulicate_missing_test",
+    srcs = ["duplicate_missing_test.cc"],
+    deps = [":duplicate_missing",
+            "@googletest//:gtest_main"],
+)
