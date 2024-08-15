@@ -51,6 +51,9 @@ std::vector<int32_t> MergeSortedArrays(
 
     // The whole point is std::next which means keep on going
     // to the same array and priority queue keeps the smallest element.
+    // In fact, directly increment iterator would be fine, but std::next is
+    // more explicit vs this
+    // if (smallest_array.current++ != smallest_array.end) // ...
     if (std::next(smallest_array.current) != smallest_array.end) {
       min_heap.emplace(
           IteratorCurrentAndEnd{.current = std::next(smallest_array.current),
