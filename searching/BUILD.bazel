@@ -1,9 +1,11 @@
 cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
-    deps = ["@glog",
-            "@gflags",
-            "@absl//absl/strings:str_format"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
 )
 
 cc_library(
@@ -16,8 +18,10 @@ cc_library(
 cc_test(
     name = "first_occurrence_test",
     srcs = ["first_occurrence_test.cc"],
-    deps = [":first_occurrence",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":first_occurrence",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -30,8 +34,10 @@ cc_library(
 cc_test(
     name = "search_smallest_test",
     srcs = ["search_smallest_test.cc"],
-    deps = [":search_smallest",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":search_smallest",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -44,8 +50,10 @@ cc_library(
 cc_test(
     name = "int_square_root_test",
     srcs = ["int_square_root_test.cc"],
-    deps = [":int_square_root",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":int_square_root",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -58,8 +66,10 @@ cc_library(
 cc_test(
     name = "square_root_test",
     srcs = ["square_root_test.cc"],
-    deps = [":square_root",
-        "@googletest//:gtest_main"],
+    deps = [
+        ":square_root",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -72,8 +82,10 @@ cc_library(
 cc_test(
     name = "k_largest_test",
     srcs = ["k-largest_test.cc"],
-    deps = [":k_largest",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":k_largest",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -86,6 +98,8 @@ cc_library(
 cc_test(
     name = "dulicate_missing_test",
     srcs = ["duplicate_missing_test.cc"],
-    deps = [":duplicate_missing",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":duplicate_missing",
+        "@googletest//:gtest_main",
+    ],
 )

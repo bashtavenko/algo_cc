@@ -1,11 +1,12 @@
 cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
-    deps = ["@glog",
-            "@gflags",
-            "//linked_lists:list_node",
-            "@absl//absl/strings:str_format"],
-
+    deps = [
+        "//linked_lists:list_node",
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
 )
 
 cc_library(
@@ -18,8 +19,10 @@ cc_library(
 cc_test(
     name = "stack_max_test",
     srcs = ["stack_max_test.cc"],
-    deps = [":stack_max",
-            "@googletest//:gtest_main"]
+    deps = [
+        ":stack_max",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -32,23 +35,29 @@ cc_library(
 cc_test(
     name = "rpn_expression_test",
     srcs = ["rpn_expression_test.cc"],
-    deps = [":rpn_expression",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":rpn_expression",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
     name = "well_formedness",
     srcs = ["well_formedness.cc"],
     hdrs = ["well_formedness.h"],
-    deps = ["@absl//absl/strings",
-            "@absl//absl/container:flat_hash_map"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/strings",
+    ],
 )
 
 cc_test(
     name = "well_formedness_test",
     srcs = ["well_formedness_test.cc"],
-    deps = [":well_formedness",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":well_formedness",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -61,7 +70,8 @@ cc_library(
 cc_test(
     name = "circular_buffer_test",
     srcs = ["circular_buffer_test.cc"],
-    deps = [":circular_buffer",
-            "@googletest//:gtest_main"],
-
+    deps = [
+        ":circular_buffer",
+        "@googletest//:gtest_main",
+    ],
 )

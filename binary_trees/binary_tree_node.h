@@ -28,14 +28,6 @@ struct BinaryTreeNode {
   std::unique_ptr<BinaryTreeNode> left;
   std::unique_ptr<BinaryTreeNode> right;
 
-  BinaryTreeNode(int32_t value) : data(value) {}
-
-  BinaryTreeNode(int32_t value, std::unique_ptr<BinaryTreeNode> left_child,
-                 std::unique_ptr<BinaryTreeNode> right_child)
-      : data(value),
-        left(std::move(left_child)),
-        right(std::move(right_child)) {}
-
   static std::unique_ptr<BinaryTreeNode> Create(int32_t value) {
     return std::make_unique<BinaryTreeNode>(value);
   }

@@ -18,10 +18,11 @@ cc_library(
 cc_test(
     name = "dutch_test",
     srcs = ["dutch_test.cc"],
-    deps = [":dutch",
-            "@googletest//:gtest_main",
-            "@absl//absl/strings:str_format"
-            ]
+    deps = [
+        ":dutch",
+        "@absl//absl/strings:str_format",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -34,10 +35,11 @@ cc_library(
 cc_test(
     name = "delete_dups_test",
     srcs = ["delete_dups_test.cc"],
-    deps = [":delete_dups",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":delete_dups",
+        "@googletest//:gtest_main",
+    ],
 )
-
 
 cc_library(
     name = "plus_one",
@@ -49,10 +51,11 @@ cc_library(
 cc_test(
     name = "plus_one_test",
     srcs = ["plus_one_test.cc"],
-    deps = [":plus_one",
-            "@googletest//:gtest_main"]
+    deps = [
+        ":plus_one",
+        "@googletest//:gtest_main",
+    ],
 )
-
 
 cc_library(
     name = "spiral",
@@ -66,7 +69,8 @@ cc_test(
     srcs = ["spiral_test.cc"],
     deps = [
         ":spiral",
-        "@googletest//:gtest_main"],
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -79,6 +83,8 @@ cc_library(
 cc_test(
     name = "primes_test",
     srcs = ["primes_test.cc"],
-    deps = [":primes",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":primes",
+        "@googletest//:gtest_main",
+    ],
 )

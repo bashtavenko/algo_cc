@@ -21,9 +21,8 @@ void TraversePreorder(const std::unique_ptr<algo::BinaryTreeNode>& root) {
 void Traverse() {
   using algo::BinaryTreeNode;
 
-  auto node_o = BinaryTreeNode::Create(271);
-  auto node_j = BinaryTreeNode::Create(2);
-  auto node_i = BinaryTreeNode::Create(6, std::move(node_j), std::move(node_o));
+  auto node_i = BinaryTreeNode::Create(6, BinaryTreeNode::Create(2),
+                                       BinaryTreeNode::Create(271));
 
   auto node_b = BinaryTreeNode::Create(6);
   auto root = BinaryTreeNode::Create(314, std::move(node_b), std::move(node_i));

@@ -23,10 +23,6 @@ namespace algo {
 namespace {
 
 TEST(ReconstructBasics, Works) {
-  auto node_2 = BinaryTreeNode::Create(2);
-  auto node_3 = BinaryTreeNode::Create(3);
-  auto root = BinaryTreeNode::Create(1, std::move(node_2), std::move(node_3));
-
   auto result =
       Reconstruct(std::vector<int32_t>{1, 2, 3}, std::vector<int32_t>{2, 1, 3});
   EXPECT_THAT(result->data, 1);

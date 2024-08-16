@@ -1,9 +1,11 @@
 cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
-    deps = ["@glog",
-            "@gflags",
-            "@absl//absl/strings:str_format"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
 )
 
 cc_library(
@@ -16,8 +18,10 @@ cc_library(
 cc_test(
     name = "array_inresection_test",
     srcs = ["array_intersection_test.cc"],
-    deps = [":array_intersection",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":array_intersection",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -30,8 +34,10 @@ cc_library(
 cc_test(
     name = "merge_two_sorted_test",
     srcs = ["merge_two_sorted_test.cc"],
-    deps = [":merge_two_sorted",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":merge_two_sorted",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -44,20 +50,24 @@ cc_library(
 cc_test(
     name = "calendar_test",
     srcs = ["calendar_test.cc"],
-    deps = [":calendar",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":calendar",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
     name = "interval_union",
     srcs = ["interval_union.cc"],
-    hdrs =  ["interval_union.h"],
+    hdrs = ["interval_union.h"],
     deps = ["@absl//absl/strings:str_format"],
 )
 
 cc_test(
     name = "interval_union_test",
     srcs = ["interval_union_test.cc"],
-    deps = [":interval_union",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":interval_union",
+        "@googletest//:gtest_main",
+    ],
 )

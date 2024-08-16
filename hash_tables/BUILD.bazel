@@ -1,74 +1,92 @@
 cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
-    deps = ["@glog",
-            "@gflags",
-            "@absl//absl/container:flat_hash_map",
-            "@absl//absl/container:flat_hash_set",
-            "@absl//absl/strings:str_format"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/container:flat_hash_set",
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
 )
 
 cc_library(
     name = "palidrom",
     srcs = ["palidrom.cc"],
     hdrs = ["palidrom.h"],
-    deps = ["@absl//absl/container:flat_hash_set",
-            "@absl//absl/strings:str_format"],
+    deps = [
+        "@absl//absl/container:flat_hash_set",
+        "@absl//absl/strings:str_format",
+    ],
 )
 
 cc_test(
     name = "palidrom_test",
     srcs = ["palidrom_test.cc"],
-    deps = [":palidrom",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":palidrom",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
     name = "constructable",
     srcs = ["letter_constructable.cc"],
     hdrs = ["letter_constructable.h"],
-    deps = ["@absl//absl/container:flat_hash_map",
-            "@glog",
-            "@absl//absl/strings:str_format"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/strings:str_format",
+        "@glog",
+    ],
 )
 
 cc_test(
     name = "construtable_test",
     srcs = ["letter_constructable_test.cc"],
-    deps = [":constructable",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":constructable",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
     name = "lru_cache",
     srcs = ["lru_cache.cc"],
     hdrs = ["lru_cache.h"],
-    deps = ["@absl//absl/container:flat_hash_map",
-            "@absl//absl/types:optional"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/types:optional",
+    ],
 )
 
 cc_test(
     name = "lru_cache_test",
     srcs = ["lru_cache_test.cc"],
-    deps = [":lru_cache",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":lru_cache",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
     name = "lca",
     srcs = ["lca.cc"],
     hdrs = ["lca.h"],
-    deps = ["//binary_trees:lca_parent",
-            "@absl//absl/container:flat_hash_set",
-            "@absl//absl/types:optional"],
+    deps = [
+        "//binary_trees:lca_parent",
+        "@absl//absl/container:flat_hash_set",
+        "@absl//absl/types:optional",
+    ],
 )
 
 cc_test(
     name = "lca_test",
     srcs = ["lca_test.cc"],
-    deps = [":lca",
-            "@absl//absl/types:optional",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":lca",
+        "@absl//absl/types:optional",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -81,6 +99,8 @@ cc_library(
 cc_test(
     name = "nearest_repeated_test",
     srcs = ["nearest_repeated_test.cc"],
-    deps = [":nearest_repeated",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":nearest_repeated",
+        "@googletest//:gtest_main",
+    ],
 )

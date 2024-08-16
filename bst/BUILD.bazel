@@ -1,7 +1,6 @@
 cc_library(
-    name = "list_node",
-    hdrs = ["list_node.h"],
-    visibility = ["//visibility:public"],
+    name = "bst_node",
+    hdrs = ["bst_node.h"],
     deps = [],
 )
 
@@ -9,7 +8,7 @@ cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
     deps = [
-        ":list_node",
+        ":bst_node",
         "@absl//absl/strings:str_format",
         "@gflags",
         "@glog",
