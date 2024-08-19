@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <vector>
 #include "absl/types/optional.h"
-#include "binary_trees/binary_tree_node.h"
 
 namespace algo {
 namespace {

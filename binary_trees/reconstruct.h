@@ -12,7 +12,7 @@
 // PRE: 1, 2, 4, 8, 5, 3, 6, 7
 // I:   4, 8, 2, 5, 1, 6, 3, 7
 //
-// Must have BOTH In-order and post-order.
+// Must have BOTH pre-order and in-order.
 // 1. Find the first element in pre-order, that's root
 // 2. Find matching element in in-order, these are left and right branches
 // 3. Recurse

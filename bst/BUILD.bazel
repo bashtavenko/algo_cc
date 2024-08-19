@@ -14,3 +14,88 @@ cc_binary(
         "@glog",
     ],
 )
+
+cc_library(
+    name = "is_bst",
+    srcs = ["is_bst.cc"],
+    hdrs = ["is_bst.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "is_bst_test",
+    srcs = ["is_bst_test.cc"],
+    deps = [":bst_node",
+            ":is_bst",
+            "@googletest//:gtest_main"]
+)
+
+cc_library(
+    name = "first_greater",
+    srcs = ["first_greater.cc"],
+    hdrs = ["first_greater.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "first_greater_test",
+    srcs = ["first_greater_test.cc"],
+    deps = [":first_greater",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "k_largest",
+    srcs = ["k_largest.cc"],
+    hdrs = ["k_largest.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "k_largest_test",
+    srcs = ["k_largest_test.cc"],
+    deps = [":k_largest",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "lca_bst",
+    srcs = ["lca_bst.cc"],
+    hdrs = ["lca_bst.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "lca_bst_test",
+    srcs = ["lca_bst_test.cc"],
+    deps = [":lca_bst",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "reconstruct",
+    srcs = ["reconstruct.cc"],
+    hdrs = ["reconstruct.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "reconstruct_test",
+    srcs = ["reconstruct_test.cc"],
+    deps = [":reconstruct",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "min_height_from_sorted",
+    srcs = ["min_height_from_sorted.cc"],
+    hdrs = ["min_height_from_sorted.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "min_height_from_sorted_test",
+    srcs = ["min_height_from_sorted_test.cc"],
+    deps = ["min_height_from_sorted",
+            "@googletest//:gtest_main"],
+)
