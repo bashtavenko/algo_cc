@@ -32,7 +32,7 @@ struct Interval {
   Endpoint right;
 
   bool operator<(const Interval& that) const {
-    if (left.value != left.value) {
+    if (left.value != that.left.value) {
       return left.value < that.left.value;
     }
 

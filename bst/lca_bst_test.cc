@@ -14,9 +14,15 @@ static inline std::unique_ptr<BSTNode> CreateTree() {
 }
 
 TEST(FindLCA, Works) {
-  auto result = FindLCA(CreateTree(), 1, 17);
+  // This must be in variable because the function returns pointer.
+  std::unique_ptr<BSTNode> root = CreateTree();
+  auto result = FindLCA(root, 1, 17);
   EXPECT_THAT(result, testing::NotNull());
   EXPECT_THAT(result->data, 10);
+
+  result = FindLCA(root, 1, 7);
+  EXPECT_THAT(result, testing::NotNull());
+  EXPECT_THAT(result->data, 5);
 }
 
 }  // namespace

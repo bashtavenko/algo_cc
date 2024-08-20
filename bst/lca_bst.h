@@ -3,7 +3,7 @@
 // This is a lot simpler because we could use node values.
 //                  10
 //        5                  12
-//   1       7                     17
+//   1       7                    17
 //
 //(1, 17) => 10
 //

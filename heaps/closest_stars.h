@@ -34,7 +34,7 @@ struct Star {
 
 std::vector<Star> FindClosestStars(std::vector<Star>::const_iterator begin,
                                    const std::vector<Star>::const_iterator& end,
-                                   int32_t k);
+                                   size_t k);
 
 }  // namespace algo
 
