@@ -36,7 +36,7 @@ std::vector<std::string> TopK(
   return result;
 }
 
-void Run() {
+void ChangeMaking() {
   std::vector<std::string> st{{"ab", "def", "bacccesddd", "a", "xyz"}};
 
   auto result = TopK(2, st.cbegin(), st.cend());

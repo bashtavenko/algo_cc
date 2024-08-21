@@ -25,9 +25,11 @@ cc_library(
 cc_test(
     name = "is_bst_test",
     srcs = ["is_bst_test.cc"],
-    deps = [":bst_node",
-            ":is_bst",
-            "@googletest//:gtest_main"]
+    deps = [
+        ":bst_node",
+        ":is_bst",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -40,8 +42,10 @@ cc_library(
 cc_test(
     name = "first_greater_test",
     srcs = ["first_greater_test.cc"],
-    deps = [":first_greater",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":first_greater",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -54,8 +58,10 @@ cc_library(
 cc_test(
     name = "k_largest_test",
     srcs = ["k_largest_test.cc"],
-    deps = [":k_largest",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":k_largest",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -68,8 +74,10 @@ cc_library(
 cc_test(
     name = "lca_bst_test",
     srcs = ["lca_bst_test.cc"],
-    deps = [":lca_bst",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":lca_bst",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -82,8 +90,10 @@ cc_library(
 cc_test(
     name = "reconstruct_test",
     srcs = ["reconstruct_test.cc"],
-    deps = [":reconstruct",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":reconstruct",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -96,6 +106,8 @@ cc_library(
 cc_test(
     name = "min_height_from_sorted_test",
     srcs = ["min_height_from_sorted_test.cc"],
-    deps = ["min_height_from_sorted",
-            "@googletest//:gtest_main"],
+    deps = [
+        "min_height_from_sorted",
+        "@googletest//:gtest_main",
+    ],
 )

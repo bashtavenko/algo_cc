@@ -20,5 +20,5 @@ Tools | Action on Save
 
 ## GTest
 
-Run a specific test
+MakeChange a specific test
 --test_arg=--gest_filter=Diagonal.Works

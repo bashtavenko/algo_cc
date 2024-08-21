@@ -1,0 +1,23 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_library(
+    name = "sums",
+    srcs = ["sums.cc"],
+    hdrs = ["sums.h"],
+    deps = ["@absl//absl/algorithm:container"],
+)
+
+cc_test(
+    name = "sums_test",
+    srcs = ["sums_test.cc"],
+    deps = [":sums",
+            "@googletest//:gtest_main"],
+)

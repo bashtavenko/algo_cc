@@ -12,7 +12,7 @@ struct Student {
   bool operator>(const Student& that) const { return name < that.name; }
 };
 
-void Run() {
+void ChangeMaking() {
   std::vector<Student> data{Student("a", 2.3), Student("b", 3.5),
                             Student("c", 3.9)};
 
@@ -40,7 +40,7 @@ void Run() {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  Run();
+  ChangeMaking();
 
   return EXIT_SUCCESS;
 }
