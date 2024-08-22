@@ -18,6 +18,55 @@ cc_library(
 cc_test(
     name = "sums_test",
     srcs = ["sums_test.cc"],
-    deps = [":sums",
+    deps = [
+        ":sums",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "majority_element",
+    srcs = ["majority_element.cc"],
+    hdrs = ["majority_element.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "majority_element_test",
+    srcs = ["majority_element_test.cc"],
+    deps = [
+        ":majority_element",
+        "@absl//absl/strings:str_format",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "gasup",
+    srcs = ["gasup.cc"],
+    hdrs = ["gasup.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "gasup_test",
+    srcs = ["gasup_test.cc"],
+    deps = [
+        ":gasup",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "max_water",
+    srcs = ["max_water.cc"],
+    hdrs = ["max_water.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "max_water_test",
+    srcs = ["max_water_test.cc"],
+    deps = [":max_water",
             "@googletest//:gtest_main"],
 )
