@@ -9,8 +9,8 @@ namespace {
 
 TEST(RunMedian, Works) {
   const std::vector<int32_t> data{1, 0, 3, 5, 2, 0, 1};
-  const std::vector<double> want_vertices{1., 0.5, 1., 2., 2., 1.5, 1.};
-  EXPECT_THAT(OnlineMedian(data.begin(), data.end()), want_vertices);
+  const std::vector<double> want{1., 0.5, 1., 2., 2., 1.5, 1.};
+  EXPECT_THAT(OnlineMedian(data.begin(), data.end()), want);
 }
 
 }  // namespace

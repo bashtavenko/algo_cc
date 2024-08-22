@@ -14,8 +14,8 @@ TEST(MakeUnion, Works) {
       {Interval{{false, 3}, {true, 4}}},
   };
 
-  const std::vector<Interval> want_vertices{{{true, 0}, {true, 4}}};
-  EXPECT_THAT(MakeUnion(data), want_vertices);
+  const std::vector<Interval> want{{{true, 0}, {true, 4}}};
+  EXPECT_THAT(MakeUnion(data), want);
 }
 
 }  // namespace
