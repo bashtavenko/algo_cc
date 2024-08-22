@@ -7,7 +7,7 @@ namespace algo {
 std::vector<Star> FindClosestStars(std::vector<Star>::const_iterator begin,
                                    const std::vector<Star>::const_iterator& end,
                                    size_t k) {
-  // We want max_heap
+  // We want_vertices max_heap
   std::priority_queue<Star, std::vector<Star>, std::less<>> max_heap;
 
   // Just add them while keeping size no greater than k.

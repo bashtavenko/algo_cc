@@ -8,9 +8,9 @@ namespace {
 
 TEST(Permutate, Works) {
   std::vector<int32_t> data{7, 3, 5};
-  const std::vector<std::vector<int32_t>> want{{7, 3, 5}, {7, 5, 3}, {3, 7, 5},
-                                               {3, 5, 7}, {5, 3, 7}, {5, 7, 3}};
-  EXPECT_THAT(Permutate(data), want);
+  const std::vector<std::vector<int32_t>> want_vertices{
+      {7, 3, 5}, {7, 5, 3}, {3, 7, 5}, {3, 5, 7}, {5, 3, 7}, {5, 7, 3}};
+  EXPECT_THAT(Permutate(data), want_vertices);
 }
 }  // namespace
 }  // namespace algo

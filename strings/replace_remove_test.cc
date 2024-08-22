@@ -9,9 +9,9 @@ using ::testing::Eq;
 
 TEST(ReplaceRemove, Works) {
   char8_t data[] = u8"acdbbca";
-  char8_t want[] = u8"ddcdcdd";
+  char8_t want_vertices[] = u8"ddcdcdd";
   int32_t result = ReplaceAndRemove(7, data);
-  EXPECT_THAT(data, ContainerEq(want));
+  EXPECT_THAT(data, ContainerEq(want_vertices));
   EXPECT_THAT(result, Eq(7));
 }
 

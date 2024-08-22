@@ -1,0 +1,16 @@
+cc_library(
+    name = "classic",
+    srcs = ["classic.cc"],
+    hdrs = ["classic.h"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/container:flat_hash_set",
+    ],
+)
+
+cc_test(
+    name = "classic_test",
+    srcs = ["classic_test.cc"],
+    deps = [":classic",
+            "@googletest//:gtest_main"],
+)

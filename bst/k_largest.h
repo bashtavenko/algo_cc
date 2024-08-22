@@ -2,8 +2,8 @@
 // We could do in-order traversal, put elements into queue of size k elements
 // and return queue, but that would defeat the purpose of BST. It would process
 // too many nodes that are not going to be a part of the result.
-// Better approach is start from what we want which is the largest which
-// ends up reverse in-order traversal
+// Better approach is start from what we want_vertices which is the largest
+// which ends up reverse in-order traversal
 #ifndef ALGO_CC_BST_K_LARGEST_H_
 #define ALGO_CC_BST_K_LARGEST_H_
 

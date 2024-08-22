@@ -7,9 +7,9 @@ namespace {
 using ::testing::ContainerEq;
 
 TEST(PhoneMnemonic, Works) {
-  std::vector<std::string> const want = {"AD", "AE", "AF", "BD", "BE",
-                                         "BF", "CD", "CE", "CF"};
-  EXPECT_THAT(PhoneMnemonic("23"), ContainerEq(want));
+  std::vector<std::string> want_vertices = {"AD", "AE", "AF", "BD", "BE",
+                                            "BF", "CD", "CE", "CF"};
+  EXPECT_THAT(PhoneMnemonic("23"), ContainerEq(want_vertices));
 }
 
 }  // namespace
