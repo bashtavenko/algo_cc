@@ -77,11 +77,16 @@ std::vector<T> Graph<T>::GetNeighbors(const T& vertex) const {
 
 template <typename T>
 bool Graph<T>::IsReachableDFS(const T& from, const T& to) const {
-  if (!HasVertex(from) || !HasVertex(to)) {
-    return false;
-  }
+  if (!HasVertex(from) || !HasVertex(to)) return false;
   absl::flat_hash_set<T> visited;
   return RunDFS(from, to, visited);
+}
+
+template <typename T>
+bool Graph<T>::IsReachableBFS(const T& from, const T& to) const {
+  if (!HasVertex(from) || !HasVertex(to)) return false;
+  absl::flat_hash_set<T> visited;
+  return RunBFS(from, to, visited);
 }
 
 template <typename T>
@@ -93,8 +98,26 @@ bool Graph<T>::RunDFS(const T& current, const T& target,
   }
   for (const T& neighbor : graph_.at(current)) {
     if (!visited.contains(neighbor)) {
-      if (RunDFS(neighbor, target, visited)) {
-        return true;
+      if (RunDFS(neighbor, target, visited)) return true;
+    }
+  }
+  return false;
+}
+
+template <typename T>
+bool Graph<T>::RunBFS(const T& current, const T& target,
+                      absl::flat_hash_set<T>& visited) const {
+  std::queue<T> queue;
+  visited.insert(current);
+  queue.push(current);
+  while (!queue.empty()) {
+    T current = queue.front();
+    queue.pop();
+    if (current == target) return true;
+    for (const T& neighbor : graph_.at(current)) {
+      if (!visited.contains(neighbor)) {
+        visited.insert(neighbor);
+        queue.push(neighbor);
       }
     }
   }

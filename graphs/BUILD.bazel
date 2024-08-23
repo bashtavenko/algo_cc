@@ -11,6 +11,24 @@ cc_library(
 cc_test(
     name = "classic_test",
     srcs = ["classic_test.cc"],
-    deps = [":classic",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":classic",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "maze",
+    srcs = ["maze.cc"],
+    hdrs = ["maze.h"],
+    deps = ["@absl//absl/strings:str_format" ],
+)
+
+cc_test(
+    name = "maze_test",
+    srcs = ["maze_test.cc"],
+    deps = [
+        ":maze",
+        "@googletest//:gtest_main",
+    ],
 )

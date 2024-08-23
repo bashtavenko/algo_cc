@@ -8,6 +8,10 @@ namespace {
 
 using testing::UnorderedElementsAreArray;
 
+//   1 -> 2 -> 3 -> 4
+//   | -------------^
+//
+
 TEST(Graph, BasicWorks) {
   Graph<int32_t> g;
   g.AddEdge(1, 2);
@@ -26,6 +30,7 @@ TEST(Graph, BasicWorks) {
 
   const std::vector<int32_t> want_path{1, 4};
   EXPECT_THAT(g.ShortestPath(1, 4), UnorderedElementsAreArray(want_path));
+  EXPECT_TRUE(g.IsReachableBFS(1, 3));
 }
 
 }  // namespace

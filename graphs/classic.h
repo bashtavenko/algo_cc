@@ -23,6 +23,7 @@ class Graph {
   std::vector<T> GetNeighbors(const T& vertex) const;
 
   bool IsReachableDFS(const T& from, const T& to) const;
+  bool IsReachableBFS(const T& from, const T& to) const;
   std::vector<T> ShortestPath(const T& from, const T& to) const;
 
   void Clear();
@@ -34,6 +35,8 @@ class Graph {
   // Returns true if two vertices are reachable.
   // Requires client to provide a visited set.
   bool RunDFS(const T& current, const T& target,
+              absl::flat_hash_set<T>& visited) const;
+  bool RunBFS(const T& current, const T& target,
               absl::flat_hash_set<T>& visited) const;
 };
 }  // namespace algo
