@@ -21,7 +21,7 @@ cc_library(
     name = "maze",
     srcs = ["maze.cc"],
     hdrs = ["maze.h"],
-    deps = ["@absl//absl/strings:str_format" ],
+    deps = [],
 )
 
 cc_test(
@@ -29,6 +29,40 @@ cc_test(
     srcs = ["maze_test.cc"],
     deps = [
         ":maze",
+        "@absl//absl/strings:str_format",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "flip_color",
+    srcs = ["flip_color.cc"],
+    hdrs = ["flip_color.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "flip_color_test",
+    srcs = ["flip_color_test.cc"],
+    deps = [
+        ":flip_color",
+        "@absl//absl/strings:str_format",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "enclosed_regions",
+    srcs = ["enclosed_regions.cc"],
+    hdrs = ["enclosed_regions.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "enclosed_regions_test",
+    srcs = ["enclosed_regions_test.cc"],
+    deps = [
+        ":enclosed_regions",
         "@googletest//:gtest_main",
     ],
 )

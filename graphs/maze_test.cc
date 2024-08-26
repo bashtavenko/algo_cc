@@ -2,6 +2,7 @@
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 #include <vector>
+#include "absl/strings/str_format.h"
 
 namespace algo {
 

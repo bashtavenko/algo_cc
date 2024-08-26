@@ -1,11 +1,10 @@
-// 18.1 Search maze classic
+// 18.1 Search maze classic DFS
 //
 
 #ifndef ALGO_CC_GRAPHS_MAZE_H_
 #define ALGO_CC_GRAPHS_MAZE_H_
 #include <cstdint>
 #include <vector>
-#include "absl/strings/str_format.h"
 
 namespace algo {
 

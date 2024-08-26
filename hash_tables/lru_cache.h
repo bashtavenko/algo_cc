@@ -26,18 +26,24 @@ class LRUCache {
   bool Erase(char8_t key);
 
  private:
-  // Main block - double-linked list.
+  // Main block - double-linked list of values
+  // a<->b<->c<->d
   std::list<char8_t> lru_queue_;
 
   // Second main block - hash table
-  // 'a' -> [('a', 1), ('b, 2), ('c', 3)]
-  // 'b' -> ...
+  // Has normal key and value plus linkage to lru_queue
+  // For each key it has not only the value but where it came from.
+  // 'a' -> (100, 1)
+  // 'b' -> (102, 2)
+  //  We cannot change the order of hash map, therefore we need
+  //  keep order in the linked list.
   using Table =
       absl::flat_hash_map<char8_t,
                           std::pair<std::list<char8_t>::iterator, int32_t>>;
   size_t capacity_;
   Table table_;
 
+  // Moves key lru_cache to front. Updates key in table_
   void MoveToFront(char8_t key, const Table::iterator& it);
 };
 
