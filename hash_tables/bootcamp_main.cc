@@ -85,6 +85,45 @@ void Merge() {
   }
 }
 
+// The absl::flat_hash_map requires BOTH a hash function and an EQUALITY
+// comparison for the key type.
+struct Point {
+ public:
+  int32_t x;
+  int32_t y;
+
+  bool operator==(const Point& other) const {
+    return x == other.x && y == other.y;
+  }
+
+  template <typename H>
+  friend H AbslHashValue(H h, const Point& c) {
+    return H::combine(std::move(h), c.x, c.y);
+  }
+};
+
+void UpdateHashTable() {
+  absl::flat_hash_map<Point, std::string> table;
+  Point p{1, 2};
+  table[p] = "foo";
+  auto it = table.find(p);
+  // This would not even compile.
+  // it->first.x = 3;
+
+  // This would work
+  auto val = table[p];  // "Foo" {{{1, 2},"foo}
+  table.erase(p);
+  p.x = 4;
+  table[p] = val;  // Updates {{{4, 2},"foo}
+
+  // The best one
+  table[p] = "bla";
+  it = table.find(p);
+  p.x = 4;
+  table[p] == std::move(it->second);  // Don't need val
+  table.erase(it);
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
@@ -92,5 +131,6 @@ int main(int argc, char** argv) {
   LOG(INFO) << absl::StreamFormat("Hash: %i", Run("abc"));
   FindAnagrams();
   Merge();
+  UpdateHashTable();
   EXIT_SUCCESS;
 }
