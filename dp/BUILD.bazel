@@ -1,0 +1,47 @@
+cc_library(
+    name = "bootacamp",
+    srcs = ["bootcamp.cc"],
+    hdrs = ["bootcamp.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "bootcamp_test",
+    srcs = ["bootcamp_test.cc"],
+    deps = [
+        ":bootacamp",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "score_combinations",
+    srcs = ["score_combinations.cc"],
+    hdrs = ["score_combinations.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "score_combinations_test",
+    srcs = ["score_combinations_test.cc"],
+    deps = [
+        ":score_combinations",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "traverse_array",
+    srcs = ["traverse_array.cc"],
+    hdrs = ["traverse_array.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "traverse_array_test",
+    srcs = ["traverse_array_test.cc"],
+    deps = [
+        ":traverse_array",
+        "@googletest//:gtest_main",
+    ],
+)
