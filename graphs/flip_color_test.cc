@@ -8,24 +8,31 @@ namespace algo {
 namespace {
 
 std::vector<std::vector<bool>> CreateMatrix() {
+  // 0 1 1
+  // B W B     0
+  // W W B     1
+  // B B B     2
   return std::vector<std::vector<bool>>{
-      {false, true, true, true, true, true, false, false, true, true},     // 0
-      {true, true, false, true, true, true, true, true, true, true},       // 1
-      {false, true, false, true, true, false, false, true, false, false},  // 2
-      {true, true, true, false, false, false, true, true, false, true},    // 3
-      {true, false, false, true, true, true, true, true, true, true},      // 4
-      {true, false, false, true, true, false, true, false, false, true},   // 5
-      {true, true, true, true, false, true, true, true, true, true},       // 6
-      {false, true, false, true, false, true, false, true, true, true},    // 7
-      {false, true, false, false, true, true, true, false, false, false},  // 8
-      {true, true, true, true, true, true, true, false, false, true},      // 9
+      {true, false, true},   // 0
+      {false, false, true},  // 1
+      {true, true, true},    // 2
   };
 }
 
-TEST(FlipColor, Works) {
+TEST(FlipColor, BFSWorks) {
   std::vector<std::vector<bool>> matrix = CreateMatrix();
-  FlipColor(0, 9, &matrix);
-  EXPECT_FALSE(matrix[9][0]);
+  FlipColorBFS(1, 0, &matrix);
+  EXPECT_TRUE(matrix[1][0]);
+  EXPECT_TRUE(matrix[1][1]);
+  EXPECT_TRUE(matrix[0][1]);
+}
+
+TEST(FlipColor, DFSWorks) {
+  std::vector<std::vector<bool>> matrix = CreateMatrix();
+  FlipColorDFS(1, 0, &matrix);
+  EXPECT_TRUE(matrix[1][0]);
+  EXPECT_TRUE(matrix[1][1]);
+  EXPECT_TRUE(matrix[0][1]);
 }
 
 }  // namespace
