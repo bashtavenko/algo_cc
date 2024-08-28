@@ -47,7 +47,7 @@ void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p) {
     const int32_t next_x = x + x_shift;
     if (next_y >= 0 && next_y < data.size() && next_x >= 0 &&
         next_x < data[y].size() && data[next_y][next_x] == color) {
-      FlipColorBFS(next_x, next_y, p);
+      FlipColorDFS(next_x, next_y, p);
     }
   }
 }
