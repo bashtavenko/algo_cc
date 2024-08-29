@@ -88,3 +88,18 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+
+cc_library(
+    name = "diagonal",
+    srcs = ["diagonal.cc"],
+    hdrs = ["diagonal.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "diagonal_test",
+    srcs = ["diagonal_test.cc"],
+    deps = [":diagonal",
+            "@googletest//:gtest_main"],
+)
