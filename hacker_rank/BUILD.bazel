@@ -1,0 +1,55 @@
+cc_library(
+    name = "socks",
+    srcs = ["socks.cc"],
+    hdrs = ["socks.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "socks_test",
+    srcs = ["socks_test.cc"],
+    deps = [":socks",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "valley",
+    srcs = ["valley.cc"],
+    hdrs = ["valley.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "valley_test",
+    srcs = ["valley_test.cc"],
+    deps = [":valley",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "jump",
+    srcs = ["jump.cc"],
+    hdrs = ["jump.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "jump_test",
+    srcs = ["jump_test.cc"],
+    deps = [":jump",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "repeated_string",
+    srcs = ["repeated_string.cc"],
+    hdrs = ["repeated_string.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "repated_string_test",
+    srcs = ["repeated_string_test.cc"],
+    deps = [":repeated_string",
+            "@googletest//:gtest_main"],
+)
