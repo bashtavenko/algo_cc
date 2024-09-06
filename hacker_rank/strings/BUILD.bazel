@@ -1,0 +1,29 @@
+cc_library(
+    name = "anagram",
+    srcs = ["anagram.cc"],
+    hdrs = ["anagram.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "anagram_test",
+    srcs = ["anagram_test.cc"],
+    deps = [
+        ":anagram",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "substr_count",
+    srcs = ["substr_count.cc"],
+    hdrs = ["substr_count.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "substr_count_test",
+    srcs = ["substr_count_test.cc"],
+    deps = [":substr_count",
+            "@googletest//:gtest_main"],
+)

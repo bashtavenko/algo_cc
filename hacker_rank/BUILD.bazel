@@ -8,8 +8,10 @@ cc_library(
 cc_test(
     name = "socks_test",
     srcs = ["socks_test.cc"],
-    deps = [":socks",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":socks",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -22,8 +24,10 @@ cc_library(
 cc_test(
     name = "valley_test",
     srcs = ["valley_test.cc"],
-    deps = [":valley",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":valley",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -36,8 +40,10 @@ cc_library(
 cc_test(
     name = "jump_test",
     srcs = ["jump_test.cc"],
-    deps = [":jump",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":jump",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -50,6 +56,8 @@ cc_library(
 cc_test(
     name = "repated_string_test",
     srcs = ["repeated_string_test.cc"],
-    deps = [":repeated_string",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":repeated_string",
+        "@googletest//:gtest_main",
+    ],
 )
