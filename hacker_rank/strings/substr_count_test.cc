@@ -4,7 +4,8 @@
 #include <string>
 
 TEST(SubstrCount, Works) {
-  EXPECT_THAT(SubstrCount("mnonopoo"), 12);
-  EXPECT_THAT(SubstrCount("asasd"), 7);
-  EXPECT_THAT(SubstrCount("abcbaba"), 11);  // Should be 10?
+  EXPECT_THAT(SubstrCount(2, "aa"), 3);
+  EXPECT_THAT(SubstrCount(4, "aaaa"), 10);
+  EXPECT_THAT(SubstrCount(5, "asasd"), 7);
+  EXPECT_THAT(SubstrCount(7, "abcbaba"), 10);
 }

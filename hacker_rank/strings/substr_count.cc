@@ -1,41 +1,38 @@
 #include "hacker_rank/strings/substr_count.h"
 #include <string>
 
-// asasd => 7
+// "aaaa" = {a, a, a, a, aa, aaa, aaaa, aa, aaa, aa}
+// 5, "asasd" => 7
 // Because {a, s, a, s, d, asa, sas}
 // d
 // abcbaba => 10
 // { a, b, c, b, a, b, a, bcb, bab, aba }
-long SubstrCount(const std::string& s) {
-  long n = s.length();
-  long count = 0;
 
-  // Case 1: All characters in the substring are the same
-  for (long i = 0; i < n; i++) {
-    long repeat = 0;
+long SubstrCount(int n, const std::string& s) {
+  long count = n;  // Each individual character is a special substring
 
-    // Count all identical characters in a row
-    while (i + repeat < n && s[i] == s[i + repeat]) {
-      repeat++;
+  // 1. Count substrings where all characters are the same
+  for (int i = 0; i < n; ++i) {
+    char c = s[i];
+    int j = i + 1;
+    while (j < n && s[j] == c) {
+      ++count;
+      ++j;
     }
-
-    // Add all combinations of these identical characters
-    count += (repeat * (repeat + 1)) / 2;
-
-    // Move to the end of this block of identical characters
-    i += repeat - 1;
   }
 
-  // Case 2: All characters except the middle one are the same
-  for (long i = 1; i < n - 1; i++) {
-    long left = 1;
-
-    // Check for the middle character being different, and the two ends being
-    // identical
-    while (i - left >= 0 && i + left < n && s[i] != s[i - left] &&
-           s[i - left] == s[i + left]) {
-      count++;
-      left++;
+  // 2. Count substrings where all characters except the middle one are the
+  // same. The same way, try to substring and check the middle
+  for (int i = 1; i < n - 1; ++i) {
+    int lo = i - 1;
+    int hi = i + 1;
+    if (s[lo] != s[i] && s[lo] == s[hi]) {
+      ++count;
+      while (lo > 0 && hi < n - 1 && s[lo - 1] == s[lo] && s[hi + 1] == s[hi]) {
+        ++count;
+        --lo;
+        ++hi;
+      }
     }
   }
 
