@@ -27,3 +27,17 @@ cc_test(
     deps = [":substr_count",
             "@googletest//:gtest_main"],
 )
+
+cc_library(
+    name = "string_child",
+    srcs = ["string_child.cc"],
+    hdrs = ["string_child.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "string_child_test",
+    srcs = ["string_child_test.cc"],
+    deps = [":string_child",
+            "@googletest//:gtest_main"],
+)
