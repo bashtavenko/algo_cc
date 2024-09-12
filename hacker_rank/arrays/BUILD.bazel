@@ -1,0 +1,13 @@
+cc_library(
+    name = "left_rotation",
+    srcs = ["left_rotation.cc"],
+    hdrs = ["left_rotation.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "left_rotation_test",
+    srcs = ["left_rotation_test.cc"],
+    deps = [":left_rotation",
+            "@googletest//:gtest_main"],
+)
