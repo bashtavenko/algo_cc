@@ -11,3 +11,17 @@ cc_test(
     deps = [":left_rotation",
             "@googletest//:gtest_main"],
 )
+
+cc_library(
+    name = "new_year_chaos",
+    srcs = ["new_year_chaos.cc"],
+    hdrs = ["new_year_chaos.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "new_year_chaos_test",
+    srcs = ["new_year_chaos_test.cc"],
+    deps = [":new_year_chaos",
+            "@googletest//:gtest_main"],
+)

@@ -71,3 +71,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "insertion_sort",
+    srcs = ["insertion_sort.cc"],
+    hdrs = ["insertion_sort.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "insertion_sort_test",
+    srcs = ["insertion_sort_test.cc"],
+    deps = [":insertion_sort",
+            "@googletest//:gtest_main"],
+)
