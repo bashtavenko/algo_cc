@@ -13,6 +13,20 @@ cc_test(
 )
 
 cc_library(
+    name = "minimum_swap",
+    srcs = ["minimum_swap.cc"],
+    hdrs = ["minimum_swap.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "minimum_swap_test",
+    srcs = ["minimum_swap_test.cc"],
+    deps = [":minimum_swap",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
     name = "new_year_chaos",
     srcs = ["new_year_chaos.cc"],
     hdrs = ["new_year_chaos.h"],
