@@ -13,6 +13,8 @@
 // 4   [1, 2, 3, 4, 5, 7, 6]   swap (5,6)
 // 5   [1, 2, 3, 4, 5, 6, 7]
 // It took 5 swaps
+//
+// It has CONSECUTIVE integers.
 
 #ifndef ALGO_CC_HACKER_RANK_ARRAYS_MINIMUM_SWAP_H_
 #define ALGO_CC_HACKER_RANK_ARRAYS_MINIMUM_SWAP_H_

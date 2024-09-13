@@ -7,4 +7,9 @@ TEST(SortInsertion, Works) {
   std::vector<int32_t> want{1, 2, 3, 4, 5, 6};
   SortInsertion(data);
   EXPECT_THAT(data, want);
+
+  data = {4, 3, 1, 2};
+  want = {1, 2, 3, 4};
+  SortInsertion(data);
+  EXPECT_THAT(data, want);
 }
