@@ -8,8 +8,10 @@ cc_library(
 cc_test(
     name = "left_rotation_test",
     srcs = ["left_rotation_test.cc"],
-    deps = [":left_rotation",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":left_rotation",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -22,8 +24,10 @@ cc_library(
 cc_test(
     name = "minimum_swap_test",
     srcs = ["minimum_swap_test.cc"],
-    deps = [":minimum_swap",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":minimum_swap",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -36,6 +40,8 @@ cc_library(
 cc_test(
     name = "new_year_chaos_test",
     srcs = ["new_year_chaos_test.cc"],
-    deps = [":new_year_chaos",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":new_year_chaos",
+        "@googletest//:gtest_main",
+    ],
 )

@@ -24,8 +24,10 @@ cc_library(
 cc_test(
     name = "substr_count_test",
     srcs = ["substr_count_test.cc"],
-    deps = [":substr_count",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":substr_count",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -38,6 +40,8 @@ cc_library(
 cc_test(
     name = "string_child_test",
     srcs = ["string_child_test.cc"],
-    deps = [":string_child",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":string_child",
+        "@googletest//:gtest_main",
+    ],
 )

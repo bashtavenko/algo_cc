@@ -8,6 +8,24 @@ cc_library(
 cc_test(
     name = "ransome_note_test",
     srcs = ["ransome_note_test.cc"],
-    deps = [":ransome_note",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":ransome_note",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "two_strings",
+    srcs = ["two_strings.cc"],
+    hdrs = ["two_strings.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "two_strings_test",
+    srcs = ["two_strings_test.cc"],
+    deps = [
+        ":two_strings",
+        "@googletest//:gtest_main",
+    ],
 )
