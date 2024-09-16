@@ -1,0 +1,13 @@
+cc_library(
+    name = "ransome_note",
+    srcs = ["ransome_note.cc"],
+    hdrs = ["ransome_note.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "ransome_note_test",
+    srcs = ["ransome_note_test.cc"],
+    deps = [":ransome_note",
+            "@googletest//:gtest_main"],
+)
