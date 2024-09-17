@@ -1,4 +1,4 @@
-#include "hacker_rank/hach_tables/two_strings.h"
+#include "hacker_rank/hash_tables/two_strings.h"
 #include <string>
 #include <unordered_set>
 

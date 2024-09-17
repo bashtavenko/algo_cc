@@ -1,4 +1,4 @@
-#include "hacker_rank/hach_tables/ransome_note.h"
+#include "hacker_rank/hash_tables/ransome_note.h"
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 

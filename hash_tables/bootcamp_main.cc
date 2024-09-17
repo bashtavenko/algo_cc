@@ -33,9 +33,9 @@ void FindAnagrams() {
     sorted_strings_to_anagram[sorted].emplace_back(s);
   }
 
-  for (const auto& p : sorted_strings_to_anagram) {
-    if (p.second.size() >= 2) {
-      for (const auto& v : p.second) {
+  for (const auto& [_, anagrams] : sorted_strings_to_anagram) {
+    if (anagrams.size() >= 2) {
+      for (const auto& v : anagrams) {
         LOG(INFO) << v;
       }
     }

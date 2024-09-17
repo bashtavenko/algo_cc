@@ -29,3 +29,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "anagramic_pairs",
+    srcs = ["anagramic_pairs.cc"],
+    hdrs = ["anagramic_pairs.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "anagramic_pairs_test",
+    srcs = ["anagramic_pairs_test.cc"],
+    deps = [":anagramic_pairs",
+            "@googletest//:gtest_main"],
+)

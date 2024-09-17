@@ -1,4 +1,4 @@
-#include "hacker_rank/hach_tables/two_strings.h"
+#include "hacker_rank/hash_tables/two_strings.h"
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
