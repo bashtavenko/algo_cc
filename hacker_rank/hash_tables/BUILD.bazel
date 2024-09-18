@@ -40,6 +40,24 @@ cc_library(
 cc_test(
     name = "anagramic_pairs_test",
     srcs = ["anagramic_pairs_test.cc"],
-    deps = [":anagramic_pairs",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":anagramic_pairs",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "count_triplets",
+    srcs = ["count_triplets.cc"],
+    hdrs = ["count_triplets.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "count_triplets_test",
+    srcs = ["count_triplets_test.cc"],
+    deps = [
+        ":count_triplets",
+        "@googletest//:gtest_main",
+    ],
 )
