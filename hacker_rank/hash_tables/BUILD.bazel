@@ -72,6 +72,8 @@ cc_library(
 cc_test(
     name = "frequency_queries_test",
     srcs = ["frequency_queries_test.cc"],
-    deps = [":frequency_queries",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":frequency_queries",
+        "@googletest//:gtest_main",
+    ],
 )

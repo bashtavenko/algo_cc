@@ -1,0 +1,31 @@
+cc_library(
+    name = "bubble_sort",
+    srcs = ["bubble_sort.cc"],
+    hdrs = ["bubble_sort.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "bubble_sort_test",
+    srcs = ["bubble_sort_test.cc"],
+    deps = [
+        ":bubble_sort",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "maximum_toys",
+    srcs = ["maximum_toys.cc"],
+    hdrs = ["maximum_toys.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "maximum_toys_test",
+    srcs = ["maximum_toys_test.cc"],
+    deps = [
+        ":maximum_toys",
+        "@googletest//:gtest_main",
+    ],
+)
