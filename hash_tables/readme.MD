@@ -10,4 +10,7 @@
 for (const auto& c : a) {
   ++char_count[c];
 }
+
+// This is helpful to get the previous value
+// int old_freq = value_freq[value];
 ```

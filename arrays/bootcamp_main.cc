@@ -72,5 +72,9 @@ int main(int argc, char** argv) {
 
   std::sort(v.begin(), v.end());
 
+  // Removing value in vector
+  // erase + std::remove()
+  // data.erase(std::remove(data.begin(), data.end(), value), data.end());
+
   return EXIT_SUCCESS;
 }
