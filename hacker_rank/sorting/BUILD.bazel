@@ -44,3 +44,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "activity_notifications",
+    srcs = ["activity_notifications.cc"],
+    hdrs = ["activity_notifications.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "activity_notifications_test",
+    srcs = ["activity_notifications_test.cc"],
+    deps = [":activity_notifications",
+            "@googletest//:gtest_main"],
+)
