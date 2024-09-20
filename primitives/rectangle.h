@@ -31,14 +31,9 @@ struct Rectangle {
             height == other.height);
   }
 
-  template <typename Sink>
-  friend void AbslStringify(Sink& sink, const Rectangle& r) {
-    absl::Format(&sink, "(x = %i, y = %i, width = %i, height = %i)", r.x, r.y,
-                 r.width, r.height);
-  }
-
   friend std::ostream& operator<<(std::ostream& os, const Rectangle& r) {
-    os << absl::StreamFormat("%v", r);
+    os << absl::StreamFormat("(x = %i, y = %i, width = %i, height = %i)", r.x,
+                             r.y, r.width, r.height);
     return os;
   }
 

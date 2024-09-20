@@ -18,11 +18,6 @@ struct SortResult {
            last_element == other.last_element;
   }
 
-  template <typename Sink>
-  void AbslStringfy(Sink sink, const SortResult& result) {
-    absl::Format(&sink, "%v", result);
-  }
-
   friend std::ostream& operator<<(std::ostream& os, const SortResult& that) {
     os << absl::StrFormat("(%i, %i, %i)", that.num_swaps, that.first_element,
                           that.last_element);

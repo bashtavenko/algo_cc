@@ -44,16 +44,11 @@ struct Interval {
     return left == that.left && right == that.right;
   }
 
-  template <typename Sink>
-  friend void AbslStringify(Sink& sink, const Interval& interval) {
-    absl::Format(
-        &sink, "{%s, %i} {%s, %i}", interval.left.is_closed ? "true" : "false",
+  friend std::ostream& operator<<(std::ostream& os, const Interval& interval) {
+    os << absl::StreamFormat(
+        "{%s, %i} {%s, %i}", interval.left.is_closed ? "true" : "false",
         interval.left.value, interval.right.is_closed ? "true" : "false",
         interval.right.value);
-  }
-
-  friend std::ostream& operator<<(std::ostream& os, const Interval& interval) {
-    os << absl::StreamFormat("%v", interval);
     return os;
   }
 };

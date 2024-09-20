@@ -21,13 +21,8 @@ struct Star {
     return Distance() == that.Distance();
   }
 
-  template <typename Sink>
-  friend void AbslStringify(Sink& sink, const Star& s) {
-    absl::Format(&sink, "(x = %f, y = %f, z = %f)", s.x, s.y, s.z);
-  }
-
   friend std::ostream& operator<<(std::ostream& os, const Star& s) {
-    os << absl::StreamFormat("%v", s);
+    os << absl::StreamFormat("(x = %f, y = %f, z = %f)", s.x, s.y, s.z);
     return os;
   }
 };

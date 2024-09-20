@@ -6,15 +6,8 @@
 
 namespace algo {
 
-// These Coordinate member functions could be here or in struct.
-// If later, add friend to both members.
-template <typename Sink>
-void AbslStringify(Sink& sink, const Coordinate& c) {
-  absl::Format(&sink, "(%i, %i)", c.x, c.y);
-}
-
 std::ostream& operator<<(std::ostream& os, const Coordinate& c) {
-  os << absl::StreamFormat("%v", c);
+  os << absl::StreamFormat("(%i, %i)", c.x, c.y);
   return os;
 }
 

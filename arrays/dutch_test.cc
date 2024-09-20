@@ -20,13 +20,8 @@ std::string_view ColorToString(Color color) {
   }
 }
 
-template <typename Sink>
-void AbslStringify(Sink& sink, Color color) {
-  absl::Format(&sink, "%s", ColorToString(color));
-}
-
 std::ostream& operator<<(std::ostream& os, Color color) {
-  os << absl::StreamFormat("%v", color);
+  os << absl::StreamFormat("%s", ColorToString(color));
   return os;
 }
 
@@ -35,7 +30,7 @@ TEST(Dutch, Works) {
   using enum Color;
   auto data =
       std::vector<Color>{kRed, kWhite, kBlue, kRed, kBlue, kWhite, kWhite};
-  auto const expected =
+  const auto expected =
       std::vector<Color>{kRed, kRed, kBlue, kBlue, kWhite, kWhite, kWhite};
   DutchFlagPartition(3, &data);
   EXPECT_THAT(data, expected);

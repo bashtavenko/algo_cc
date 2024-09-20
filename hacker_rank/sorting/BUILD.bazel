@@ -29,3 +29,18 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "comparator",
+    hdrs = ["comparator.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "comparator_test",
+    srcs = ["comparator_test.cc"],
+    deps = [
+        ":comparator",
+        "@googletest//:gtest_main",
+    ],
+)
