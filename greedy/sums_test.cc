@@ -27,5 +27,9 @@ TEST(HasThreeSum, Works) {
   EXPECT_FALSE(HasThreeSum(data, 100));
 }
 
+TEST(HasUnsortedTwoSum, Works) {
+  EXPECT_TRUE(HasUnsortedTwoSum(std::vector<int32_t>{2, 3, 5, 7, 11}, 16));
+}
+
 }  // namespace
 }  // namespace algo

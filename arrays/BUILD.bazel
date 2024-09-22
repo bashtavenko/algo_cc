@@ -104,3 +104,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "buy_sell_once",
+    srcs = ["buy_sell_once.cc"],
+    hdrs = ["buy_sell_once.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "buy_sell_once_test",
+    srcs = ["buy_sell_once_test.cc"],
+    deps = [
+        ":buy_sell_once",
+        "@googletest//:gtest_main",
+    ],
+)

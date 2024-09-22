@@ -1,0 +1,15 @@
+cc_library(
+    name = "ice_cream",
+    srcs = ["ice_cream.cc"],
+    hdrs = ["ice_cream.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "ice_cream_test",
+    srcs = ["ice_cream_test.cc"],
+    deps = [
+        ":ice_cream",
+        "@googletest//:gtest_main",
+    ],
+)
