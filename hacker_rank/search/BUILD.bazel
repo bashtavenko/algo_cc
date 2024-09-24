@@ -13,3 +13,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "pairs",
+    srcs = ["pairs.cc"],
+    hdrs = ["pairs.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "pairs_test",
+    srcs = ["pairs_test.cc"],
+    deps = [
+        ":pairs",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "triple_sum",
+    srcs = ["triple_sum.cc"],
+    hdrs = ["triple_sum.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "triple_sum_test",
+    srcs = ["triple_sum_test.cc"],
+    deps = [
+        ":triple_sum",
+        "@googletest//:gtest_main",
+    ],
+)
