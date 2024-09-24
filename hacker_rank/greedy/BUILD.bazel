@@ -1,0 +1,27 @@
+cc_library(
+    name = "min_diff",
+    srcs = ["min_diff.cc"],
+    hdrs = ["min_diff.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "min_diff_test",
+    srcs = ["min_diff_test.cc"],
+    deps = [":min_diff",
+            "@googletest//:gtest_main"],
+)
+
+cc_library(
+    name = "luck_balance",
+    srcs = ["luck_balance.cc"],
+    hdrs = ["luck_balance.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "luck_balance_test",
+    srcs = ["luck_balance_test.cc"],
+    deps = [":luck_balance",
+            "@googletest//:gtest_main"],
+)
