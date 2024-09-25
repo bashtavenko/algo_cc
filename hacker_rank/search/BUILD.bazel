@@ -45,3 +45,18 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "min_time",
+    srcs = ["min_time.cc"],
+    hdrs = ["min_time.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "min_time_test",
+    srcs = ["min_time_test.cc"],
+    deps = [":min_time",
+            "@googletest//:gtest_main"],
+
+)
