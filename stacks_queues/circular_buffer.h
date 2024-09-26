@@ -10,7 +10,7 @@ namespace algo {
 
 class CircularBuffer {
  public:
-  explicit CircularBuffer(size_t capacity) : entries_(capacity){};
+  explicit CircularBuffer(size_t capacity) : entries_(capacity) {};
   void Enqueue(int32_t x);
   absl::optional<int32_t> Dequeue();
 
@@ -25,6 +25,29 @@ class CircularBuffer {
   std::vector<int32_t> entries_;
 };
 
-}  // namespace algo
+// This is basic CircularBuffer with int.
+// It is essentially a queue with two pointers
+// head points to the oldest items and tail with
+// the newest one.
+class CircularBufferBasic {
+ public:
+  CircularBufferBasic(size_t size);
+  void Push(int32_t item);
+  absl::optional<int32_t> Pop();
+  bool Empty() const;
+  bool Full() const;
+  size_t Size() const;
 
+ private:
+  //  Oldest
+  // [1, 2, 3]
+  //  H     T
+  std::vector<int32_t> buffer_;
+  size_t head_;  // Head of the queue; the oldest
+  size_t tail_;  // Tail of the queue; the newest
+  size_t max_size_;
+  bool full_ = false;
+};
+
+}  // namespace algo
 #endif  // ALGO_CC_STACKS_QUEUES_CIRCULAR_BUFFER_H_

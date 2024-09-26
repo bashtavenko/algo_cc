@@ -31,4 +31,40 @@ absl::optional<int32_t> CircularBuffer::Dequeue() {
   return value;
 }
 
+CircularBufferBasic::CircularBufferBasic(size_t size)
+    : buffer_(size), head_(0), tail_(0), max_size_(size), full_(false) {};
+
+void CircularBufferBasic::Push(int32_t item) {
+  // Add the newest and adjust tail and correct head if needed
+  if (full_) {
+    head_ = (head_ + 1) % max_size_;
+  }
+  buffer_[tail_] = item;
+  tail_ = (tail_ + 1) % max_size_;
+  full_ = head_ == tail_;
+}
+
+absl::optional<int32_t> CircularBufferBasic::Pop() {
+  // Get the oldest and increment head
+  if (Empty()) return {};
+  int32_t item = buffer_[head_];
+  full_ = false;
+  head_ = (head_ + 1) % max_size_;
+  return item;
+}
+
+bool CircularBufferBasic::Empty() const { return (!full_ && (head_ == tail_)); }
+
+size_t CircularBufferBasic::Size() const {
+  if (full_) {
+    return max_size_;
+  }
+  if (tail_ >= head_) {
+    return tail_ - head_;
+  }
+  return max_size_ + tail_ - head_;
+}
+
+bool CircularBufferBasic::Full() const { return full_; }
+
 }  // namespace algo
