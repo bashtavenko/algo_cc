@@ -32,7 +32,7 @@ TEST(Dutch, Works) {
       std::vector<Color>{kRed, kWhite, kBlue, kRed, kBlue, kWhite, kWhite};
   const auto expected =
       std::vector<Color>{kRed, kRed, kBlue, kBlue, kWhite, kWhite, kWhite};
-  DutchFlagPartition(3, &data);
+  DutchFlagPartition(3, data);
   EXPECT_THAT(data, expected);
 }
 }  // namespace

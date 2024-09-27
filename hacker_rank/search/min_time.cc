@@ -70,12 +70,18 @@ long MinTime(const std::vector<long>& machines, long goal) {
   if (machines.empty() || goal <= 0) return 0;
 
   // machines [2, 3, 2], goal = 10
-  // std::max_element
+  // std::max_element. It returns iterator
   long max_days = *std::max_element(machines.begin(), machines.end()) * goal;
 
   //  int sum = std::accumulate(v.begin(), v.end(), 0);
   //  int product = std::accumulate(v.begin(), v.end(), 1,
   //  std::multiplies<int>());
+  // Key points:
+  // Machine produces if it is divisible by day
+  // For example [2, 3, 2] 3 is not divisible by 2 and 3
+  // does not produce
+  // Essentially what std::accumulate does is
+  // sum += day / machine
   auto items_at_day = [&](long day) {
     return std::accumulate(
         machines.begin(), machines.end(), 0L,

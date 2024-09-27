@@ -17,7 +17,7 @@ std::vector<std::vector<char>> CreateBoard() {
 
 TEST(FillSurroundedRegions, CentralWoks) {
   auto data = CreateBoard();
-  FillSurroundedRegions(&data);
+  FillSurroundedRegions(data);
   EXPECT_THAT(data[1][0], Eq('W'));
   EXPECT_THAT(data[1][2], Eq('B'));
   EXPECT_THAT(data[2][2], Eq('B'));

@@ -7,8 +7,8 @@
 
 namespace algo {
 
-void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p);
-void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p);
+void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>& data);
+void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>& data);
 
 }  // namespace algo
 

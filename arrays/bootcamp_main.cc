@@ -3,8 +3,7 @@
 #include <algorithm>
 #include "absl/strings/str_format.h"
 
-void EvenOdd(std::vector<int32_t>* x) {
-  std::vector<int32_t>& data = *x;
+void EvenOdd(std::vector<int32_t>& data) {
   int32_t next_even = 0;
   int32_t next_odd = data.size() - 1;
   while (next_even < next_odd) {
@@ -22,7 +21,7 @@ int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, true);
 
   std::vector<int32_t> data = {2, 1, 3, 7, 8, 5};
-  EvenOdd(&data);
+  EvenOdd(data);
   LOG(INFO) << absl::StreamFormat("Partitioned: %v ", data.size());
 
   //  std::array<int32_t, 3> a = {1, 2, 3};

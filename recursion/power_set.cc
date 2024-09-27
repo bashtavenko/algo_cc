@@ -27,9 +27,9 @@ std::vector<std::vector<int32_t>> GenerateFromBits(
 // This is similar to permutations.
 void MakeSet(const std::vector<int32_t>& input_set, size_t to_be_selected,
              std::vector<int32_t>* selected_so_far,
-             std::vector<std::vector<int32_t>>* power_set) {
+             std::vector<std::vector<int32_t>>& power_set) {
   if (to_be_selected == input_set.size()) {
-    power_set->emplace_back(*selected_so_far);
+    power_set.emplace_back(*selected_so_far);
     return;
   }
   selected_so_far->emplace_back(input_set[to_be_selected]);
@@ -42,7 +42,7 @@ std::vector<std::vector<int32_t>> Generate(
     const std::vector<int32_t>& input_set) {
   std::vector<std::vector<int32_t>> power_set;
   std::vector<int32_t> selected_so_far;
-  MakeSet(input_set, 0, &selected_so_far, &power_set);
+  MakeSet(input_set, 0, &selected_so_far, power_set);
   return power_set;
 }
 

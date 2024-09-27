@@ -3,8 +3,7 @@
 
 namespace algo {
 
-size_t DeleteDuplicates(std::vector<int32_t>* ptr) {
-  std::vector<int32_t>& data = *ptr;
+size_t DeleteDuplicates(std::vector<int32_t>& data) {
   if (data.empty()) return 0;
 
   size_t write_index = 1;

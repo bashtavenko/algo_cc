@@ -6,7 +6,7 @@
 namespace algo {
 
 // Sets this cell and its neighbour cells to T for W cells.
-void ChangeWtoT(size_t x, size_t y, std::vector<std::vector<char>>* p) {
+void ChangeWtoT(size_t x, size_t y, std::vector<std::vector<char>>& board) {
   // Start from top left corner
   struct Coordinate {
     size_t x;  // columns
@@ -15,7 +15,6 @@ void ChangeWtoT(size_t x, size_t y, std::vector<std::vector<char>>* p) {
 
   std::queue<Coordinate> q;
   q.push(Coordinate(x, y));
-  auto& board = *p;
   while (!q.empty()) {
     const Coordinate curr = q.front();
     q.pop();
@@ -31,26 +30,24 @@ void ChangeWtoT(size_t x, size_t y, std::vector<std::vector<char>>* p) {
   }
 }
 
-void FillSurroundedRegions(std::vector<std::vector<char>>* p) {
-  std::vector<std::vector<char>>& board = *p;
-
+void FillSurroundedRegions(std::vector<std::vector<char>>& board) {
   // Step 1. Change W to T on 4 edges.
   // First and last columns, rows 0 ... last
   for (size_t x = 0; x < board.front().size(); ++x) {
     if (board[0][x] == 'W') {  // First row
-      ChangeWtoT(x, 0, p);
+      ChangeWtoT(x, 0, board);
     }
     if (board[board.front().size() - 1][x] == 'W') {  // Last row
-      ChangeWtoT(x, board.front().size() - 1, p);
+      ChangeWtoT(x, board.front().size() - 1, board);
     }
   }
   // First and last rows, columns 0 ... last
   for (size_t y = 0; y < board.size(); ++y) {
     if (board[y][0] == 'W') {  // First column
-      ChangeWtoT(0, y, p);
+      ChangeWtoT(0, y, board);
     }
     if (board[y][board.size() - 1] == 'W') {  // last column
-      ChangeWtoT(board.size() - 1, y, p);
+      ChangeWtoT(board.size() - 1, y, board);
     }
   }
 

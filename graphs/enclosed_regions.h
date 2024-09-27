@@ -9,7 +9,7 @@
 
 namespace algo {
 
-void FillSurroundedRegions(std::vector<std::vector<char>>* p);
+void FillSurroundedRegions(std::vector<std::vector<char>>& board);
 
 }  // namespace algo
 

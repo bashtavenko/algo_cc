@@ -3,9 +3,7 @@
 
 namespace algo {
 
-void DutchFlagPartition(size_t pivot_index, std::vector<Color>* data) {
-  std::vector<Color>& a = *data;
-
+void DutchFlagPartition(size_t pivot_index, std::vector<Color>& a) {
   Color v = a[pivot_index];
   size_t lt = 0;
   size_t eq = 0;

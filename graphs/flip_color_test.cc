@@ -21,7 +21,7 @@ std::vector<std::vector<bool>> CreateMatrix() {
 
 TEST(FlipColor, BFSWorks) {
   std::vector<std::vector<bool>> matrix = CreateMatrix();
-  FlipColorBFS(1, 0, &matrix);
+  FlipColorBFS(1, 0, matrix);
   EXPECT_TRUE(matrix[1][0]);
   EXPECT_TRUE(matrix[1][1]);
   EXPECT_TRUE(matrix[0][1]);
@@ -29,7 +29,7 @@ TEST(FlipColor, BFSWorks) {
 
 TEST(FlipColor, DFSWorks) {
   std::vector<std::vector<bool>> matrix = CreateMatrix();
-  FlipColorDFS(1, 0, &matrix);
+  FlipColorDFS(1, 0, matrix);
   EXPECT_TRUE(matrix[1][0]);
   EXPECT_TRUE(matrix[1][1]);
   EXPECT_TRUE(matrix[0][1]);

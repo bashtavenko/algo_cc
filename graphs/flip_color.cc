@@ -11,8 +11,7 @@ struct Coordinate {
 };
 
 // Classic BFS
-void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p) {
-  std::vector<std::vector<bool>>& data = *p;
+void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>& data) {
   // (y, x)
   static constexpr int8_t kShift[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
   const bool color = data[y][x];
@@ -37,8 +36,7 @@ void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p) {
   }
 }
 
-void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p) {
-  std::vector<std::vector<bool>>& data = *p;
+void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>& data) {
   static constexpr int8_t kShift[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
   const bool color = data[y][x];
   data[y][x] = !color;
@@ -47,7 +45,7 @@ void FlipColorDFS(int32_t x, int32_t y, std::vector<std::vector<bool>>* p) {
     const int32_t next_x = x + x_shift;
     if (next_y >= 0 && next_y < data.size() && next_x >= 0 &&
         next_x < data[y].size() && data[next_y][next_x] == color) {
-      FlipColorDFS(next_x, next_y, p);
+      FlipColorDFS(next_x, next_y, data);
     }
   }
 }
