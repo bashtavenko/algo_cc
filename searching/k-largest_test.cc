@@ -9,7 +9,7 @@ namespace {
 
 TEST(FindKthLargest, Works) {
   std::vector<int32_t> data{3, 2, 1, 5, 4};
-  EXPECT_THAT(FindKthLargest(2, &data), 4);
+  EXPECT_THAT(FindKthLargest(2, data), 4);
 }
 
 }  // namespace

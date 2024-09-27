@@ -26,6 +26,6 @@ struct Result {
   }
 };
 
-Result WhatFlavors(std::vector<int> cost, int money);
+Result WhatFlavors(const std::vector<int>& cost, int money);
 
 #endif  // ALGO_CC_HACKER_RANK_SEARCH_ICE_CREAM_H_

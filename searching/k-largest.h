@@ -17,7 +17,7 @@
 
 namespace algo {
 
-int32_t FindKthLargest(int32_t k, std::vector<int32_t>* a);
+int32_t FindKthLargest(int32_t k, std::vector<int32_t>& a);
 
 }  // namespace algo
 

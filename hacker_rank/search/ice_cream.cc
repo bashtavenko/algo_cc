@@ -38,7 +38,7 @@ Result WhatFlavorsBruteForce2(std::vector<int> cost, int money) {
   return result;
 }
 
-Result WhatFlavors(std::vector<int>& cost, int money) {
+Result WhatFlavors(const std::vector<int>& cost, int money) {
   std::unordered_map<int, int> cost_map;
   Result result;
 

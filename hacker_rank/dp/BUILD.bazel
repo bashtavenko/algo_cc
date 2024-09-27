@@ -1,0 +1,13 @@
+cc_library(
+    name = "max_subset_sum",
+    srcs = ["max_subset_sum.cc"],
+    hdrs = ["max_subset_sum.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "max_subset_sum_test",
+    srcs = ["max_subset_sum_test.cc"],
+    deps = [":max_subset_sum",
+            "@googletest//:gtest_main"],
+)
