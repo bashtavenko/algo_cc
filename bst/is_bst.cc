@@ -1,4 +1,5 @@
 #include "bst/is_bst.h"
+#include <functional>
 #include <limits>
 #include <memory>
 #include <queue>
@@ -15,18 +16,19 @@ namespace algo {
 //            15
 //     10              25
 // 5        12      13     30
-bool AreKeysInRange(const std::unique_ptr<BSTNode>& tree, int32_t lo,
-                    int32_t hi) {
-  if (!tree) return true;
-  if (tree->data < lo || tree->data > hi) return false;
-
-  return AreKeysInRange(tree->left, lo, tree->data) &&
-         AreKeysInRange(tree->right, tree->data, hi);
-}
 
 bool IsBinaryTreeBST(const std::unique_ptr<BSTNode>& tree) {
-  return AreKeysInRange(tree, std::numeric_limits<int32_t>::min(),
-                        std::numeric_limits<int32_t>::max());
+  std::function<bool(const std::unique_ptr<BSTNode>&, int32_t, int32_t)>
+      are_keys_in_range =
+          [&](const std::unique_ptr<BSTNode>& tree, int32_t lo, int32_t hi) {
+            if (!tree) return true;
+            if (tree->data < lo || tree->data > hi) return false;
+            return are_keys_in_range(tree->left, lo, tree->data) &&
+                   are_keys_in_range(tree->right, tree->data, hi);
+          };
+
+  return are_keys_in_range(tree, std::numeric_limits<int32_t>::min(),
+                           std::numeric_limits<int32_t>::max());
 }
 
 struct QueueEntry {
