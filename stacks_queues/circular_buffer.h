@@ -1,5 +1,5 @@
 // 8.7 Circular buffer
-// Not very useful. Not a circular buffer, just doubles periodically
+// There are two implementations - dynamic sizing and fixed sizing.
 #include <cstdint>
 #include <vector>
 #include "absl/types/optional.h"
@@ -8,6 +8,7 @@
 
 namespace algo {
 
+// Dynamic sizing. It never shrinks. When it doubles, it copes data.
 class CircularBuffer {
  public:
   explicit CircularBuffer(size_t capacity) : entries_(capacity) {};
@@ -29,6 +30,7 @@ class CircularBuffer {
 // It is essentially a queue with two pointers
 // head points to the oldest items and tail with
 // the newest one.
+// Overwrite the oldest.
 class CircularBufferBasic {
  public:
   CircularBufferBasic(size_t size);

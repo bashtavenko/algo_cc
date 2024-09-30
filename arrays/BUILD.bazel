@@ -120,3 +120,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "max_subarray",
+    srcs = ["max_subarray.cc"],
+    hdrs = ["max_subarray.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "max_subarray_test",
+    srcs = ["max_subarray_test.cc"],
+    deps = [":max_subarray",
+            "@googletest//:gtest_main"],
+)

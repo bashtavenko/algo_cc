@@ -7,10 +7,9 @@ namespace algo {
 void CircularBuffer::Enqueue(int32_t x) {
   if (num_entries_ == entries_.size()) {
     // Resize
-
     // Performs a left rotation on a range of elements.
-    // To make sure elements should appear consequently.
-    // I have no idea why this is needed.
+    // To make sure elements should appear consequently such that they
+    // could be dequeue in the right order.
     std::rotate(entries_.begin(), entries_.begin() + head_, entries_.end());
 
     head_ = 0;
