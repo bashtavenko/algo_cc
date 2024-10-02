@@ -131,6 +131,24 @@ cc_library(
 cc_test(
     name = "max_subarray_test",
     srcs = ["max_subarray_test.cc"],
-    deps = [":max_subarray",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":max_subarray",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "segment",
+    srcs = ["segment.cc"],
+    hdrs = ["segment.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "segment_test",
+    srcs = ["segement_test.cc"],
+    deps = [
+        ":segment",
+        "@googletest//:gtest_main",
+    ],
 )

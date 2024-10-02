@@ -45,3 +45,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "knapsack",
+    srcs = ["knapsack.cc"],
+    hdrs = ["knapsack.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "knapsack_test",
+    srcs = ["knapsack_test.cc"],
+    deps = [
+        ":knapsack",
+        "@googletest//:gtest_main",
+    ],
+)

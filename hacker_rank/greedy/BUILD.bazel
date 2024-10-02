@@ -8,8 +8,10 @@ cc_library(
 cc_test(
     name = "min_diff_test",
     srcs = ["min_diff_test.cc"],
-    deps = [":min_diff",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":min_diff",
+        "@googletest//:gtest_main",
+    ],
 )
 
 cc_library(
@@ -22,6 +24,8 @@ cc_library(
 cc_test(
     name = "luck_balance_test",
     srcs = ["luck_balance_test.cc"],
-    deps = [":luck_balance",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":luck_balance",
+        "@googletest//:gtest_main",
+    ],
 )

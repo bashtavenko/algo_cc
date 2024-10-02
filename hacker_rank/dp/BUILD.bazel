@@ -8,6 +8,8 @@ cc_library(
 cc_test(
     name = "max_subset_sum_test",
     srcs = ["max_subset_sum_test.cc"],
-    deps = [":max_subset_sum",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":max_subset_sum",
+        "@googletest//:gtest_main",
+    ],
 )
