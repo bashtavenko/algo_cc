@@ -29,3 +29,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "toys",
+    srcs = ["toys.cc"],
+    hdrs = ["toys.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "toys_test",
+    srcs = ["toys_test.cc"],
+    deps = [
+        ":toys",
+        "@googletest//:gtest_main",
+    ],
+)

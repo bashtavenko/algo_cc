@@ -45,3 +45,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "sparse_arrays",
+    srcs = ["sparse_arrays.cc"],
+    hdrs = ["sparse_arrays.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "sparse_arrays_test",
+    srcs = ["sparse_arrays_test.cc"],
+    deps = [
+        ":sparse_arrays",
+        "@googletest//:gtest_main",
+    ],
+)
