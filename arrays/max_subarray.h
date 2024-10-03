@@ -17,7 +17,10 @@
 // Right: 3, Cross: 5 [2, 3, 7, -1]
 // Left: 5, Right: 6, Cross: 12 (Here cross is 12 because left is 5 and right is
 // 7) [7, -1] => 3
-//
+// Possible solutions:
+// 1. O(n^3)
+// 2. Divide-and-conquer O(n*log(n))
+// 3. DP-like O(n)
 #ifndef ALGO_CC_ARRAYS_MAX_SUBARRAY_H_
 #define ALGO_CC_ARRAYS_MAX_SUBARRAY_H_
 #include <cstdint>

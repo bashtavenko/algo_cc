@@ -58,7 +58,9 @@ Result MaxSubarrayNLogn(const std::vector<int32_t>& arr) {
 }
 
 // This is much simpler and runs in O(n)
-// It is similar to dp/bootcamp.cc but with additional handling.
+// It is similar to dp/bootcamp.cc but with additional handling
+// which is maximum sum is the difference between running sum
+// and minimum sum.
 Result MaxSubarray(const std::vector<int32_t>& arr) {
   if (arr.empty()) {
     return {-1, -1, 0};  // Return invalid indices and 0 sum for empty array

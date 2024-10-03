@@ -32,6 +32,8 @@ int32_t FibonacciIterative(int32_t n) {
   return f_minus_1;
 }
 
+// Maintain min_sum, max_sum, running_sum for each element.
+// Maximum is the difference of run and min.
 int32_t FindMaximumSubarray(const std::vector<int32_t>& data) {
   int32_t min_sum = 0;
   int32_t running_sum = 0;

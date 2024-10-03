@@ -61,3 +61,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "longest_nondecreasing",
+    srcs = ["longest_nondecreasing.cc"],
+    hdrs = ["longest_nondecreasing.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "longest_nondecreasing_test",
+    srcs = ["longest_nondecreasing_test.cc"],
+    deps = [":longest_nondecreasing",
+            "@googletest//:gtest_main"],
+)
