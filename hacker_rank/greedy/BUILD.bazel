@@ -45,3 +45,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "largest_permutation",
+    srcs = ["largest_permutation.cc"],
+    hdrs = ["largest_permutation.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "largest_permutation_test",
+    srcs = ["largest_permutation_test.cc"],
+    deps = [
+        ":largest_permutation",
+        "@googletest//:gtest_main",
+    ],
+)
