@@ -1,0 +1,26 @@
+cc_binary(
+    name = "bootcamp_main",
+    srcs = ["bootcamp_main.cc"],
+    deps = [
+        "@absl//absl/synchronization",
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_library(
+    name = "thread_pool",
+    srcs = ["thread_pool.cc"],
+    hdrs = ["thread_pool.h"],
+    deps = ["@absl//absl/synchronization"],
+)
+
+cc_binary(
+    name = "thread_pool_main",
+    srcs = ["thread_pool_main.cc"],
+    deps = [
+        ":thread_pool",
+        "@gflags",
+        "@glog",
+    ],
+)
