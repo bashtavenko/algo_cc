@@ -15,3 +15,17 @@ cc_binary(
         "@glog",
     ],
 )
+
+cc_library(
+    name = "has_cycle",
+    srcs = ["has_cycle.cc"],
+    hdrs = ["has_cycle.h"],
+    deps = [":list_node"],
+)
+
+cc_test(
+    name = "has_cycle_test",
+    srcs = ["has_cycle_test.cc"],
+    deps = [":has_cycle",
+            "@googletest//:gtest_main"],
+)
