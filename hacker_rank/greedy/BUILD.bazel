@@ -61,3 +61,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "greedy_florist",
+    srcs = ["greedy_florist.cc"],
+    hdrs = ["greedy_florist.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "greedy_florist_test",
+    srcs = ["greedy_florist_test.cc"],
+    deps = [
+        ":greedy_florist",
+        "@googletest//:gtest_main",
+    ],
+)

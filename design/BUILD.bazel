@@ -1,6 +1,8 @@
 cc_binary(
     name = "inheritance_vs_composition_main",
     srcs = ["inheritance_vs_composition_main.cc"],
-    deps = ["@glog",
-            "@gflags"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
 )

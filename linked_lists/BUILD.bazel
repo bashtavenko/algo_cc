@@ -26,6 +26,8 @@ cc_library(
 cc_test(
     name = "has_cycle_test",
     srcs = ["has_cycle_test.cc"],
-    deps = [":has_cycle",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":has_cycle",
+        "@googletest//:gtest_main",
+    ],
 )
