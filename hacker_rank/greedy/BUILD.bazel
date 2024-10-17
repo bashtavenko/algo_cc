@@ -77,3 +77,17 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "max_min",
+    srcs = ["max_min.cc"],
+    hdrs = ["max_min.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "max_min_test",
+    srcs = ["max_min_test.cc"],
+    deps = [":max_min",
+            "@googletest//:gtest_main"],
+)
