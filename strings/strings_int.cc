@@ -25,6 +25,7 @@ std::string IntToString(int32_t x) {
   return {s.rbegin(), s.rend()};  // string reversal
 }
 
+// This is std::stoi
 int32_t StringToInt(const std::string& s) {
   // 10^2 x d2 + 10^1 + d1 ...
   int32_t result = 0;

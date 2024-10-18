@@ -88,6 +88,8 @@ cc_library(
 cc_test(
     name = "max_min_test",
     srcs = ["max_min_test.cc"],
-    deps = [":max_min",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":max_min",
+        "@googletest//:gtest_main",
+    ],
 )

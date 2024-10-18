@@ -1,6 +1,5 @@
 #include "arrays/diagonal.h"
 #include <cstdint>
-#include <functional>
 #include <vector>
 
 namespace algo {
@@ -8,25 +7,25 @@ namespace algo {
 std::vector<int32_t> RunDiagonally(
     const std::vector<std::vector<int32_t>>& data) {
   std::vector<int32_t> result;
+  size_t m = data.size();     // Number of rows
+  size_t n = data[0].size();  // Number of columns
 
-  auto run_diagonal = [&](size_t x, size_t y) {
-    int32_t new_x = x;
-    int32_t new_y = y;
-    while (new_x >= 0 && new_x <= static_cast<int32_t>(data[0].size()) - 1 &&
-           new_y >= 0 && new_y <= static_cast<int32_t>(data.size()) - 1) {
-      result.push_back(data[new_y][new_x]);
-      --new_x;
-      ++new_y;
+  auto run_diagonal = [&](size_t row, size_t col) {
+    while (row < m && col < n) {
+      result.push_back(data[row][col]);
+      if (col == 0) break;  // Prevent col from under-flowing
+      --col;
+      ++row;
     }
   };
 
   // Top row, including main diagonal
-  for (size_t x = 0; x < data[0].size(); ++x) {
-    run_diagonal(x, 0);
+  for (size_t col = 0; col < n; ++col) {
+    run_diagonal(0, col);
   }
   // Right column, excluding main diagonal
-  for (size_t y = 1; y < data.size(); ++y) {
-    run_diagonal(data[0].size() - 1, y);
+  for (size_t row = 1; row < m; ++row) {
+    run_diagonal(row, n - 1);
   }
   return result;
 }

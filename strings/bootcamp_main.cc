@@ -2,6 +2,10 @@
 #include <glog/logging.h>
 #include "absl/strings/str_format.h"
 
+// Basic int to string conversion
+// int hour_12 = std::stoi(hour);
+// std::string str = std::to_string(num);
+
 bool IsPalindrom(absl::string_view s) {
   for (int32_t i = 0, j = s.size() - 1; i < j; ++i, --j) {
     if (s[i] != s[j]) return false;

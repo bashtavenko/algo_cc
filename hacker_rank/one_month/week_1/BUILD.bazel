@@ -1,0 +1,44 @@
+cc_library(
+    name = "lonely_integer",
+    srcs = ["lonely_integer.cc"],
+    hdrs = ["lonely_integer.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "lonely_integer_test",
+    srcs = ["lonely_integer_test.cc"],
+    deps = [
+        ":lonely_integer",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "flip_bits",
+    hdrs = ["flip_bits.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "flip_bits_test",
+    srcs = ["flip_bits_test.cc"],
+    deps = [
+        ":flip_bits",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "pangram",
+    srcs = ["pangram.cc"],
+    hdrs = ["pangram.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "pangram_test",
+    srcs = ["pangram_test.cc"],
+    deps = [":pangram",
+            "@googletest//:gtest_main"],
+)

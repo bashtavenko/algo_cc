@@ -37,8 +37,12 @@ int GetMinimumCost(int k, std::vector<int> c) {
   std::sort(c.begin(), c.end(), std::greater<>());
 
   int cost = 0;
-  int purchases[k];  // To track the number of flowers each friend has bought
-  std::fill(purchases, purchases + k, 0);  // Initialize all to 0
+  // To track the number of flowers each friend has
+  std::vector<int> purchases = std::vector<int>(k, 0);  // Initialize to 0;
+
+  // Alternatives
+  // int purchases[k];
+  // std::fill(purchases, purchases + k, 0);
 
   for (int i = 0; i < n; ++i) {
     int friend_index = i % k;  // Distribute flowers evenly among friends
