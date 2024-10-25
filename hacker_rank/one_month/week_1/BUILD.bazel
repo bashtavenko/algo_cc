@@ -39,6 +39,8 @@ cc_library(
 cc_test(
     name = "pangram_test",
     srcs = ["pangram_test.cc"],
-    deps = [":pangram",
-            "@googletest//:gtest_main"],
+    deps = [
+        ":pangram",
+        "@googletest//:gtest_main",
+    ],
 )

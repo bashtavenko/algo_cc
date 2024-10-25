@@ -1,0 +1,159 @@
+cc_library(
+    name = "zigzag",
+    srcs = ["zigzag.cc"],
+    hdrs = ["zigzag.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "zigzag_test",
+    srcs = ["zigzag_test.cc"],
+    deps = [
+        ":zigzag",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "caesar_cipher",
+    srcs = ["caesar_cipher.cc"],
+    hdrs = ["caesar_cipher.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "caesar_cipher_test",
+    srcs = ["caesar_cipher_test.cc"],
+    deps = [
+        ":caesar_cipher",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "dynamic_array",
+    srcs = ["dynamic_array.cc"],
+    hdrs = ["dynamic_array.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "dynamic_array_test",
+    srcs = ["dynamic_array_test.cc"],
+    deps = [
+        ":dynamic_array",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "grid_challenge",
+    srcs = ["grid_challenge.cc"],
+    hdrs = ["grid_challenge.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "grid_challenge_test",
+    srcs = ["grid_challenge_test.cc"],
+    deps = [
+        ":grid_challenge",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "equilibrium",
+    srcs = ["equilibrium.cc"],
+    hdrs = ["equilibrium.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "equilibrium_tes",
+    srcs = ["equilibrium_test.cc"],
+    deps = [
+        ":equilibrium",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "super_digit",
+    srcs = ["super_digit.cc"],
+    hdrs = ["super_digit.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "super_digit_test",
+    srcs = ["super_digit_test.cc"],
+    deps = [
+        ":super_digit",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "counter_game",
+    srcs = ["counter_game.cc"],
+    hdrs = ["counter_game.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "counter_game_test",
+    srcs = ["counter_game_test.cc"],
+    deps = [
+        ":counter_game",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "sum_xor",
+    srcs = ["sum_xor.cc"],
+    hdrs = ["sum_xor.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "sum_xor_test",
+    srcs = ["sum_xor_test.cc"],
+    deps = [
+        ":sum_xor",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "lcm_gcd",
+    srcs = ["lcm_gcd.cc"],
+    hdrs = ["lcm_gcd.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "lcm_gcd_test",
+    srcs = ["lcm_gcd_test.cc"],
+    deps = [
+        ":lcm_gcd",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "anagram_min",
+    srcs = ["anagram_min.cc"],
+    hdrs = ["anagram_min.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "anagram_min_test",
+    srcs = ["anagram_min_test.cc"],
+    deps = [
+        ":anagram_min",
+        "@googletest//:gtest_main",
+    ],
+)

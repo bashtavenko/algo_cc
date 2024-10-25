@@ -87,3 +87,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "palidrome_index",
+    srcs = ["palidrome_index.cc"],
+    hdrs = ["palidrome_index.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "palidrome_index_test",
+    srcs = ["palidrome_index_test.cc"],
+    deps = [
+        ":palidrome_index",
+        "@googletest//:gtest_main",
+    ],
+)
