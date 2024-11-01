@@ -1,0 +1,95 @@
+cc_library(
+    name = "bomberman",
+    srcs = ["bomberman.cc"],
+    hdrs = ["bomberman.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "bomberman_test",
+    srcs = ["bomberman_test.cc"],
+    deps = [
+        ":bomberman",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "valid_string",
+    srcs = ["valid_string.cc"],
+    hdrs = ["valid_string.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "valid_string_test",
+    srcs = ["valid_string_test.cc"],
+    deps = [
+        ":valid_string",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "ranking",
+    srcs = ["ranking.cc"],
+    hdrs = ["ranking.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "ranking_test",
+    srcs = ["ranking_test.cc"],
+    deps = [
+        ":ranking",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "reverse_list",
+    srcs = ["reverse_list.cc"],
+    hdrs = ["reverse_list.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "reverse_list_test",
+    srcs = ["reverse_list_test.cc"],
+    deps = [
+        ":reverse_list",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "insert_linked_list_node",
+    srcs = ["insert_linked_list_node.cc"],
+    hdrs = ["insert_linked_list_node.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "insert_linked_list_node_test",
+    srcs = ["insert_linked_list_node_test.cc"],
+    deps = [
+        ":insert_linked_list_node",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "waiter",
+    srcs = ["waiter.cc"],
+    hdrs = ["waiter.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "waiter_test",
+    srcs = ["waiter_test.cc"],
+    deps = [
+        ":waiter",
+        "@googletest//:gtest_main",
+    ],
+)

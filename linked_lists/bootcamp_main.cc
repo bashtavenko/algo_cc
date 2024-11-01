@@ -1,8 +1,8 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #include <forward_list>
+#include <functional>
 #include <list>
-#include "absl/strings/str_format.h"
 #include "linked_lists/list_node.h"
 
 // Singly-linked
@@ -23,6 +23,25 @@ void RunList() {
   for (const auto& node : head) {
     LOG(INFO) << node;
   }
+}
+
+void RunListIterative(const std::shared_ptr<algo::ListNode>& head) {
+  auto node = head;
+  while (node) {
+    LOG(INFO) << "Node iterative: " << node->data;
+    node = node->next;
+  }
+}
+
+void RunListRecursive(const std::shared_ptr<algo::ListNode>& head) {
+  std::function<void(const std::shared_ptr<algo::ListNode>&)> run =
+      [&](const std::shared_ptr<algo::ListNode>& node) {
+        if (!node) return;
+        LOG(INFO) << "Node recursive: " << node->data;
+        run(node->next);
+        LOG(INFO) << "At the bottom, node: " << node->data;
+      };
+  run(head);
 }
 
 std::shared_ptr<algo::ListNode> SearchList(
@@ -62,10 +81,13 @@ int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
 
-  ListNode l3(3);
-  ListNode l2(2, l3);
-  ListNode l1(1, l2);
-  auto head = ListNode::Create(l1);
+  auto l3 = ListNode::Create(3);
+  auto l2 = ListNode::Create(2, l3);
+  auto head = ListNode::Create(1, l2);
+
+  // Basics
+  RunListIterative(head);
+  RunListRecursive(head);
 
   // Search
   auto result = SearchList(head, 12);
@@ -78,9 +100,8 @@ int main(int argc, char** argv) {
   }
 
   // Insert after
-  ListNode l5(5);
-  ListNode l6(6, l5);
-  auto new_node = std::make_shared<ListNode>(l6);
+  auto l5 = ListNode::Create(5);
+  auto new_node = ListNode::Create(6, l5);
   InsertAfter(head, new_node);
   result = SearchList(head, 5);                       // L6 -> L5, L5 is gone.
   LOG(INFO) << "Found? " << (result ? "Yes" : "No");  // No

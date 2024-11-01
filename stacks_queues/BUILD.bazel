@@ -75,3 +75,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "queue_stacks",
+    srcs = ["queue_stacks.cc"],
+    hdrs = ["queue_stacks.h"],
+    deps = ["@absl//absl/types:optional"],
+)
+
+cc_test(
+    name = "queue_stacks_test",
+    srcs = ["queue_stacks_test.cc"],
+    deps = [
+        ":queue_stacks",
+        "@googletest//:gtest_main",
+    ],
+)

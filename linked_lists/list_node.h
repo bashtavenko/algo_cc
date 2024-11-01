@@ -15,12 +15,18 @@ struct ListNode {
   // Alternatives are std::unique_ptr or raw pointer.
   // For simplicity and correctness the std::shared_ptr is better.
   std::shared_ptr<ListNode> next;
+
   ListNode(int32_t value) : data(value), next(nullptr) {}
-  ListNode(int32_t value, const ListNode& next_node)
-      : data(value), next(std::make_shared<ListNode>(next_node)){};
+  ListNode(int32_t value, const std::shared_ptr<ListNode>& next)
+      : data(value), next(next) {};
 
   static std::shared_ptr<ListNode> Create(const ListNode& node) {
     return std::make_shared<ListNode>(node);
+  }
+
+  static std::shared_ptr<ListNode> Create(
+      const ListNode& node, const std::shared_ptr<ListNode>& next) {
+    return std::make_shared<ListNode>(node.data, next);
   }
 };
 }  // namespace algo

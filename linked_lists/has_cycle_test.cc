@@ -5,6 +5,8 @@
 
 namespace algo {
 namespace {
+using ::testing::IsNull;
+using ::testing::NotNull;
 
 // 1 -> 2 -> 3 -> 1
 TEST(HasCycle, CycleWorks) {
@@ -18,7 +20,7 @@ TEST(HasCycle, CycleWorks) {
 
   std::shared_ptr<ListNode> head = l1;
   auto result = HasCycle(head);
-  EXPECT_THAT(result, testing::NotNull());
+  EXPECT_THAT(result, NotNull());
   EXPECT_THAT(result->data, 1);
 }
 
@@ -31,7 +33,7 @@ TEST(HasCycle, NoCycleWorks) {
 
   std::shared_ptr<ListNode> head = l1;
   auto result = HasCycle(head);
-  EXPECT_THAT(result, testing::IsNull());
+  EXPECT_THAT(result, IsNull());
 }
 
 }  // namespace

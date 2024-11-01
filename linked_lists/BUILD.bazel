@@ -31,3 +31,54 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "reverse_list",
+    srcs = ["reverse_list.cc"],
+    hdrs = ["reverse_list.h"],
+    deps = [":list_node"],
+)
+
+cc_test(
+    name = "reverse_list_test",
+    srcs = ["reverse_list_test.cc"],
+    deps = [
+        ":reverse_list",
+        ":test_util",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "merge_sorted",
+    srcs = ["merge_sorted.cc"],
+    hdrs = ["merge_sorted.h"],
+    deps = [":list_node"],
+)
+
+cc_test(
+    name = "merge_sorted_test",
+    srcs = ["merge_sorted_test.cc"],
+    deps = [
+        ":merge_sorted",
+        ":test_util",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "test_util",
+    testonly = 1,
+    srcs = ["test_util.cc"],
+    hdrs = ["test_util.h"],
+    deps = [":list_node"],
+)
+
+cc_test(
+    name = "test_util_test",
+    srcs = ["test_util_test.cc"],
+    deps = [
+        ":test_util",
+        "@googletest//:gtest_main",
+    ],
+)
