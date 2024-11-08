@@ -9,15 +9,15 @@ BSTNode* FindLCA(const std::unique_ptr<BSTNode>& root, int32_t n1, int32_t n2) {
   // reference
   BSTNode* node = root.get();
 
-  while (node->data < n1 || node->data > n2) {
-    while (node->data < n1) {
-      node = node->right.get();  // Too small, go right
-    }
-
-    while (node->data > n2) {
-      node = node->left.get();  // Way too big, go left
+  while (node) {
+    if (n1 < node->data && n2 < node->data) {
+      node = node->left.get();
+    } else if (n1 > node->data && n2 > node->data) {
+      node = node->right.get();
+    } else {
+      return node;
     }
   }
-  return node;
+  return nullptr;
 }
 };  // namespace algo

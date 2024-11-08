@@ -23,9 +23,8 @@ int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
 
-  ListNode l3(3);
-  ListNode l2(2, l3);
-  ListNode l1(1, l2);
-  auto head = std::make_shared<ListNode>(l1);
+  auto l3 = ListNode::Create(3);
+  auto l2 = ListNode::Create(2, l3);
+  auto head = ListNode::Create(1, l2);
   PrintLinkedListInReverse(head);
 }

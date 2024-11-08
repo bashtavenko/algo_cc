@@ -5,6 +5,16 @@
 
 namespace algo {
 
+// There is distinction what "moves" mean
+// Move to a New Cell: Valid transition to a neighboring cell, whether
+// continuing straight or changing direction. Here, every adjacent-cell movement
+// counts as one "move," regardless of whether you stay in the same direction.
+//
+// Change in Direction (Directional Moves): In some interpretations, each
+// straight path is considered a single "move" until you must change direction.
+// So, moving in a straight line from start to end across multiple cells counts
+// as one move unless you encounter a block or reach an endpoint, where changing
+// direction would then be counted as another "move."
 int32_t ShortestPath(std::vector<std::vector<CellType>>& grid) {
   int32_t m = grid.size();
   int32_t n = grid[0].size();

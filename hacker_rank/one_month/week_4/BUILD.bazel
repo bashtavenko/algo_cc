@@ -1,0 +1,63 @@
+cc_library(
+    name = "huffman",
+    srcs = ["huffman.cc"],
+    hdrs = ["huffman.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "huffman_test",
+    srcs = ["huffman_test.cc"],
+    deps = [
+        ":huffman",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "lego_blocks",
+    srcs = ["lego_blocks.cc"],
+    hdrs = ["lego_blocks.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "lego_blocks_test",
+    srcs = ["lego_blocks_test.cc"],
+    deps = [
+        ":lego_blocks",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "grid_castle",
+    srcs = ["grid_castle.cc"],
+    hdrs = ["grid_castle.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "grid_castle_test",
+    srcs = ["grid_castle_test.cc"],
+    deps = [
+        ":grid_castle",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "transmitters",
+    srcs = ["transmitters.cc"],
+    hdrs = ["transmitters.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "transmitters_test",
+    srcs = ["transmitters_test.cc"],
+    deps = [
+        ":transmitters",
+        "@googletest//:gtest_main",
+    ],
+)
