@@ -1,0 +1,65 @@
+cc_library(
+    name = "graph",
+    hdrs = ["graph.h"],
+    deps = [
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/container:flat_hash_set",
+    ],
+)
+
+cc_library(
+    name = "index_min_priority_queue",
+    srcs = ["index_min_priority_queue.cc"],
+    hdrs = ["index_min_priority_queue.h"],
+    deps = [
+        "@absl//absl/types:optional",
+        "@glog",
+    ],
+)
+
+cc_test(
+    name = "index_min_priority_queue_test",
+    srcs = ["index_min_priority_queue_test.cc"],
+    deps = [
+        ":index_min_priority_queue",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "dijkstra_sp",
+    srcs = ["dijkstra_sp.cc"],
+    hdrs = ["dijkstra_sp.h"],
+    deps = [
+        ":graph",
+        ":index_min_priority_queue",
+        "@absl//absl/container:flat_hash_map",
+        "@absl//absl/container:flat_hash_set",
+    ],
+)
+
+cc_test(
+    name = "dijkstra_sp_test",
+    srcs = ["dijkstra_sp_test.cc"],
+    deps = [
+        ":dijkstra_sp",
+        ":graph_builder",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "graph_builder",
+    srcs = ["graph_builder.cc"],
+    hdrs = ["graph_builder.h"],
+    deps = [":graph"],
+)
+
+cc_test(
+    name = "graph_builder_test",
+    srcs = ["graph_builder_test.cc"],
+    deps = [
+        ":graph_builder",
+        "@googletest//:gtest_main",
+    ],
+)
