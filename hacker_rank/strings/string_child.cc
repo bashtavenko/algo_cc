@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-void GenerateCombinations(const std::string& s, int start, int k,
+void GenerateCombinations(const std::string& s, int start, size_t k,
                           std::string& current,
                           std::vector<std::string>& result) {
   if (k == 0) {
@@ -10,14 +10,15 @@ void GenerateCombinations(const std::string& s, int start, int k,
     return;
   }
 
-  for (int i = start; i <= s.length() - k; ++i) {
+  for (size_t i = start; i <= s.length() - k; ++i) {
     current.push_back(s[i]);
     GenerateCombinations(s, i + 1, k - 1, current, result);
     current.pop_back();
   }
 }
 
-std::vector<std::string> NChooseK(const std::string& s, int k) {
+std::vector<std::string> NChooseK(const std::string& s,
+                                  std::string::size_type k) {
   std::vector<std::string> result;
   std::string current;
 

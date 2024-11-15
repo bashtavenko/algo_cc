@@ -6,7 +6,7 @@
 
 // This is horrible
 std::vector<int> LargestPermutationTooVerbose(const std::vector<int>& a,
-                                              int k) {
+                                              size_t k) {
   std::vector<int> arr(a.begin(), a.end());
   std::vector<std::vector<int>> result;
   std::unordered_map<size_t, int> index_value;
@@ -27,14 +27,14 @@ std::vector<int> LargestPermutationTooVerbose(const std::vector<int>& a,
   // 3 * 10^2 + 1 * 10^1
   for (size_t index = 0; index < result.size(); ++index) {
     int value = 0;
-    for (int i = 0; i < result[0].size(); ++i) {
+    for (size_t i = 0; i < result[0].size(); ++i) {
       value += result[index][i] * std::pow(10, result[0].size() - i - 1);
     }
     index_value[index] = value;
   }
   // Get input vector to int
   int arr_value = 0;
-  for (int i = 0; i < arr.size(); ++i) {
+  for (size_t i = 0; i < arr.size(); ++i) {
     arr_value += arr[i] * std::pow(10, arr.size() - i - 1);
   }
 
@@ -53,7 +53,7 @@ std::vector<int> LargestPermutationTooVerbose(const std::vector<int>& a,
 
 // No reason to compute permutations - swap the largest digits.
 // No reasons to convert vectors to int.
-std::vector<int> LargestPermutation(const std::vector<int>& a, int k) {
+std::vector<int> LargestPermutation(const std::vector<int>& a, size_t k) {
   std::vector<int> arr(a.begin(), a.end());
   int n = arr.size();
   std::unordered_map<int, int> pos;

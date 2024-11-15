@@ -28,7 +28,6 @@ long GetProduction(long day, const std::vector<long>& machines) {
 // 6   3               8
 // 8   2              10
 TEST(Accumulate, Works) {
-  constexpr long goal = 10;
   std::vector<long> machines{2, 3, 2};
 
   auto items_at_day = [&](long day) {

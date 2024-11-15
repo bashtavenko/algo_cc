@@ -8,7 +8,7 @@
 void RotateOne(std::vector<int>* a) {
   std::vector<int>& data = *a;
   int lsd = data.front();
-  for (int i = 1; i < data.size(); ++i) {
+  for (size_t i = 1; i < data.size(); ++i) {
     data[i - 1] = data[i];
   }
   data.back() = lsd;

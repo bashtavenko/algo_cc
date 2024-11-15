@@ -19,7 +19,7 @@ int CountValleys(int steps, const std::string& path) {
   // Part 2 - find number of values;
   // [0, 1, 0, -1, -2, -1, -2, -1, 0]
   int number_of_valleys = 0;
-  for (int i = 1; i < data.size(); ++i) {
+  for (size_t i = 1; i < data.size(); ++i) {
     if (data[i] < data[i - 1]) {
       // Going down
       if (data[i - 1] == 0) {

@@ -12,6 +12,6 @@
 #define ALGO_CC_HACKER_RANK_GREEDY_LARGEST_PERMUTATION_H_
 #include <vector>
 
-std::vector<int> LargestPermutation(const std::vector<int>& a, int k);
+std::vector<int> LargestPermutation(const std::vector<int>& a, size_t k);
 
 #endif  // ALGO_CC_HACKER_RANK_GREEDY_LARGEST_PERMUTATION_H_

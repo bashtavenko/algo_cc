@@ -11,7 +11,7 @@ int SuperDigitBruteForce(const std::string& n, int k) {
     if (s.length() == 1) return std::stoi(s);
 
     int sum = 0;
-    for (int i = 0; i < s.length(); ++i) {
+    for (size_t i = 0; i < s.length(); ++i) {
       sum += std::stoi(std::string{s[i]});
     }
     return recurse(std::to_string(sum));

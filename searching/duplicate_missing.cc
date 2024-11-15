@@ -25,8 +25,8 @@ DuplicateAndMissing FindDuplicateAndMissing(const std::vector<int32_t>& data) {
     }
   }
 
-  for (const auto& a : data) {
-    if (a == miss_or_dup) {
+  for (size_t i = 0; i < data.size(); ++i) {
+    if (data[i] == data[miss_or_dup]) {
       return DuplicateAndMissing{.duplicate = miss_or_dup,
                                  .missing = miss_or_dup ^ miss_xor_dup};
     }

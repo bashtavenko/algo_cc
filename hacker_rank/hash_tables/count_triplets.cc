@@ -29,9 +29,9 @@ struct TripletHash {
 long CountTripletsBruteForce(std::vector<long> arr, long r) {
   std::unordered_set<Triplet, TripletHash> cache;
   long count = 0;
-  for (int i = 0; i < arr.size(); ++i) {
-    for (int j = 1; j < arr.size(); ++j) {
-      for (int k = 2; k < arr.size(); ++k) {
+  for (size_t i = 0; i < arr.size(); ++i) {
+    for (size_t j = 1; j < arr.size(); ++j) {
+      for (size_t k = 2; k < arr.size(); ++k) {
         Triplet triplet(i, j, k);
         if (auto it = cache.find(triplet); it != cache.end()) continue;
         if (arr[j] / arr[i] == r && arr[k] / arr[j] == r) {

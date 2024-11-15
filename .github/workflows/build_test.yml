@@ -1,4 +1,4 @@
-name: Smoke test to build and test
+name: Build and test
 
 on:
   push:

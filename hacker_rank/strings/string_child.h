@@ -16,6 +16,7 @@ int CommonChildDP(const std::string& s1, const std::string& s2);
 
 // These two work as a brute force
 int CommonChild(const std::string& s1, const std::string& s2);
-std::vector<std::string> NChooseK(const std::string& s, int k);
+std::vector<std::string> NChooseK(const std::string& s,
+                                  std::string::size_type k);
 
 #endif  // ALGO_CC_HACKER_RANK_STRINGS_STRING_CHILD_H_
