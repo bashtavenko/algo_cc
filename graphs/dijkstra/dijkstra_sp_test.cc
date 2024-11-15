@@ -7,6 +7,7 @@ namespace algo {
 namespace {
 using ::testing::UnorderedElementsAreArray;
 
+// This is based on Algorithms, Forth edition
 TEST(ShortestPaths, Works) {
   auto edges = std::vector<DirectedEdge>{
       DirectedEdge(0, 1, 5.),  DirectedEdge(0, 4, 9.),  DirectedEdge(0, 7, 8.),
