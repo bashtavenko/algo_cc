@@ -3,9 +3,9 @@
 
 // Insertion sort makes more swaps than necessary.
 // It is not needed because the input has consecutive integers.
-int InsertionSort(std::vector<int>& arr) {
+void InsertionSort(std::vector<int>& arr) {
   int swaps = 0;
-  for (int i = 0; i < arr.size(); ++i) {
+  for (size_t i = 0; i < arr.size(); ++i) {
     int j = i;
     while (j > 0 && arr[j] < arr[j - 1]) {
       std::swap(arr[j], arr[j - 1]);
@@ -21,8 +21,8 @@ int InsertionSort(std::vector<int>& arr) {
 int MinimumSwap(std::vector<int>& arr) {
   int swaps = 0;
   // Because arrays has consecutive integers, no need for insertion sort.
-  for (int i = 0; i < arr.size(); ++i) {
-    while (arr[i] != i + 1) {
+  for (size_t i = 0; i < arr.size(); ++i) {
+    while (arr[i] != static_cast<int>(i + 1)) {
       int temp = arr[i];
       std::swap(arr[i], arr[temp - 1]);
       ++swaps;

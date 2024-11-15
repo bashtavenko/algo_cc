@@ -12,7 +12,7 @@ int32_t FindKthLargest(int32_t k, std::vector<int32_t>& data) {
     int32_t pivot_value = data[pivot_index];
     int32_t new_pivot_index = lo;
     std::swap(data[pivot_index], data[hi]);  // pivot goes to the end.
-    for (int32_t i = lo; i < hi; ++i) {
+    for (size_t i = lo; i < hi; ++i) {
       if (data[i] > pivot_value) {
         std::swap(data[i], data[new_pivot_index++]);
       }
@@ -38,5 +38,6 @@ int32_t FindKthLargest(int32_t k, std::vector<int32_t>& data) {
       lo = new_pivot_idx + 1;
     }
   }
+  return -1;
 }
 }  // namespace algo

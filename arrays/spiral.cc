@@ -19,12 +19,17 @@ std::vector<int32_t> Compute(
     result.emplace_back(data[y][x]);
     data[y][x] =
         0;  // Assume there is no value 0 in the array, kind of marking.
-    int32_t next_y = y + kShift[dir][0];
-    int32_t next_x = x + kShift[dir][1];
 
-    if (next_y < 0 || next_y >= data.size() || next_x < 0 ||
-        next_x >= data.size() || data[next_y][next_x] == 0) {
+    // Structured bindings
+    auto& [dy, dx] = kShift[dir];
+    int32_t next_y = y + dy;
+    int32_t next_x = x + dx;
+
+    if (next_y < 0 || static_cast<size_t>(next_y) >= data.size() ||
+        next_x < 0 || static_cast<size_t>(next_x) >= data.size() ||
+        data[next_y][next_x] == 0) {
       // Changes direction if it out of bound OR it is "marked".
+      // ... or it could be nested for-loop
       dir = (dir + 1) % 4;
       next_y = y + kShift[dir][0];
       next_x = x + kShift[dir][1];

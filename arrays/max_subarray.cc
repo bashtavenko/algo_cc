@@ -73,7 +73,7 @@ Result MaxSubarray(const std::vector<int32_t>& arr) {
   int32_t start = 0;
   int32_t end = 0;
 
-  for (int32_t i = 0; i < arr.size(); ++i) {
+  for (size_t i = 0; i < arr.size(); ++i) {
     running_sum += arr[i];
 
     if (running_sum < min_sum) {

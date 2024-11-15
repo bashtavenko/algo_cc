@@ -23,7 +23,6 @@ std::shared_ptr<ListNode> HasCycle(const std::shared_ptr<ListNode>& head) {
   // fast can jump more than one
   auto slow = head;
   auto fast = head;
-  bool hasCycle = false;
 
   while (fast && fast->next) {
     slow = slow->next;
@@ -31,7 +30,6 @@ std::shared_ptr<ListNode> HasCycle(const std::shared_ptr<ListNode>& head) {
 
     // Sooner or later during cycling slow can reach fast
     if (slow == fast) {
-      hasCycle = true;
       return slow;
     }
   }
