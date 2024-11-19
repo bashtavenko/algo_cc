@@ -1,0 +1,31 @@
+cc_library(
+    name = "checker",
+    srcs = ["checker.cc"],
+    hdrs = ["checker.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "checker_test",
+    srcs = ["checker_test.cc"],
+    deps = [
+        ":checker",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "solver",
+    srcs = ["solver.cc"],
+    hdrs = ["solver.h"],
+    deps = [":checker", "@absl//absl/algorithm:container"],
+)
+
+cc_test(
+    name = "solver_test",
+    srcs = ["solver_test.cc"],
+    deps = [
+        ":solver",
+        "@googletest//:gtest_main",
+    ],
+)
