@@ -13,7 +13,7 @@ bool CheckSymmetric(const std::unique_ptr<BinaryTreeNode>& subtree_1,
            CheckSymmetric(subtree_1->left, subtree_2->right) &&
            CheckSymmetric(subtree_1->right, subtree_2->left);
   } else {
-    // one subtrees are nullptr
+    // one subtree is nullptr
     return false;
   }
 }

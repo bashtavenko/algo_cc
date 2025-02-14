@@ -18,7 +18,10 @@ cc_library(
     name = "solver",
     srcs = ["solver.cc"],
     hdrs = ["solver.h"],
-    deps = [":checker", "@absl//absl/algorithm:container"],
+    deps = [
+        ":checker",
+        "@absl//absl/algorithm:container",
+    ],
 )
 
 cc_test(

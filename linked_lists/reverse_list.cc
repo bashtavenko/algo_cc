@@ -14,15 +14,15 @@ std::shared_ptr<ListNode> ReverseSublist(const std::shared_ptr<ListNode>& l,
   }
 
   // Reversing
-  auto iter = sublist_head->next;
+  auto node = sublist_head->next;
   while (start < finish) {
     // For 1 -> 2 -> 3 => 3 -> 2 -> 1
     // temp = 2
     // iter(next) = 3
     // temp(next) = 1
     // 1 - 3
-    auto temp = iter->next;
-    iter->next = temp->next;
+    auto temp = node->next;
+    node->next = temp->next;
     temp->next = sublist_head->next;
     sublist_head->next = temp;
     ++start;

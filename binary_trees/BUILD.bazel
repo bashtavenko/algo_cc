@@ -1,6 +1,7 @@
 cc_library(
     name = "binary_tree_node",
     hdrs = ["binary_tree_node.h"],
+    visibility = ["//visibility:public"],
     deps = [],
 )
 
@@ -97,6 +98,15 @@ cc_test(
     srcs = ["reconstruct_markers_test.cc"],
     deps = [
         ":reconstruct_markers",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "binary_tree_node_test",
+    srcs = ["binary_tree_node_test.cc"],
+    deps = [
+        ":binary_tree_node",
         "@googletest//:gtest_main",
     ],
 )

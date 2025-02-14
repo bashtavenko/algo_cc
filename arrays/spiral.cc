@@ -15,7 +15,7 @@ std::vector<int32_t> Compute(
   size_t y = 0;  // row
   size_t x = 0;  // col
 
-  for (size_t i = 0; i < data.size() * data.size(); ++i) {
+  for (size_t i = 0; i < data.size() * data[0].size(); ++i) {
     result.emplace_back(data[y][x]);
     data[y][x] =
         0;  // Assume there is no value 0 in the array, kind of marking.

@@ -152,3 +152,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "random_smpling",
+    srcs = ["random_sampling.cc"],
+    hdrs = ["random_sampling.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "random_sampling_test",
+    srcs = ["random_sampling_test.cc"],
+    deps = [
+        ":random_smpling",
+        "@googletest//:gtest_main",
+    ],
+)

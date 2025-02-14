@@ -8,7 +8,8 @@ std::string IntToString(int32_t x) {
 
   // mod 10 and then divide by 10
   // 123
-  // "3"
+  // "3" 123 % 10 = 3
+  // 123 / 10 = 12
   // "2"
   // "1"
   // "321"
@@ -22,12 +23,14 @@ std::string IntToString(int32_t x) {
 
   if (is_negative) s += '-';
 
+  // The string comes back in reverse = 321
   return {s.rbegin(), s.rend()};  // string reversal
 }
 
 // This is std::stoi
 int32_t StringToInt(const std::string& s) {
-  // 10^2 x d2 + 10^1 + d1 ...
+  // 314
+  // 10^3 x 3 + 10^2 x 1 + d1 ...
   int32_t result = 0;
   // Start from 0 for positive or 1 (skipping "-")
   for (size_t i = s.front() == '-' ? 1 : 0; i < s.size(); ++i) {

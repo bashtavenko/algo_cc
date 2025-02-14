@@ -27,7 +27,7 @@ void ChangeMaking() {
                                     student.grade_point_average);
   }
 
-  // 2. Operator overload with standard comparators.
+  // 2. Operator overload with standard comparators to sort DESC
   std::sort(data.begin(), data.end(), std::greater<>());
 
   LOG(INFO) << "Operator comparator";

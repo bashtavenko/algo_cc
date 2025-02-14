@@ -9,15 +9,14 @@ std::shared_ptr<ListNode> MergeTwoSorted(const std::shared_ptr<ListNode>& l1,
   auto dummy_head = ListNode::Create(0);
   auto tail = dummy_head;
 
-  auto append_node = [&](std::shared_ptr<ListNode>& node,
-                         std::shared_ptr<ListNode>& tail) {
+  auto append_node = [&tail](std::shared_ptr<ListNode>& node) {
     tail->next = node;
     tail = node;
     node = node->next;
   };
 
   while (first && second) {
-    append_node(first->data <= second->data ? first : second, tail);
+    append_node(first->data <= second->data ? first : second);
   }
 
   // Append remaining

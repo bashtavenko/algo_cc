@@ -4,14 +4,14 @@
 namespace algo {
 
 int32_t BuyAndSellStockOnce(const std::vector<int32_t>& prices) {
-  int32_t min_price_so_far = std::numeric_limits<int32_t>::max();
-  int32_t max_profit = 0;
+  int32_t current_min = std::numeric_limits<int32_t>::max();
+  int32_t current_profit = 0;
   for (const int32_t& price : prices) {
-    int max_profit_today = price - min_price_so_far;
-    max_profit = std::max(max_profit, max_profit_today);
-    min_price_so_far = std::min(min_price_so_far, price);
+    int profit_today = price - current_min;
+    current_profit = std::max(current_profit, profit_today);
+    current_min = std::min(current_min, price);
   }
-  return max_profit;
+  return current_profit;
 }
 
 }  // namespace algo

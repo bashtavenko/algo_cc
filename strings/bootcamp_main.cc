@@ -3,23 +3,28 @@
 #include "absl/strings/str_format.h"
 
 // Basic int to string conversion
-// int hour_12 = std::stoi(hour);
-// std::string str = std::to_string(num);
+// int hour_12 = std::stoi("7");
+// std::string str = std::to_string(7);
+// std::isalnum()
 
 bool IsPalindrom(absl::string_view s) {
-  for (int32_t i = 0, j = s.size() - 1; i < j; ++i, --j) {
-    if (s[i] != s[j]) return false;
+  size_t lo = 0;
+  size_t hi = s.size() - 1;
+  while (lo < hi) {
+    if (s[lo] != s[hi]) return false;
+    ++lo;
+    --hi;
   }
   return true;
 }
 
 bool IsPalindrom2(absl::string_view s) {
-  size_t i = 0;
-  size_t j = s.size();
-  while (i < j) {
-    while (!std::isalnum(s[i]) && i < j) ++i;
-    while (!std::isalnum(s[j]) && i < j) --j;
-    if (std::tolower(s[i++]) != std::tolower(s[j--])) return false;
+  size_t lo = 0;
+  size_t hi = s.size() - 1;
+  while (lo < hi) {
+    while (!std::isalnum(s[lo]) && lo < hi) ++lo;
+    while (!std::isalnum(s[hi]) && lo < hi) --hi;
+    if (std::tolower(s[lo++]) != std::tolower(s[hi--])) return false;
   }
   return true;
 }
@@ -27,6 +32,7 @@ bool IsPalindrom2(absl::string_view s) {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = 1;
 
   LOG(INFO) << IsPalindrom("abccba");
   LOG(INFO) << IsPalindrom2("A man, a plan, a canal, Panama");

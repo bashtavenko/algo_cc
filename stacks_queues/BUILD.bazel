@@ -91,3 +91,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "binary_tree_depth",
+    srcs = ["binary_tree_depth.cc"],
+    hdrs = ["binary_tree_depth.h"],
+    deps = ["//binary_trees:binary_tree_node"],
+)
+
+cc_test(
+    name = "binary_tree_depth_test",
+    srcs = ["binary_tree_depth_test.cc"],
+    deps = [
+        ":binary_tree_depth",
+        "@googletest//:gtest_main",
+    ],
+)

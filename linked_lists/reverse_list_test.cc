@@ -6,8 +6,6 @@
 namespace algo {
 namespace {
 using ::testing::Eq;
-using ::testing::IsNull;
-using ::testing::NotNull;
 
 TEST(ReverseSublist, Works) {
   auto l3 = ListNode::Create(3);

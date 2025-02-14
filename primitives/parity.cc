@@ -12,7 +12,7 @@ int16_t ParityBruteForce(uint32_t x) {
 }
 
 int16_t ParityDropsLowest(uint32_t x) {
-  int16_t result =0;
+  int16_t result = 0;
   while (x) {
     result ^= 1;  // Because we know the lowest set bit
     // Bit-fiddling trick:
@@ -25,5 +25,4 @@ int16_t ParityDropsLowest(uint32_t x) {
   return result;
 }
 
-
-} // namespace algo
+}  // namespace algo

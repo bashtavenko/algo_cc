@@ -80,6 +80,7 @@ int main(int argc, char** argv) {
 
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = 1;
 
   auto l3 = ListNode::Create(3);
   auto l2 = ListNode::Create(2, l3);
