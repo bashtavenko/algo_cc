@@ -26,6 +26,6 @@ Stable sorts
 
 ## Libraries
 
-* algorighm::sort
+* algorithm::sort
 * list::sort
 * 

@@ -1,8 +1,13 @@
-## Lookup
-
 * contains (preferred)
 * find
 * count(n)
+* erase
+
+```c++
+if (auto it = map.find(value); it != map.end() {
+   ... it->second;
+}
+```
 
 ```c++
 // Operator[] adds / update and returns reference
@@ -14,3 +19,10 @@ for (const auto& c : a) {
 // This is helpful to get the previous value
 // int old_freq = value_freq[value];
 ```
+
+```c++
+if (auto it = map.find(value); it != map.end() {
+   ... it->second;
+}
+```
+

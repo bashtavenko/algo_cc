@@ -4,6 +4,7 @@
 #include "absl/container/flat_hash_map.h"
 #include "absl/container/flat_hash_set.h"
 #include "absl/strings/str_format.h"
+#include "unordered_map"
 
 int32_t Run(absl::string_view s) {
   constexpr int32_t kModulus = 10;
@@ -20,32 +21,30 @@ int32_t Run(absl::string_view s) {
 // "silent" = "listen"
 // The point is that to find anagram the ordered characters of a strings
 // produces the same hashmap.
+// By virtue of hash map the sorted character hashed to be the same.
 void FindAnagrams() {
   const std::vector<std::string> dictionary{"debitcard", "elvis", "silent",
                                             "badcredit", "lives", "freedom",
                                             "listen",    "levis", "money"};
   std::vector<std::string> output;
-  absl::flat_hash_map<std::string, std::vector<std::string>>
+  //  absl::flat_hash_map<std::string, std::vector<std::string>>
+  //      sorted_strings_to_anagram;
+  // The reason for std::unordered_map is it is visible in debugger.
+  // {'elisv' : ['elvis', 'lives', 'levis' ]
+  std::unordered_map<std::string, std::vector<std::string>>
       sorted_strings_to_anagram;
   for (absl::string_view s : dictionary) {
-    std::string sorted(s);                    // copy construct
-    std::sort(sorted.begin(), sorted.end());  // sort characters
-    sorted_strings_to_anagram[sorted].emplace_back(s);
-  }
-
-  for (const auto& [_, anagrams] : sorted_strings_to_anagram) {
-    if (anagrams.size() >= 2) {
-      for (const auto& v : anagrams) {
-        LOG(INFO) << v;
-      }
-    }
+    std::string sorted(s);                              // copy construct
+    std::sort(sorted.begin(), sorted.end());            // sort characters
+    sorted_strings_to_anagram[sorted].emplace_back(s);  // original string
   }
 }
 
 struct ContactList {
   std::vector<std::string> names;
 
-  // Better than for-loop
+  // Better than for-loop for each names to check equality since it is vector
+  // std::unordered_set has range or initializer constructor
   bool operator==(const ContactList& that) const {
     return absl::flat_hash_set<std::string>(names.begin(), names.end()) ==
            absl::flat_hash_set<std::string>(that.names.begin(),
@@ -120,13 +119,14 @@ void UpdateHashTable() {
   table[p] = "bla";
   it = table.find(p);
   p.x = 4;
-  table[p] == std::move(it->second);  // Don't need val
+  //  table[p] == std::move(it->second);  // Don't need val
   table.erase(it);
 }
 
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = 1;
   LOG(INFO) << absl::StreamFormat("Hash: %i", Run("foo"));
   LOG(INFO) << absl::StreamFormat("Hash: %i", Run("abc"));
   FindAnagrams();

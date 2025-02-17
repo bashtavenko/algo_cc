@@ -3,19 +3,18 @@
 #include <limits>
 #include <string>
 #include <vector>
-#include "absl/container/flat_hash_map.h"
+#include "unordered_map"
 
 namespace algo {
 
 int32_t FindNearestRepeated(const std::vector<std::string>& tokens) {
-  absl::flat_hash_map<std::string, size_t> word_to_index;
+  std::unordered_map<std::string, size_t> word_to_index;
   size_t nearest_distance = std::numeric_limits<size_t>::max();
 
   for (size_t i = 0; i < tokens.size(); ++i) {
-    auto word = word_to_index.find(tokens[i]);
-    if (word != word_to_index.end()) {
+    if (auto it = word_to_index.find(tokens[i]); it != word_to_index.end()) {
       // Found
-      nearest_distance = std::min(nearest_distance, i - word->second);
+      nearest_distance = std::min(nearest_distance, i - it->second);
     }
     word_to_index[tokens[i]] = i;
   }

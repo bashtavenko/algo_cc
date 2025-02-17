@@ -8,7 +8,6 @@
 //
 // [5, 6, 8]
 //
-// Why not have two pointers move?
 //
 #ifndef ALGO_CC_SORTING_ARRAY_INTERSECTION_H_
 #define ALGO_CC_SORTING_ARRAY_INTERSECTION_H_

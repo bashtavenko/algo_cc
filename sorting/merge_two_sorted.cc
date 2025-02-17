@@ -9,22 +9,20 @@ std::vector<int32_t> MergeTwoSorted(const std::vector<int32_t>& a,
   std::vector<int32_t> result;
   result.reserve(a.size() + b.size());  // Pre-allocate memory
 
-  auto it_a = a.begin();
-  auto it_b = b.begin();
+  std::vector<int32_t>::const_iterator first = a.begin();
+  std::vector<int32_t>::const_iterator second = b.begin();
 
-  while (it_a != a.end() && it_b != b.end()) {
-    if (*it_a < *it_b) {
-      result.push_back(*it_a++);
-    } else if (*it_a > *it_b) {
-      result.push_back(*it_b++);
-    } else {  // equal
-      result.push_back(*it_a++);
+  while (first != a.end() && second != b.end()) {
+    if (*first <= *second) {
+      result.push_back(*first++);
+    } else {
+      result.push_back(*second++);
     }
   }
 
   // Append remaining elements
-  result.insert(result.end(), it_a, a.end());
-  result.insert(result.end(), it_b, b.end());
+  result.insert(result.end(), first, a.end());
+  result.insert(result.end(), second, b.end());
 
   return result;
 }

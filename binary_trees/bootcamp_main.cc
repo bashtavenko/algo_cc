@@ -33,5 +33,6 @@ void Traverse() {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = 1;
   Traverse();
 }

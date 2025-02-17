@@ -3,25 +3,25 @@
 
 namespace algo {
 
-int32_t GetDepth(const std::shared_ptr<BinaryTreeNode>& tree) {
-  int32_t depth = 0;
-  auto node = tree;
-  while (node->parent.lock()) {
-    ++depth;
-    node = node->parent.lock();
-  }
-  return depth;
-}
-
 BinaryTreeNode* ComputeLca(const std::shared_ptr<BinaryTreeNode>& node_0,
                            const std::shared_ptr<BinaryTreeNode>& node_1) {
   // Binds refs
   auto iter_0 = node_0;
   auto iter_1 = node_1;
 
+  auto get_depth = [&](const std::shared_ptr<BinaryTreeNode>& tree) {
+    int32_t depth = 0;
+    auto node = tree;
+    while (node->parent.lock()) {
+      ++depth;
+      node = node->parent.lock();
+    }
+    return depth;
+  };
+
   // Makes iter_0 as the deepest node to simplify
-  int32_t depth_0 = GetDepth(iter_0);
-  int32_t depth_1 = GetDepth(iter_1);
+  int32_t depth_0 = get_depth(iter_0);
+  int32_t depth_1 = get_depth(iter_1);
   if (depth_1 > depth_0) std::swap(depth_0, depth_1);
 
   // Ascend from the deeper node.

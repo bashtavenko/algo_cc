@@ -8,15 +8,15 @@ namespace algo {
 bool IsLetterConstructable(absl::string_view letter_text,
                            absl::string_view magazine_text) {
   if (letter_text.size() > magazine_text.size()) return false;
-  
-  // 1. MakeChange through letter and find character: count
+
+  // 1. Run through letter and find character: count
   absl::flat_hash_map<char8_t, int32_t> letter_counters;
   for (const auto& c : letter_text) {
     // operator[] adds / update and returns reference to the mapped value
     ++letter_counters[c];
   }
 
-  // 2. MakeChange through magazine to make sure cross over everything
+  // 2. Run through magazine to make sure cross over everything
   for (const auto& c : magazine_text) {
     if (auto it = letter_counters.find(c); it != letter_counters.cend()) {
       --it->second;

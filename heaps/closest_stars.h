@@ -10,7 +10,9 @@
 
 namespace algo {
 struct Star {
-  double x, y, z;
+  double x;
+  double y;
+  double z;
   double Distance() const { return std::sqrt(x * x + y * y + z * z); }
 
   bool operator<(const Star& that) const {

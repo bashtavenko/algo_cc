@@ -31,30 +31,29 @@ bool IsBinaryTreeBST(const std::unique_ptr<BSTNode>& tree) {
                            std::numeric_limits<int32_t>::max());
 }
 
-struct QueueEntry {
-  const std::unique_ptr<BSTNode>& node;
-  int32_t lo;
-  int32_t hi;
-};
-
 bool IsBinaryTreeBFS(const std::unique_ptr<BSTNode>& tree) {
-  std::queue<QueueEntry> bfs_queue;
-  bfs_queue.emplace(QueueEntry{tree, std::numeric_limits<int32_t>::min(),
-                               std::numeric_limits<int32_t>::max()});
+  struct QueueEntry {
+    const std::unique_ptr<BSTNode>& node;
+    int32_t lo;
+    int32_t hi;
+  };
 
-  while (!bfs_queue.empty()) {
-    const QueueEntry& current = bfs_queue.front();
+  std::queue<QueueEntry> q;
+  q.emplace(QueueEntry{tree, std::numeric_limits<int32_t>::min(),
+                       std::numeric_limits<int32_t>::max()});
+
+  while (!q.empty()) {
+    const QueueEntry& current = q.front();
     if (current.node.get()) {
-      if (current.node->data < bfs_queue.front().lo ||
-          current.node->data > bfs_queue.front().hi) {
+      if (current.node->data < q.front().lo ||
+          current.node->data > q.front().hi) {
         return false;
       }
-      bfs_queue.emplace(
-          QueueEntry{current.node->left, current.lo, current.node->data});
-      bfs_queue.emplace(
+      q.emplace(QueueEntry{current.node->left, current.lo, current.node->data});
+      q.emplace(
           QueueEntry{current.node->right, current.node->data, current.hi});
     }
-    bfs_queue.pop();
+    q.pop();
   }
   return true;
 }

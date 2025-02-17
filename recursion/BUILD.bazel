@@ -38,3 +38,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "hanoi",
+    srcs = ["hanoi.cc"],
+    hdrs = ["hanoi.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "hanoi_test",
+    srcs = ["hanoi_test.cc"],
+    deps = [
+        ":hanoi",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "non_attackcking_queens",
+    srcs = ["non_attacking_queens.cc"],
+    hdrs = ["non_attacking_queens.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "non_attacking_queens_test",
+    srcs = ["non_attacking_queens_test.cc"],
+    deps = [
+        ":non_attackcking_queens",
+        "@googletest//:gtest_main",
+    ],
+)

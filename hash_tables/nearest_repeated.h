@@ -1,6 +1,5 @@
 // 12.6 Find the nearest repeated entries in array.
 //
-//
 // Find the distance between the closest pair of equal entries.
 //'All work and no play makes for no work no fun and no results'
 //

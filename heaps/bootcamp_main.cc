@@ -6,7 +6,7 @@
 
 // Find the longest strings that we have seen so far in a stream;
 // This is the first version with lambda.
-std::vector<std::string> TopK(
+std::vector<std::string> TopWithVector(
     size_t k, std::vector<std::string>::const_iterator stream_begin,
     const std::vector<std::string>::const_iterator& stream_end) {
   // * type of elements
@@ -36,17 +36,7 @@ std::vector<std::string> TopK(
   return result;
 }
 
-void ChangeMaking() {
-  std::vector<std::string> st{{"ab", "def", "bacccesddd", "a", "xyz"}};
-
-  auto result = TopK(2, st.cbegin(), st.cend());
-  for (const auto& s : result) {
-    LOG(INFO) << s;
-  }
-  // results: {"def", "bacccesddd"}
-}
-
-// This is much more simpler. Define type with operator.
+// In case of custom container, define operator >
 // std::greater<>> min_heap;
 // or, I guess std::less<>> max_heap
 struct LongestString {
@@ -57,7 +47,7 @@ struct LongestString {
   }
 };
 
-std::vector<std::string> TopK2(
+std::vector<std::string> TopKWithStruct(
     size_t k, std::vector<std::string>::const_iterator stream_begin,
     const std::vector<std::string>::const_iterator& stream_end) {
   // * type of elements
@@ -83,10 +73,10 @@ std::vector<std::string> TopK2(
   return result;
 }
 
-void Run2() {
+void Run() {
   std::vector<std::string> st{{"ab", "def", "bacccesddd", "a", "xyz"}};
 
-  auto result = TopK2(2, st.cbegin(), st.cend());
+  auto result = TopKWithStruct(2, st.cbegin(), st.cend());
   for (const auto& s : result) {
     LOG(INFO) << s;
   }
@@ -96,7 +86,8 @@ void Run2() {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  Run2();
+  FLAGS_logtostderr = 1;
+  Run();
 
   return EXIT_SUCCESS;
 }
