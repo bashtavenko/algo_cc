@@ -29,6 +29,14 @@ bool IsPalindrom2(absl::string_view s) {
   return true;
 }
 
+void MakeAllSubstrings(absl::string_view s) {
+  for (size_t len = 1; len < s.size(); ++len) {
+    for (int i = 0; i < s.length() - len; ++i) {
+      LOG(INFO) << s.substr(i, len);
+    }
+  }
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
@@ -42,4 +50,6 @@ int main(int argc, char** argv) {
   LOG(INFO) << absl::StreamFormat("pop_back(): %s", str);
   LOG(INFO) << absl::StreamFormat("Reverse: %s",
                                   std::string{str.rbegin(), str.rend()});
+
+  MakeAllSubstrings("abba");
 }

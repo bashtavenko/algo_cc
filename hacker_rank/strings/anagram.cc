@@ -14,6 +14,8 @@ int MakeAnagram(const std::string& a, const std::string& b) {
     ++char_count[c];
   }
 
+  // We only have one map and the count can be negative
+  // because the first string character does have this one.
   for (const auto& c : b) {
     --char_count[c];
   }

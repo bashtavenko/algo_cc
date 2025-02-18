@@ -8,6 +8,8 @@
 // "abcd" => {}
 // "ifailuhkqq" => {[i, i], [q, q], [ifa, fai]
 // "kkkk" {[k, k], [k, k], [
+//
+// It has two parts. 1 - substrings; 2 - check anagrams
 
 #ifndef ALGO_CC_HACKER_RANK_HACH_TABLES_ANAGRAMIC_PAIRS_H_
 #define ALGO_CC_HACKER_RANK_HACH_TABLES_ANAGRAMIC_PAIRS_H_
