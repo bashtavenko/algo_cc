@@ -72,3 +72,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "max_number_k_sum",
+    srcs = ["max_number_k_sum.cc"],
+    hdrs = ["max_number_k_sum.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "max_number_k_sum_test",
+    srcs = ["max_number_k_sum_test.cc"],
+    deps = [
+        ":max_number_k_sum",
+        "@googletest//:gtest_main",
+    ],
+)

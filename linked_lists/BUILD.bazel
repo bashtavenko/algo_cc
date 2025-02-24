@@ -82,3 +82,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "delete_middle",
+    srcs = ["delete_middle.cc"],
+    hdrs = ["delete_middle.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "delete_middle_test",
+    srcs = ["delete_middle_test.cc"],
+    deps = [
+        ":delete_middle",
+        "@googletest//:gtest_main",
+    ],
+)

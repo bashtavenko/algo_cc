@@ -168,3 +168,67 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "increasing_triplets",
+    srcs = ["increasing_triplets.cc"],
+    hdrs = ["increasing_triplets.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "increasing_triplets_test",
+    srcs = ["increasing_triplets_test.cc"],
+    deps = [
+        ":increasing_triplets",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "product_except_self",
+    srcs = ["product_except_self.cc"],
+    hdrs = ["product_except_self.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "product_except_self_test",
+    srcs = ["product_except_self_test.cc"],
+    deps = [
+        ":product_except_self",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "longest_ones",
+    srcs = ["longest_ones.cc"],
+    hdrs = ["longest_ones.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "longest_ones_test",
+    srcs = ["longest_ones_test.cc"],
+    deps = [
+        ":longest_ones",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "longest_binary_subarray",
+    srcs = ["longest_binary_subarray.cc"],
+    hdrs = ["longest_binary_subarray.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "longest_binary_subarray_test",
+    srcs = ["longest_binary_subarray_test.cc"],
+    deps = [
+        ":longest_binary_subarray",
+        "@googletest//:gtest_main",
+    ],
+)

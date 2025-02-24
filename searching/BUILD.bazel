@@ -103,3 +103,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "find_peak",
+    srcs = ["find_peak.cc"],
+    hdrs = ["find_peak.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "find_peak_test",
+    srcs = ["find_peak_test.cc"],
+    deps = [
+        ":find_peak",
+        "@googletest//:gtest_main",
+    ],
+)

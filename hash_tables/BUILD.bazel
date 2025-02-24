@@ -104,3 +104,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "string_close",
+    srcs = ["string_close.cc"],
+    hdrs = ["string_close.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "string_close_test",
+    srcs = ["string_close_test.cc"],
+    deps = [
+        ":string_close",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "equal_pairs",
+    srcs = ["equal_pairsl.cc"],
+    hdrs = ["equal_pairs.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "equal_pairs_test",
+    srcs = ["equal_pairs_test.cc"],
+    deps = [
+        ":equal_pairs",
+        "@googletest//:gtest_main",
+    ],
+)

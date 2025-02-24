@@ -103,3 +103,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "compression",
+    srcs = ["compression.cc"],
+    hdrs = ["compression.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "compression_test",
+    srcs = ["compression_test.cc"],
+    deps = [
+        ":compression",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "max_vowels_substring",
+    srcs = ["max_vowels_substring.cc"],
+    hdrs = ["max_vowels_substring.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "max_vowels_substring_test",
+    srcs = ["max_vowels_substring_test.cc"],
+    deps = [
+        ":max_vowels_substring",
+        "@googletest//:gtest_main",
+    ],
+)

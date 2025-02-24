@@ -107,3 +107,67 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "remove_stars",
+    srcs = ["remove_stars.cc"],
+    hdrs = ["remove_stars.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "remove_stars_test",
+    srcs = ["remove_stars_test.cc"],
+    deps = [
+        ":remove_stars",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "decode_string",
+    srcs = ["decode_string.cc"],
+    hdrs = ["decode_string.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "decode_string_test",
+    srcs = ["decode_string_test.cc"],
+    deps = [
+        ":decode_string",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "asteroid_collision",
+    srcs = ["asteroid_collision.cc"],
+    hdrs = ["asteroid_collision.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "asteroid_collision_test",
+    srcs = ["asteroid_collision_test.cc"],
+    deps = [
+        ":asteroid_collision",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "dota2",
+    srcs = ["dota2.cc"],
+    hdrs = ["dota2.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "dota2_test",
+    srcs = ["dota2_test.cc"],
+    deps = [
+        ":dota2",
+        "@googletest//:gtest_main",
+    ],
+)
