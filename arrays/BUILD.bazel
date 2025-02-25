@@ -232,3 +232,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "sparse_dot_product",
+    srcs = ["sparse_dot_product.cc"],
+    hdrs = ["sparse_dot_product.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "sparse_dot_product_test",
+    srcs = ["sparse_dot_product_test.cc"],
+    deps = [
+        ":sparse_dot_product",
+        "@googletest//:gtest_main",
+    ],
+)
