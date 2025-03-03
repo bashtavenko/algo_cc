@@ -110,3 +110,57 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "tree_node",
+    hdrs = ["tree_node.h"],
+    deps = [],
+)
+
+cc_library(
+    name = "good_nodes",
+    srcs = ["good_nodes.cc"],
+    hdrs = ["good_nodes.h"],
+    deps = [":tree_node"],
+)
+
+cc_test(
+    name = "good_nodes_test",
+    srcs = ["good_nodes_test.cc"],
+    deps = [
+        ":good_nodes",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "path_sum",
+    srcs = ["path_sum.cc"],
+    hdrs = ["path_sum.h"],
+    deps = [":tree_node"],
+)
+
+cc_test(
+    name = "path_sum_test",
+    srcs = ["path_sum_test.cc"],
+    deps = [
+        ":path_sum",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "max_level_sum",
+    srcs = ["max_level_sum.cc"],
+    hdrs = ["max_level_sum.h"],
+    deps = [":tree_node"],
+)
+
+cc_test(
+    name = "max_level_sum_test",
+    srcs = ["max_level_sum_test.cc"],
+    deps = [
+        ":max_level_sum",
+        "@googletest//:gtest_main",
+    ],
+)

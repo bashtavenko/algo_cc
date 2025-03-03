@@ -71,3 +71,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "k_largest",
+    srcs = ["k_largest.cc"],
+    hdrs = ["k_largest.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "k_largest_test",
+    srcs = ["k_largest_test.cc"],
+    deps = [
+        ":k_largest",
+        "@googletest//:gtest_main",
+    ],
+)

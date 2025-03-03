@@ -248,3 +248,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "highest_altitude",
+    srcs = ["highest_altitude.cc"],
+    hdrs = ["highest_altitude.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "highest_altitude_test",
+    srcs = ["highest_altitude_test.cc"],
+    deps = [
+        ":highest_altitude",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "pivot_index",
+    srcs = ["pivot_index.cc"],
+    hdrs = ["pivot_index.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "pivot_index_test",
+    srcs = ["pivot_index_test.cc"],
+    deps = [
+        ":pivot_index",
+        "@googletest//:gtest_main",
+    ],
+)

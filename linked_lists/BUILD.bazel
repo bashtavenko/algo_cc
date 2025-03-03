@@ -98,3 +98,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "odd_even",
+    srcs = ["odd_even.cc"],
+    hdrs = ["odd_even.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "odd_even_test",
+    srcs = ["odd_even_test.cc"],
+    deps = [
+        ":odd_even",
+        "@googletest//:gtest_main",
+    ],
+)

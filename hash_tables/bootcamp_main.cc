@@ -123,6 +123,17 @@ void UpdateHashTable() {
   table.erase(it);
 }
 
+void CustomHash() {
+  struct PairHash {
+    size_t operator()(const std::pair<int32_t, int32_t>& p) const {
+      return std::hash<int32_t>{}(p.first) ^
+             (std::hash<int32_t>{}(p.second) << 1);
+    }
+  };
+  std::unordered_set<std::pair<int32_t, int32_t>, PairHash> visited;
+  visited.insert(std::make_pair(0, 0));
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);

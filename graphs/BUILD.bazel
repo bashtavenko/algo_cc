@@ -68,17 +68,49 @@ cc_test(
 )
 
 cc_library(
-    name = "shortest_path",
-    srcs = ["shortest_path.cc"],
-    hdrs = ["shortest_path.h"],
+    name = "visit_rooms",
+    srcs = ["visit_rooms.cc"],
+    hdrs = ["visit_rooms.h"],
     deps = [],
 )
 
 cc_test(
-    name = "shortest_path_test",
-    srcs = ["shortest_path_test.cc"],
+    name = "visit_rooms_test",
+    srcs = ["visit_rooms_test.cc"],
     deps = [
-        ":shortest_path",
+        ":visit_rooms",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "nearest_exit",
+    srcs = ["nearest_exit.cc"],
+    hdrs = ["nearest_exit.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "nearest_exit_test",
+    srcs = ["nearest_exit_test.cc"],
+    deps = [
+        ":nearest_exit",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "connected_components",
+    srcs = ["connected_components.cc"],
+    hdrs = ["connected_components.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "connected_components_test",
+    srcs = ["connected_components_test.cc"],
+    deps = [
+        ":connected_components",
         "@googletest//:gtest_main",
     ],
 )

@@ -87,3 +87,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "interval_non_overlap",
+    srcs = ["interval_non_overlap.cc"],
+    hdrs = ["interval_non_overlap.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "interval_non_ovelap_test",
+    srcs = ["interval_non_overlap_test.cc"],
+    deps = [
+        ":interval_non_overlap",
+        "@googletest//:gtest_main",
+    ],
+)
