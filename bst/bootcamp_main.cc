@@ -1,5 +1,6 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
+#include <stack>
 #include "bst/bst_node.h"
 
 //           20
@@ -23,11 +24,45 @@ algo::BSTNode* SearchBST(const std::unique_ptr<algo::BSTNode>& tree,
 
 void RunBST() { LOG(INFO) << SearchBST(CreateTree(), 10)->data; }
 
+int32_t GetMinIteratively(algo::BSTNode* node) {
+  while (node->left) {
+    node = node->left.get();
+  }
+  return node->data;
+}
+
+int32_t GetMin(algo::BSTNode* node) {
+  if (!node->left) return node->data;
+  return GetMin(node->left.get());
+}
+
+void IterativeInOrder(algo::BSTNode* node) {
+  std::stack<algo::BSTNode*> node_stack;
+  while (node || !node_stack.empty()) {
+    if (node) {
+      node_stack.push(node);
+      node = node->left.get();
+    } else {
+      // At the bottom, going up
+      node = node_stack.top();
+      node_stack.pop();
+      LOG(INFO) << node->data;
+      node = node->right.get();
+    }
+  }
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = 1;
 
-  RunBST();
+  auto root = CreateTree();
+  LOG(INFO) << "GetMinIteratively: " << GetMinIteratively(root.get());
+  LOG(INFO) << "GetMin: " << GetMin(root.get());
+  IterativeInOrder(root.get());
+
+  //  RunBST();
 
   return EXIT_SUCCESS;
 }

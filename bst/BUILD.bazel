@@ -111,3 +111,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "equivalent",
+    srcs = ["equivalent.cc"],
+    hdrs = ["equivalent.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "equivalent_test",
+    srcs = ["equivalent_test.cc"],
+    deps = [
+        ":equivalent",
+        "@googletest//:gtest_main",
+    ],
+)

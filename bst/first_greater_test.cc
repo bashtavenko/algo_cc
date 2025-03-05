@@ -7,7 +7,7 @@ namespace algo {
 namespace {
 TEST(FindFirstGreaterThanK, Works) {
   const std::unique_ptr<BSTNode> root = BSTNode::Create(
-      43, BSTNode::Create(29, BSTNode::Create(23), BSTNode::Create(37)),
+      2, BSTNode::Create(29, BSTNode::Create(23), BSTNode::Create(37)),
       BSTNode::Create(47, nullptr, BSTNode::Create(53)));
 
   auto result = FindFirstGreaterThanK(root, 23);

@@ -280,3 +280,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "square_same_order",
+    srcs = ["square_same_order.cc"],
+    hdrs = ["square_same_order.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "square_same_order_test",
+    srcs = ["square_same_order_test.cc"],
+    deps = [
+        ":square_same_order",
+        "@googletest//:gtest_main",
+    ],
+)
