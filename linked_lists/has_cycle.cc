@@ -4,21 +4,20 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> HasCycleWithSet(
-    const std::shared_ptr<ListNode>& head) {
+ListNode* HasCycleWithSet(ListNode* head) {
   auto node = head;
   std::unordered_set<int32_t> set;
 
   while (node && node->next) {
-    if (set.contains(node->data)) return node;
-    set.emplace(node->data);
+    if (set.contains(node->val)) return node;
+    set.emplace(node->val);
     node = node->next;
   }
   return nullptr;
 }
 
 // 1 -> 2 -> 3 -> 1
-std::shared_ptr<ListNode> HasCycle(const std::shared_ptr<ListNode>& head) {
+ListNode* HasCycle(ListNode* head) {
   // slow goes to the one
   // fast can jump more than one
   auto slow = head;

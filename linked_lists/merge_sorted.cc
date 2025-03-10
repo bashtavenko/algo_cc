@@ -2,26 +2,29 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> MergeTwoSorted(const std::shared_ptr<ListNode>& l1,
-                                         const std::shared_ptr<ListNode>& l2) {
-  auto first = l1;
-  auto second = l2;
-  auto dummy_head = ListNode::Create(0);
-  auto tail = dummy_head;
+ListNode* MergeTwoSorted(ListNode* l1, ListNode* l2) {
+  // This dummy list node will be destroyed at the end of function
+  auto dummy = std::make_unique<ListNode>(0);
+  ListNode* tail = dummy.get();
 
-  auto append_node = [&tail](std::shared_ptr<ListNode>& node) {
-    tail->next = node;
-    tail = node;
-    node = node->next;
-  };
-
-  while (first && second) {
-    append_node(first->data <= second->data ? first : second);
+  // Merge while both lists have nodes.
+  while (l1 && l2) {
+    if (l1->val <= l2->val) {
+      tail->next = l1;
+      l1 = l1->next;
+    } else {
+      tail->next = l2;
+      l2 = l2->next;
+    }
+    tail = tail->next;
   }
 
-  // Append remaining
-  tail->next = first ? first : second;
-  return dummy_head->next;
+  // Attach the remaining nodes.
+  tail->next = l1 ? l1 : l2;
+
+  ListNode* merged = dummy->next;
+  // Maybe dummy.release() ?
+  return merged;
 }
 
 }  // namespace algo

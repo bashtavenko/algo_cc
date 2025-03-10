@@ -8,11 +8,11 @@ namespace {
 using ::testing::Eq;
 
 TEST(ReverseSublist, Works) {
-  auto l3 = ListNode::Create(3);
-  auto l2 = ListNode::Create(2, l3);
-  auto l1 = ListNode::Create(1, l2);
+  auto l3 = std::make_unique<ListNode>(3);
+  auto l2 = std::make_unique<ListNode>(2, l3.get());
+  auto l1 = std::make_unique<ListNode>(1, l2.get());
 
-  EXPECT_THAT(ConvertListToVector(ReverseSublist(l1, 1, 3)),
+  EXPECT_THAT(ConvertListToVector(ReverseSublist(l1.get(), 1, 3)),
               Eq(std::vector<int32_t>{3, 2, 1}));
 }
 

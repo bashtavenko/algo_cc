@@ -5,7 +5,7 @@
 
 namespace algo {
 
-std::vector<int32_t> ConvertListToVector(const std::shared_ptr<ListNode>& head);
+std::vector<int32_t> ConvertListToVector(const ListNode* head);
 
 }  // namespace algo
 

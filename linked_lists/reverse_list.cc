@@ -4,10 +4,10 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> ReverseSublist(const std::shared_ptr<ListNode>& l,
-                                         int32_t start, int32_t finish) {
-  auto dummy_head = ListNode::Create(0, l);
-  auto sublist_head = dummy_head;
+ListNode* ReverseSublist(ListNode* l, int32_t start, int32_t finish) {
+  auto dummy_head = std::make_unique<ListNode>(0);
+  auto sublist_head = dummy_head.get();
+  sublist_head->next = l;
 
   for (int k = 1; k < start; ++k) {
     sublist_head = sublist_head->next;

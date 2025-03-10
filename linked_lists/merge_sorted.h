@@ -6,8 +6,7 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> MergeTwoSorted(const std::shared_ptr<ListNode>& l1,
-                                         const std::shared_ptr<ListNode>& l2);
+ListNode* MergeTwoSorted(ListNode* l1, ListNode* l2);
 
 }  // namespace algo
 

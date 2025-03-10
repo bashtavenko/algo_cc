@@ -25,29 +25,28 @@ void RunList() {
   }
 }
 
-void RunListIterative(const std::shared_ptr<algo::ListNode>& head) {
+void RunListIterative(const algo::ListNode* head) {
   auto node = head;
   while (node) {
-    LOG(INFO) << "Node iterative: " << node->data;
+    LOG(INFO) << "Node iterative: " << node->val;
     node = node->next;
   }
 }
 
-void RunListRecursive(const std::shared_ptr<algo::ListNode>& head) {
-  std::function<void(const std::shared_ptr<algo::ListNode>&)> run =
-      [&](const std::shared_ptr<algo::ListNode>& node) {
+void RunListRecursive(const algo::ListNode* head) {
+  std::function<void(const algo::ListNode*)> run =
+      [&](const algo::ListNode* node) {
         if (!node) return;
-        LOG(INFO) << "Node recursive: " << node->data;
+        LOG(INFO) << "Node recursive: " << node->val;
         run(node->next);
-        LOG(INFO) << "At the bottom, node: " << node->data;
+        LOG(INFO) << "At the bottom, node: " << node->val;
       };
   run(head);
 }
 
-std::shared_ptr<algo::ListNode> SearchList(
-    const std::shared_ptr<algo::ListNode>& head, int32_t key) {
+algo::ListNode* SearchList(algo::ListNode* head, int32_t key) {
   auto node = head;
-  while (node && node->data != key) {
+  while (node && node->val != key) {
     // Creates a new local shared_ptr
     node = node->next;
   }
@@ -62,8 +61,7 @@ std::shared_ptr<algo::ListNode> SearchList(
 // The function mutates the list structure.
 // It's able to do this even with const shared_ptr& parameters because the const
 // applies to the shared_ptr, not to the ListNode it points to.
-void InsertAfter(const std::shared_ptr<algo::ListNode>& node,
-                 const std::shared_ptr<algo::ListNode>& new_node) {
+void InsertAfter(algo::ListNode* node, algo::ListNode* new_node) {
   // Modifies the next pointer of ListNode.
   new_node->next = node->next;  // Points to where existing was pointed to
   // Also modifies the next outside
@@ -71,9 +69,7 @@ void InsertAfter(const std::shared_ptr<algo::ListNode>& node,
 }
 
 // Deletes node past this one. Assume the node is not a tail.
-void DeleteAfter(const std::shared_ptr<algo::ListNode>& node) {
-  node->next = node->next->next;
-}
+void DeleteAfter(algo::ListNode* node) { node->next = node->next->next; }
 
 int main(int argc, char** argv) {
   using algo::ListNode;
@@ -82,35 +78,35 @@ int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
   FLAGS_logtostderr = 1;
 
-  auto l3 = ListNode::Create(3);
-  auto l2 = ListNode::Create(2, l3);
-  auto head = ListNode::Create(1, l2);
+  auto l3 = std::make_unique<ListNode>((3));
+  auto l2 = std::make_unique<ListNode>(2, l3.get());
+  auto head = std::make_unique<ListNode>(1, l2.get());
 
   // Basics
-  RunListIterative(head);
-  RunListRecursive(head);
+  RunListIterative(head.get());
+  RunListRecursive(head.get());
 
   // Search
-  auto result = SearchList(head, 12);
+  auto result = SearchList(head.get(), 12);
   LOG(INFO) << "Found? " << (result ? "Yes" : "No");
-  result = SearchList(head, 3);
+  result = SearchList(head.get(), 3);
   if (result) {
-    LOG(INFO) << "Found: " << result->data;
+    LOG(INFO) << "Found: " << result->val;
   } else {
     LOG(INFO) << "Not found";
   }
 
   // Insert after
-  auto l5 = ListNode::Create(5);
-  auto new_node = ListNode::Create(6, l5);
-  InsertAfter(head, new_node);
-  result = SearchList(head, 5);                       // L6 -> L5, L5 is gone.
+  auto l5 = std::make_unique<ListNode>(5);
+  auto new_node = std::make_unique<ListNode>(6, l5.get());
+  InsertAfter(head.get(), new_node.get());
+  result = SearchList(head.get(), 5);                 // L6 -> L5, L5 is gone.
   LOG(INFO) << "Found? " << (result ? "Yes" : "No");  // No
 
   // Delete after
   // L1->L6->L2->L3  =>  L1->L2->L3
-  DeleteAfter(new_node);  // It was L6
-  result = SearchList(head, 2);
+  DeleteAfter(new_node.get());  // It was L6
+  result = SearchList(head.get(), 2);
   LOG(INFO) << "Found? " << (result ? "Yes" : "No");  // No
 
   RunForwardList();

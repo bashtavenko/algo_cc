@@ -10,28 +10,28 @@ using ::testing::NotNull;
 
 // 1 -> 2 -> 3 -> 1
 TEST(HasCycle, CycleWorks) {
-  auto l1 = ListNode::Create(1);
-  auto l2 = ListNode::Create(2);
-  auto l3 = ListNode::Create(3);
-  l1->next = l2;
-  l2->next = l3;
+  auto l1 = std::make_unique<ListNode>(1);
+  auto l2 = std::make_unique<ListNode>(2);
+  auto l3 = std::make_unique<ListNode>(3);
+  l1->next = l2.get();
+  l2->next = l3.get();
   // Create a cycle
-  l3->next = l1;
+  l3->next = l1.get();
 
-  std::shared_ptr<ListNode> head = l1;
+  ListNode* head = l1.get();
   auto result = HasCycle(head);
   EXPECT_THAT(result, NotNull());
-  EXPECT_THAT(result->data, 1);
+  EXPECT_THAT(result->val, 1);
 }
 
 TEST(HasCycle, NoCycleWorks) {
-  auto l1 = ListNode::Create(1);
-  auto l2 = ListNode::Create(2);
-  auto l3 = ListNode::Create(3);
-  l1->next = l2;
-  l2->next = l3;
+  auto l1 = std::make_unique<ListNode>(1);
+  auto l2 = std::make_unique<ListNode>(2);
+  auto l3 = std::make_unique<ListNode>(3);
+  l1->next = l2.get();
+  l2->next = l3.get();
 
-  std::shared_ptr<ListNode> head = l1;
+  ListNode* head = l1.get();
   auto result = HasCycle(head);
   EXPECT_THAT(result, IsNull());
 }

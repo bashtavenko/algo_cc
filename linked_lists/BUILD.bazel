@@ -87,7 +87,7 @@ cc_library(
     name = "delete_middle",
     srcs = ["delete_middle.cc"],
     hdrs = ["delete_middle.h"],
-    deps = [],
+    deps = [":list_node"],
 )
 
 cc_test(
@@ -103,7 +103,7 @@ cc_library(
     name = "odd_even",
     srcs = ["odd_even.cc"],
     hdrs = ["odd_even.h"],
-    deps = [],
+    deps = [":list_node"],
 )
 
 cc_test(
@@ -111,6 +111,7 @@ cc_test(
     srcs = ["odd_even_test.cc"],
     deps = [
         ":odd_even",
+        ":test_util",
         "@googletest//:gtest_main",
     ],
 )

@@ -1,7 +1,7 @@
 #include "linked_lists/delete_middle.h"
 #include <cstdint>
 
-namespace leet_code {
+namespace algo {
 
 ListNode* DeleteMiddleThisWorks(ListNode* head) {
   if (!head || !head->next) return nullptr;
@@ -46,4 +46,4 @@ ListNode* DeleteMiddle(ListNode* head) {
   return head;
 }
 
-}  // namespace leet_code
+}  // namespace algo

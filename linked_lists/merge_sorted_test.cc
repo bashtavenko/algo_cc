@@ -8,16 +8,17 @@ namespace {
 using ::testing::Eq;
 
 TEST(MergeTwoSorted, Works) {
-  auto l7 = ListNode::Create(7);
-  auto l5 = ListNode::Create(5, l7);
-  auto l2 = ListNode::Create(2, l5);
-  auto first = l2;
+  auto l7 = std::make_unique<ListNode>(7);
+  auto l5 = std::make_unique<ListNode>(5, l7.get());
+  auto l2 = std::make_unique<ListNode>(2, l5.get());
+  auto first = l2.get();
 
-  auto l11 = ListNode::Create(11);
-  auto l3 = ListNode::Create(3, l11);
-  auto second = l3;
+  auto l11 = std::make_unique<ListNode>(11);
+  auto l3 = std::make_unique<ListNode>(3, l11.get());
+  auto second = l3.get();
 
-  EXPECT_THAT(ConvertListToVector(MergeTwoSorted(first, second)),
+  auto merged = MergeTwoSorted(first, second);
+  EXPECT_THAT(ConvertListToVector(merged),
               Eq(std::vector<int32_t>{2, 3, 5, 7, 11}));
 }
 

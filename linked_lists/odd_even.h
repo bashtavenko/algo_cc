@@ -14,19 +14,11 @@
 
 #ifndef ALGO_CC_LINKED_LISTS_ODD_EVEN_H_
 #define ALGO_CC_LINKED_LISTS_ODD_EVEN_H_
-
-namespace leet_code {
-
-struct ListNode {
-  int val;
-  ListNode* next;
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
+#include "linked_lists/list_node.h"
+namespace algo {
 
 ListNode* OddEvenList(ListNode* head);
 
-}  // namespace leet_code
+}  // namespace algo
 
 #endif  // ALGO_CC_LINKED_LISTS_ODD_EVEN_H_

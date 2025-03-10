@@ -9,9 +9,8 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> HasCycleWithSet(
-    const std::shared_ptr<ListNode>& head);
-std::shared_ptr<ListNode> HasCycle(const std::shared_ptr<ListNode>& head);
+ListNode* HasCycleWithSet(ListNode* head);
+ListNode* HasCycle(ListNode* head);
 
 }  // namespace algo
 #endif  // ALGO_CC_LINKED_LISTS_HAS_CYCLE_H_

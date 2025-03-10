@@ -7,8 +7,7 @@
 
 namespace algo {
 
-std::shared_ptr<ListNode> ReverseSublist(const std::shared_ptr<ListNode>& l,
-                                         int32_t start, int32_t finish);
+ListNode* ReverseSublist(ListNode* l, int32_t start, int32_t finish);
 
 }  // namespace algo
 

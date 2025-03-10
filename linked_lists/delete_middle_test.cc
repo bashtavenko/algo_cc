@@ -3,7 +3,7 @@
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 
-namespace leet_code {
+namespace algo {
 namespace {
 
 using ::testing::ElementsAreArray;
@@ -54,4 +54,4 @@ TEST(DeleteMiddle, Example4) {
 }
 
 }  // namespace
-}  // namespace leet_code
+}  // namespace algo

@@ -1,22 +1,12 @@
 #include "linked_lists/odd_even.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
+#include "linked_lists/test_util.h"
 
-namespace leet_code {
+namespace algo {
 namespace {
 
 using ::testing::ElementsAreArray;
-
-std::vector<int32_t> ConvertListToVector(ListNode* root) {
-  std::vector<int32_t> result;
-  auto node = root;
-  while (node) {
-    result.emplace_back(node->val);
-    node = node->next;
-  }
-
-  return result;
-}
 
 TEST(OddEvenList, Example1) {
   auto node5 = std::make_unique<ListNode>(5);
@@ -30,4 +20,4 @@ TEST(OddEvenList, Example1) {
 }
 
 }  // namespace
-}  // namespace leet_code
+}  // namespace algo
