@@ -11,11 +11,11 @@
 // Level 3 sum = 7 + -8 = -1.
 #ifndef ALGO_CC_BINARY_TREES_MAX_LEVEL_SUM_H_
 #define ALGO_CC_BINARY_TREES_MAX_LEVEL_SUM_H_
-#include "binary_trees/tree_node.h"
+#include "binary_trees/binary_tree_node.h"
 
-namespace leet_code {
+namespace algo {
 
-int MaxLevelSum(TreeNode* root);
+int MaxLevelSum(BinaryTreeNode* root);
 
 }
 

@@ -13,7 +13,7 @@ TEST(IsBalanced, Worked) {
   auto node_4 = std::make_unique<BinaryTreeNode>(4);
   auto node_c = std::make_unique<BinaryTreeNode>(9, node_d.get(), node_4.get());
 
-  EXPECT_FALSE(IsBalanced(node_c.get()));
+  EXPECT_TRUE(IsBalanced(node_c.get()));
 }
 
 }  // namespace

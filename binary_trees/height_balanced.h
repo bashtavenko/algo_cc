@@ -8,6 +8,10 @@
 // So we either have to add those two attributes to each node, or recurse and
 // return them.
 // Do post order (left, right, than root)
+//    1
+//  2   3    b: true h: 2
+//    1
+//  2        b: true h: 2
 
 #ifndef ALGO_CC_BINARY_TREES_HEIGHT_BALANCED_H_
 #define ALGO_CC_BINARY_TREES_HEIGHT_BALANCED_H_

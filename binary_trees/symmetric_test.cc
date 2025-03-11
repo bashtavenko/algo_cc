@@ -7,13 +7,15 @@ namespace algo {
 namespace {
 
 TEST(CheckSymmetric, Works) {
-  auto node_d = BinaryTreeNode::Create(3);
-  auto node_c = BinaryTreeNode::Create(2, nullptr, std::move(node_d));
-  auto node_f = BinaryTreeNode::Create(2, BinaryTreeNode::Create(3), nullptr);
-  auto node_b = BinaryTreeNode::Create(6, nullptr, std::move(node_c));
-  auto node_e = BinaryTreeNode::Create(6, std::move(node_f), nullptr);
-  auto root = BinaryTreeNode::Create(314, std::move(node_b), std::move(node_e));
-  EXPECT_TRUE(IsSymmetric(root));
+  auto node_d = std::make_unique<BinaryTreeNode>(3);
+  auto node_c = std::make_unique<BinaryTreeNode>(2, nullptr, node_d.get());
+  auto node_3 = std::make_unique<BinaryTreeNode>(3);
+  auto node_f = std::make_unique<BinaryTreeNode>(2, node_3.get(), nullptr);
+
+  auto node_b = std::make_unique<BinaryTreeNode>(6, nullptr, node_c.get());
+  auto node_e = std::make_unique<BinaryTreeNode>(6, node_f.get(), nullptr);
+  auto root = std::make_unique<BinaryTreeNode>(314, node_b.get(), node_e.get());
+  EXPECT_TRUE(IsSymmetric(root.get()));
 }
 }  // namespace
 }  // namespace algo

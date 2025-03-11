@@ -10,7 +10,7 @@
 
 namespace algo {
 
-bool IsSymmetric(const std::unique_ptr<BinaryTreeNode>& tree);
+bool IsSymmetric(const BinaryTreeNode* tree);
 
 }  // namespace algo
 

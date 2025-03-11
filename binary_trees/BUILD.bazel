@@ -52,7 +52,7 @@ cc_library(
     srcs = ["lca_parent.cc"],
     hdrs = ["lca_parent.h"],
     visibility = ["//visibility:public"],
-    deps = [],
+    deps = [":binary_tree_node"],
 )
 
 cc_test(
@@ -112,12 +112,6 @@ cc_test(
 )
 
 cc_library(
-    name = "tree_node",
-    hdrs = ["tree_node.h"],
-    deps = [],
-)
-
-cc_library(
     name = "good_nodes",
     srcs = ["good_nodes.cc"],
     hdrs = ["good_nodes.h"],
@@ -137,7 +131,7 @@ cc_library(
     name = "path_sum",
     srcs = ["path_sum.cc"],
     hdrs = ["path_sum.h"],
-    deps = [":tree_node"],
+    deps = [":binary_tree_node"],
 )
 
 cc_test(
@@ -153,7 +147,7 @@ cc_library(
     name = "max_level_sum",
     srcs = ["max_level_sum.cc"],
     hdrs = ["max_level_sum.h"],
-    deps = [":tree_node"],
+    deps = [":binary_tree_node"],
 )
 
 cc_test(

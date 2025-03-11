@@ -31,10 +31,11 @@
 #include <vector>
 #include "binary_trees/binary_tree_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
+// This requires a BinaryTreeNode which owns data
 std::unique_ptr<BinaryTreeNode> Reconstruct(
     const std::vector<int32_t>& preorder, const std::vector<int32_t>& inorder);
 
-}  // namespace algo
+}  // namespace algo_alternative
 #endif  // ALGO_CC_BINARY_TREES_RECONSTRUCT_H_

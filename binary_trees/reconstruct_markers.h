@@ -14,11 +14,11 @@
 #include "absl/types/optional.h"
 #include "binary_trees/binary_tree_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
 std::unique_ptr<BinaryTreeNode> Reconstruct(
     std::vector<absl::optional<int32_t>> preoder);
 
-}  // namespace algo
+}  // namespace algo_alternative
 
 #endif  // ALGO_CC_BINARY_TREES_RECONSTRUCT_MARKERS_H_

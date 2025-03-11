@@ -19,7 +19,7 @@
 // PRE: 1, 2, 4, 8, 5, 3, 6, 7
 // I:   4, 8, 2, 5, 1, 6, 3, 7
 
-namespace algo {
+namespace algo_alternative {
 namespace {
 
 TEST(ReconstructBasics, Works) {
@@ -29,4 +29,4 @@ TEST(ReconstructBasics, Works) {
 }
 
 }  // namespace
-}  // namespace algo
+}  // namespace algo_alternative
