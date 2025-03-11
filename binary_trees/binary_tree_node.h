@@ -13,6 +13,25 @@
 
 namespace algo {
 
+// Requires a caller to own the actual nodes and outlive this struct.
+// Raw points are fine in a sample, but require ownership in test code and
+// each node must have std::unique_ptr and not temporary,
+// otherwise they need std::move.
+struct BinaryTreeNode {
+  int32_t val;
+  BinaryTreeNode* left;
+  BinaryTreeNode* right;
+
+  BinaryTreeNode(int32_t val) : val(val), left(nullptr), right(nullptr) {};
+  BinaryTreeNode(int32_t val, BinaryTreeNode* left, BinaryTreeNode* right)
+      : val(val), left(left), right(right) {};
+};
+
+}  // namespace algo
+
+namespace algo_alternative {
+
+// This is overblown for a simple illustration purpose.
 struct BinaryTreeNode {
   int32_t data;
 
@@ -40,6 +59,6 @@ struct BinaryTreeNode {
   }
 };
 
-}  // namespace algo
+}  // namespace algo_alternative
 
 #endif  // ALGO_CC_BINARY_TREES_BINARY_TREE_NODE_H_

@@ -121,7 +121,7 @@ cc_library(
     name = "good_nodes",
     srcs = ["good_nodes.cc"],
     hdrs = ["good_nodes.h"],
-    deps = [":tree_node"],
+    deps = [":binary_tree_node"],
 )
 
 cc_test(

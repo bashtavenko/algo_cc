@@ -6,12 +6,12 @@
 #ifndef ALGO_CC_BINARY_TREES_GOOD_NODES_H_
 #define ALGO_CC_BINARY_TREES_GOOD_NODES_H_
 
-#include "binary_trees/tree_node.h"
+#include "binary_trees/binary_tree_node.h"
 
-namespace leet_code {
+namespace algo {
 
-int GoogNodes(TreeNode* root);
+int GoogNodes(BinaryTreeNode* root);
 
-}  // namespace leet_code
+}  // namespace algo
 
 #endif  // ALGO_CC_BINARY_TREES_GOOD_NODES_H_

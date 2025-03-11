@@ -17,7 +17,7 @@
 
 namespace algo {
 
-bool IsBalanced(const std::unique_ptr<BinaryTreeNode>& tree);
+bool IsBalanced(const BinaryTreeNode* tree);
 
 }  // namespace algo
 

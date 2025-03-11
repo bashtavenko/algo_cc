@@ -11,9 +11,9 @@
 // Post-order: 8, 20, 10 (leaves then ROOT)
 // Reversed post-order: 20, 8, 10 (leaves right, left then ROOT)
 
-void TraversePreorder(const std::unique_ptr<algo::BinaryTreeNode>& root) {
+void TraversePreorder(const algo::BinaryTreeNode* root) {
   if (!root) return;
-  LOG(INFO) << root->data;
+  LOG(INFO) << root->val;
   TraversePreorder(root->left);
   TraversePreorder(root->right);
 }
@@ -21,13 +21,15 @@ void TraversePreorder(const std::unique_ptr<algo::BinaryTreeNode>& root) {
 void Traverse() {
   using algo::BinaryTreeNode;
 
-  auto node_i = BinaryTreeNode::Create(6, BinaryTreeNode::Create(2),
-                                       BinaryTreeNode::Create(271));
+  auto node_2 = std::make_unique<BinaryTreeNode>(2);
+  auto node_271 = std::make_unique<BinaryTreeNode>(271);
+  auto node_i =
+      std::make_unique<BinaryTreeNode>(6, node_2.get(), node_271.get());
 
-  auto node_b = BinaryTreeNode::Create(6);
-  auto root = BinaryTreeNode::Create(314, std::move(node_b), std::move(node_i));
+  auto node_b = std::make_unique<BinaryTreeNode>(6);
+  auto root = std::make_unique<BinaryTreeNode>(314, node_b.get(), node_i.get());
   LOG(INFO) << "Preorder";
-  TraversePreorder(root);
+  TraversePreorder(root.get());
 }
 
 int main(int argc, char** argv) {
