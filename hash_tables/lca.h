@@ -8,9 +8,8 @@
 
 namespace algo {
 
-absl::optional<BinaryTreeNode*> ComputeLcaHash(
-    const std::shared_ptr<BinaryTreeNode>& node_0,
-    const std::shared_ptr<BinaryTreeNode>& node_1);
+absl::optional<BinaryTreeNode*> ComputeLcaHash(BinaryTreeNode* node_0,
+                                               BinaryTreeNode* node_1);
 
 }  // namespace algo
 

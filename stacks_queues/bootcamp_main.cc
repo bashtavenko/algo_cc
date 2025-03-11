@@ -4,11 +4,11 @@
 #include "glog/logging.h"
 #include "linked_lists/list_node.h"
 
-void PrintLinkedListInReverse(const std::shared_ptr<algo::ListNode>& head) {
+void PrintLinkedListInReverse(const algo::ListNode* head) {
   std::stack<int32_t> nodes;
   auto node = head;
   while (node) {
-    nodes.push(node->data);
+    nodes.push(node->val);
     node = node->next;
   }
 
@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
   FLAGS_logtostderr = 1;
 
-  auto l3 = ListNode::Create(3);
-  auto l2 = ListNode::Create(2, l3);
-  auto head = ListNode::Create(1, l2);
-  PrintLinkedListInReverse(head);
+  auto l3 = std::make_unique<ListNode>(3);
+  auto l2 = std::make_unique<ListNode>(2, l3.get());
+  auto head = std::make_unique<ListNode>(1, l2.get());
+  PrintLinkedListInReverse(head.get());
 }

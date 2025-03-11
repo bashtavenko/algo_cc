@@ -5,9 +5,8 @@
 
 namespace algo {
 
-absl::optional<BinaryTreeNode*> ComputeLcaHash(
-    const std::shared_ptr<BinaryTreeNode>& node_0,
-    const std::shared_ptr<BinaryTreeNode>& node_1) {
+absl::optional<BinaryTreeNode*> ComputeLcaHash(BinaryTreeNode* node_0,
+                                               BinaryTreeNode* node_1) {
   auto iter_0 = node_0;
   auto iter_1 = node_1;
 
@@ -21,17 +20,17 @@ absl::optional<BinaryTreeNode*> ComputeLcaHash(
       // std::unordered_set<>::emplace returns a pair of
       // iterator to the inserted element and bool == true
       // IFF the insertion took place
-      if (nodes_on_path_to_root.emplace(iter_0.get()).second == false) {
+      if (nodes_on_path_to_root.emplace(iter_0).second == false) {
         // Found in set
-        return absl::make_optional<BinaryTreeNode*>(iter_0.get());
+        return absl::make_optional<BinaryTreeNode*>(iter_0);
       }
-      iter_0 = iter_0->parent.lock();  // Because of std::weak_ptr
+      iter_0 = iter_0->parent;
     }
     if (iter_1) {
-      if (nodes_on_path_to_root.emplace(iter_1.get()).second == false) {
-        return absl::make_optional<BinaryTreeNode*>(iter_1.get());
+      if (nodes_on_path_to_root.emplace(iter_1).second == false) {
+        return absl::make_optional<BinaryTreeNode*>(iter_1);
       }
-      iter_1 = iter_1->parent.lock();  // Because of std::weak_ptr
+      iter_1 = iter_1->parent;
     }
   }
   return {};

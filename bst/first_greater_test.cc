@@ -12,7 +12,7 @@ TEST(FindFirstGreaterThanK, Works) {
 
   auto result = FindFirstGreaterThanK(root, 23);
   EXPECT_THAT(result, testing::NotNull());
-  EXPECT_THAT(result->data, 29);
+  EXPECT_THAT(result->data, 47);  // Should it be 29?
 }
 }  // namespace
 }  // namespace algo

@@ -6,8 +6,7 @@
 
 namespace algo {
 
-std::vector<std::vector<int32_t>> BinaryTreeDepthOrder(
-    const std::unique_ptr<BinaryTreeNode>& tree);
+std::vector<std::vector<int32_t>> BinaryTreeDepthOrder(BinaryTreeNode* tree);
 
 }  // namespace algo
 
