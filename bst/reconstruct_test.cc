@@ -5,7 +5,7 @@
 #include <vector>
 #include "bst/bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 namespace {
 
 TEST(Reconstruct, Works) {
@@ -18,4 +18,4 @@ TEST(Reconstruct, Works) {
 }
 
 }  // namespace
-}  // namespace algo
+}  // namespace algo_alternative

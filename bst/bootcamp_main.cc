@@ -1,39 +1,30 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
+#include <cstdlib>
 #include <stack>
 #include "bst/bst_node.h"
 
 //           20
 //      10        30
 //    8    12   25    40
-std::unique_ptr<algo::BSTNode> CreateTree() {
-  using algo::BSTNode;
-  auto node_10 = BSTNode::Create(10, BSTNode::Create(8), BSTNode::Create(12));
-  auto node_30 = BSTNode::Create(30, BSTNode::Create(25), BSTNode::Create(40));
-  return BSTNode::Create(20, std::move(node_10), std::move(node_30));
-}
-
-algo::BSTNode* SearchBST(const std::unique_ptr<algo::BSTNode>& tree,
-                         int32_t key) {
+algo::BSTNode* SearchBST(algo::BSTNode* tree, int32_t key) {
   if (!tree) return nullptr;
 
-  return tree->data == key  ? tree.get()
+  return tree->data == key  ? tree
          : key < tree->data ? SearchBST(tree->left, key)
                             : SearchBST(tree->right, key);
 }
 
-void RunBST() { LOG(INFO) << SearchBST(CreateTree(), 10)->data; }
-
 int32_t GetMinIteratively(algo::BSTNode* node) {
   while (node->left) {
-    node = node->left.get();
+    node = node->left;
   }
   return node->data;
 }
 
 int32_t GetMin(algo::BSTNode* node) {
   if (!node->left) return node->data;
-  return GetMin(node->left.get());
+  return GetMin(node->left);
 }
 
 void IterativeInOrder(algo::BSTNode* node) {
@@ -41,13 +32,13 @@ void IterativeInOrder(algo::BSTNode* node) {
   while (node || !node_stack.empty()) {
     if (node) {
       node_stack.push(node);
-      node = node->left.get();
+      node = node->left;
     } else {
       // At the bottom, going up
       node = node_stack.top();
       node_stack.pop();
       LOG(INFO) << node->data;
-      node = node->right.get();
+      node = node->right;
     }
   }
 }
@@ -57,12 +48,18 @@ int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
   FLAGS_logtostderr = 1;
 
-  auto root = CreateTree();
-  LOG(INFO) << "GetMinIteratively: " << GetMinIteratively(root.get());
-  LOG(INFO) << "GetMin: " << GetMin(root.get());
-  IterativeInOrder(root.get());
+  using algo::BSTNode;
+  auto node_8 = std::make_unique<BSTNode>(8);
+  auto node_12 = std::make_unique<BSTNode>(12);
+  auto node_10 = std::make_unique<BSTNode>(10, node_8.get(), node_12.get());
+  auto node_25 = std::make_unique<BSTNode>(25);
+  auto node_40 = std::make_unique<BSTNode>(40);
+  auto node_30 = std::make_unique<BSTNode>(30, node_25.get(), node_40.get());
+  auto bst = std::make_unique<BSTNode>(20, node_10.get(), node_30.get());
 
-  //  RunBST();
+  LOG(INFO) << "GetMinIteratively: " << GetMinIteratively(bst.get());
+  LOG(INFO) << "GetMin: " << GetMin(bst.get());
+  IterativeInOrder(bst.get());
 
   return EXIT_SUCCESS;
 }

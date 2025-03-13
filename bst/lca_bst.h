@@ -20,7 +20,7 @@
 
 namespace algo {
 
-BSTNode* FindLCA(const std::unique_ptr<BSTNode>& root, int32_t n1, int32_t n2);
+BSTNode* FindLCA(BSTNode* node, int32_t n1, int32_t n2);
 
 };
 

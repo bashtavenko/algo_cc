@@ -4,20 +4,18 @@
 
 namespace algo {
 
-BSTNode* FindFirstGreaterThanK(const std::unique_ptr<BSTNode>& tree,
-                               int32_t k) {
-  BSTNode* node = tree.get();
+BSTNode* FindFirstGreaterThanK(BSTNode* node, int32_t k) {
   BSTNode* result = nullptr;
 
   while (node) {
     if (node->data > k) {
       result = node;
-      node = node->left.get();
+      node = node->left;
     } else {
       // node->data <= k
       // At this point we have the previous in result
       // Ignore or break;
-      node = node->right.get();
+      node = node->right;
     }
   }
 

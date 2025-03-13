@@ -1,6 +1,7 @@
 #include "binary_trees/binary_tree_node.h"
 #include <functional>
 #include <queue>
+#include <stack>
 #include <vector>
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
@@ -21,15 +22,12 @@ TEST(BinaryTreeNode, Works) {
   auto tree = std::make_unique<BinaryTreeNode>(5, node_b.get(), node_e.get());
   std::vector<int32_t> result;
 
-  std::queue<BinaryTreeNode*> q;
-
   // Cannot have const because of the queue
   std::function<void(algo::BinaryTreeNode*)> in_order =
       [&](algo::BinaryTreeNode* node) {
         if (!node) return;
         in_order(node->left);
         result.emplace_back(node->val);
-        q.push(node);
         in_order(node->right);
       };
 
@@ -49,6 +47,28 @@ TEST(BinaryTreeNode, Works) {
         result.emplace_back(node->val);
       };
 
+  // Standard iterative in-order traversal
+  //                a(5)
+  //          b(3)           e(4)
+  //     c(1)      d(2)
+  auto in_order_iterative = [&](algo::BinaryTreeNode* tree) {
+    std::stack<algo::BinaryTreeNode*> stack;
+    algo::BinaryTreeNode* current = tree;
+    while (current || !stack.empty()) {
+      // Go as left as possible.
+      while (current) {
+        stack.push(current);
+        current = current->left;
+      }
+      // Process the node at the top of the stack.
+      current = stack.top();
+      stack.pop();
+      result.emplace_back(current->val);  // "process" the current node.
+      // Now, traverse the right subtree.
+      current = current->right;
+    }
+  };
+
   in_order(tree.get());
   EXPECT_THAT(result, ElementsAreArray(std::vector<int32_t>{1, 3, 2, 5, 4}));
 
@@ -61,6 +81,11 @@ TEST(BinaryTreeNode, Works) {
 
   post_order(tree.get());
   EXPECT_THAT(result, ElementsAreArray(std::vector<int32_t>{1, 2, 3, 4, 5}));
+
+  result.clear();
+
+  in_order_iterative(tree.get());
+  EXPECT_THAT(result, ElementsAreArray(std::vector<int32_t>{1, 3, 2, 5, 4}));
 }
 
 }  // namespace

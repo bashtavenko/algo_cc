@@ -13,8 +13,7 @@
 
 namespace algo {
 
-std::vector<int32_t> FindKLargestBst(const std::unique_ptr<BSTNode>& tree,
-                                     size_t k);
+std::vector<int32_t> FindKLargestBst(const BSTNode* tree, size_t k);
 
 }  // namespace algo
 

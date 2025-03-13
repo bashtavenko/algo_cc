@@ -16,7 +16,7 @@
 
 namespace algo {
 
-BSTNode* FindFirstGreaterThanK(const std::unique_ptr<BSTNode>& tree, int32_t k);
+BSTNode* FindFirstGreaterThanK(BSTNode* tree, int32_t k);
 
 }  // namespace algo
 

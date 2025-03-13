@@ -4,7 +4,7 @@
 #include <vector>
 #include "bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 namespace {
 
 TEST(BuildMinHeight, Works) {
@@ -17,4 +17,4 @@ TEST(BuildMinHeight, Works) {
 }
 
 }  // namespace
-}  // namespace algo
+}  // namespace algo_alternative

@@ -17,23 +17,22 @@ namespace algo {
 //     10              25
 // 5        12      13     30
 
-bool IsBinaryTreeBST(const std::unique_ptr<BSTNode>& tree) {
-  std::function<bool(const std::unique_ptr<BSTNode>&, int32_t, int32_t)>
-      are_keys_in_range =
-          [&](const std::unique_ptr<BSTNode>& tree, int32_t lo, int32_t hi) {
-            if (!tree) return true;
-            if (tree->data < lo || tree->data > hi) return false;
-            return are_keys_in_range(tree->left, lo, tree->data) &&
-                   are_keys_in_range(tree->right, tree->data, hi);
-          };
+bool IsBinaryTreeBST(const BSTNode* tree) {
+  std::function<bool(const BSTNode*, int32_t, int32_t)> are_keys_in_range =
+      [&](const BSTNode* tree, int32_t lo, int32_t hi) {
+        if (!tree) return true;
+        if (tree->data < lo || tree->data > hi) return false;
+        return are_keys_in_range(tree->left, lo, tree->data) &&
+               are_keys_in_range(tree->right, tree->data, hi);
+      };
 
   return are_keys_in_range(tree, std::numeric_limits<int32_t>::min(),
                            std::numeric_limits<int32_t>::max());
 }
 
-bool IsBinaryTreeBFS(const std::unique_ptr<BSTNode>& tree) {
+bool IsBinaryTreeBFS(const BSTNode* tree) {
   struct QueueEntry {
-    const std::unique_ptr<BSTNode>& node;
+    const BSTNode* node;
     int32_t lo;
     int32_t hi;
   };
@@ -44,7 +43,7 @@ bool IsBinaryTreeBFS(const std::unique_ptr<BSTNode>& tree) {
 
   while (!q.empty()) {
     const QueueEntry& current = q.front();
-    if (current.node.get()) {
+    if (current.node) {
       if (current.node->data < q.front().lo ||
           current.node->data > q.front().hi) {
         return false;

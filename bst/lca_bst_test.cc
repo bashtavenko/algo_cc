@@ -7,20 +7,18 @@
 namespace algo {
 namespace {
 
-static inline std::unique_ptr<BSTNode> CreateTree() {
-  return BSTNode::Create(
-      10, BSTNode::Create(5, BSTNode::Create(1), BSTNode::Create(7)),
-      BSTNode::Create(12, nullptr, BSTNode::Create(17)));
-}
-
 TEST(FindLCA, Works) {
-  // This must be in variable because the function returns pointer.
-  std::unique_ptr<BSTNode> root = CreateTree();
-  auto result = FindLCA(root, 1, 17);
+  auto node_17 = std::make_unique<BSTNode>(17);
+  auto node_12 = std::make_unique<BSTNode>(12, nullptr, node_17.get());
+  auto node_7 = std::make_unique<BSTNode>(7);
+  auto node_1 = std::make_unique<BSTNode>(1);
+  auto node_5 = std::make_unique<BSTNode>(5, node_1.get(), node_7.get());
+  auto root = std::make_unique<BSTNode>(10, node_5.get(), node_12.get());
+  auto result = FindLCA(root.get(), 1, 17);
   EXPECT_THAT(result, testing::NotNull());
   EXPECT_THAT(result->data, 10);
 
-  result = FindLCA(root, 1, 7);
+  result = FindLCA(root.get(), 1, 7);
   EXPECT_THAT(result, testing::NotNull());
   EXPECT_THAT(result->data, 5);
 }

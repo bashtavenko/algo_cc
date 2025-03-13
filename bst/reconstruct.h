@@ -27,10 +27,10 @@
 #include <vector>
 #include "bst/bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
 std::unique_ptr<BSTNode> Reconstruct(const std::vector<int32_t> pre_order);
 
-}  // namespace algo
+}  // namespace algo_alternative
 
 #endif  // ALGO_CC_BST_RECONSTRUCT_H_

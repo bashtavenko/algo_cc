@@ -6,10 +6,10 @@
 #include <vector>
 #include "bst/bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
 std::unique_ptr<BSTNode> BuildMinHeight(const std::vector<int32_t>& data);
 
-}  // namespace algo
+}  // namespace algo_alternative
 
 #endif  // ALGO_CC_BST_MIN_HEIGHT_FROM_SORTED_H_

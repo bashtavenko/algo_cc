@@ -2,7 +2,7 @@
 #include <vector>
 #include "bst/bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
 std::unique_ptr<BSTNode> BuildHelper(const std::vector<int32_t>& data,
                                      size_t lo, size_t hi) {
@@ -16,4 +16,4 @@ std::unique_ptr<BSTNode> BuildMinHeight(const std::vector<int32_t>& data) {
   return BuildHelper(data, 0, data.size());
 }
 
-}  // namespace algo
+}  // namespace algo_alternative

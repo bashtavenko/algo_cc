@@ -18,8 +18,8 @@
 
 namespace algo {
 
-bool IsBinaryTreeBST(const std::unique_ptr<BSTNode>& tree);
-bool IsBinaryTreeBFS(const std::unique_ptr<BSTNode>& tree);
+bool IsBinaryTreeBST(const BSTNode* tree);
+bool IsBinaryTreeBFS(const BSTNode* tree);
 
 }  // namespace algo
 

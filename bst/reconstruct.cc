@@ -5,7 +5,7 @@
 #include <vector>
 #include "bst/bst_node.h"
 
-namespace algo {
+namespace algo_alternative {
 
 std::unique_ptr<BSTNode> RebuildHelper(const std::vector<int32_t>& pre_order,
                                        size_t lo, size_t hi) {
@@ -28,4 +28,4 @@ std::unique_ptr<BSTNode> Reconstruct(const std::vector<int32_t> pre_order) {
   return RebuildHelper(pre_order, 0, pre_order.size());
 }
 
-}  // namespace algo
+}  // namespace algo_alternative

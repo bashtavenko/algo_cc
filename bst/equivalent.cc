@@ -14,9 +14,9 @@ bool IsEquivalentInOrderDump(BSTNode* first, BSTNode* second) {
   std::function<void(const BSTNode*, std::vector<int32_t>*)> dfs =
       [&](const BSTNode* node, std::vector<int32_t>* in_order) {
         if (!node) return;
-        dfs(node->left.get(), in_order);
+        dfs(node->left, in_order);
         in_order->push_back(node->data);
-        dfs(node->right.get(), in_order);
+        dfs(node->right, in_order);
       };
 
   dfs(first, &in_order_first);
@@ -38,11 +38,11 @@ bool IsEquivalent(BSTNode* first, BSTNode* second) {
     // Traverse leftmost nodes of both trees
     while (first) {
       s1.push(first);
-      first = first->left.get();
+      first = first->left;
     }
     while (second) {
       s2.push(second);
-      second = second->left.get();
+      second = second->left;
     }
 
     // If one stack is empty and the other is not, they are not equivalent
@@ -59,8 +59,8 @@ bool IsEquivalent(BSTNode* first, BSTNode* second) {
     if (first->data != second->data) return false;
 
     // Move to the right subtree
-    first = first->right.get();
-    second = second->right.get();
+    first = first->right;
+    second = second->right;
   }
 
   return true;

@@ -5,11 +5,11 @@
 
 namespace algo {
 
-std::vector<int32_t> FindKLargestBst(const std::unique_ptr<BSTNode>& tree,
+std::vector<int32_t> FindKLargestBst(const BSTNode* tree,
                                      size_t k) {
   std::vector<int32_t> result;
-  std::function<void(const std::unique_ptr<BSTNode>&)> reverse_in_order =
-      [&](const std::unique_ptr<BSTNode>& node) {
+  std::function<void(const BSTNode*)> reverse_in_order =
+      [&](const BSTNode* node) {
         if (node) {
           reverse_in_order(node->right);
           if (result.size() < k) {
