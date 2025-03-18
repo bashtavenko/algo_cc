@@ -1,0 +1,15 @@
+cc_library(
+    name = "trie",
+    srcs = ["trie.cc"],
+    hdrs = ["trie.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "trie_test",
+    srcs = ["trie_test.cc"],
+    deps = [
+        ":trie",
+        "@googletest//:gtest_main",
+    ],
+)

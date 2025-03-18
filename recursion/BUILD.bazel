@@ -70,3 +70,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "combination_sum",
+    srcs = ["combination_sum.cc"],
+    hdrs = ["combination_sum.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "combination_sum_test",
+    srcs = ["combination_sum_test.cc"],
+    deps = [
+        ":combination_sum",
+        "@googletest//:gtest_main",
+    ],
+)

@@ -158,3 +158,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "lca",
+    srcs = ["lca.cc"],
+    hdrs = ["lca.h"],
+    deps = [":binary_tree_node"],
+)
+
+cc_test(
+    name = "lca_test",
+    srcs = ["lca_test.cc"],
+    deps = [
+        ":lca",
+        "@googletest//:gtest_main",
+    ],
+)
