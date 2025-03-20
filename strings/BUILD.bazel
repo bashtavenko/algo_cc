@@ -135,3 +135,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "reformat_license_key",
+    srcs = ["reformat_license_key.cc"],
+    hdrs = ["reformat_license_key.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "reformat_license_key_test",
+    srcs = ["reformat_license_key_test.cc"],
+    deps = [
+        ":reformat_license_key",
+        "@googletest//:gtest_main",
+    ],
+)
