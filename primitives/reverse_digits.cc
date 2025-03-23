@@ -1,11 +1,9 @@
 #include "reverse_digits.h"
-
 #include <cstdlib>
 
 namespace algo {
 
-int64_t Reverse (int32_t x) {
-
+int64_t Reverse(int32_t x) {
   int64_t result = 0;
   int64_t x_remaining = std::abs(x);
   while (x_remaining) {
@@ -13,7 +11,7 @@ int64_t Reverse (int32_t x) {
     x_remaining /= 10;
   }
 
-  return x < 0 ? - result :result;
+  return x < 0 ? -result : result;
 }
 
-} // namespace algo
+}  // namespace algo

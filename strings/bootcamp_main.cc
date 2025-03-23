@@ -6,6 +6,13 @@
 // int hour_12 = std::stoi("7");
 // std::string str = std::to_string(7);
 // std::isalnum()
+//
+// String find
+// if (token.find('.') != std::string::npos) {...}
+//
+// Chop \t
+// const int32_t level = token.find_first_not_of('\t');
+// token = token.substr(level);  // Remove tabs
 
 bool IsPalindrom(absl::string_view s) {
   size_t lo = 0;

@@ -296,3 +296,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "min_max_pairs",
+    srcs = ["max_min_pairs.cc"],
+    hdrs = ["max_min_pairs.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "min_max_pairs_test",
+    srcs = ["max_min_pairs_test.cc"],
+    deps = [
+        ":min_max_pairs",
+        "@googletest//:gtest_main",
+    ],
+)

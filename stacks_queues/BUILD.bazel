@@ -171,3 +171,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "longest_path",
+    srcs = ["longest_path.cc"],
+    hdrs = ["longest_path.h"],
+    deps = ["@absl//absl/strings"],
+)
+
+cc_test(
+    name = "longest_path_test",
+    srcs = ["longest_path_test.cc"],
+    deps = [
+        ":longest_path",
+        "@googletest//:gtest_main",
+    ],
+)
