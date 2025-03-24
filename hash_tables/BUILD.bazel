@@ -136,3 +136,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "occupied_desks",
+    srcs = ["occupied_desks.cc"],
+    hdrs = ["occupied_desks.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "occupied_desks_test",
+    srcs = ["occupied_desks_test.cc"],
+    deps = [
+        ":occupied_desks",
+        "@googletest//:gtest_main",
+    ],
+)
