@@ -151,3 +151,9 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "is_subsequence_test",
+    srcs = ["is_subsequence.cc"],
+    deps = ["@googletest//:gtest_main"],
+)

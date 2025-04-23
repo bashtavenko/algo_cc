@@ -1,0 +1,5 @@
+cc_test(
+    name = "basic_test",
+    srcs = ["basic_test.cc"],
+    deps = ["@googletest//:gtest_main"],
+)

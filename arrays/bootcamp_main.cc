@@ -17,6 +17,15 @@ void EvenOdd(std::vector<int32_t>& data) {
   }
 }
 
+std::vector<int32_t> PrefixSum(const std::vector<int32_t>& input) {
+  std::vector<int> output(input.size());
+  output[0] = input[0];
+  for (int i = 1; i < input.size(); ++i) {
+    output[i] = output[i - 1] + input[i];
+  }
+  return output;
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, true);
@@ -90,6 +99,8 @@ int main(int argc, char** argv) {
   // std::erase + std::remove()
   // [9, 8, 7, 6...] 8 is gone
   v2.erase(std::remove(v2.begin(), v2.end(), 8), v2.end());
+
+  PrefixSum(std::vector<int32_t>{1, 3, 5});
 
   return EXIT_SUCCESS;
 }

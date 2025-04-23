@@ -60,3 +60,35 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "quantize",
+    srcs = ["quantize.cc"],
+    hdrs = ["quantize.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "quantize_test",
+    srcs = ["quantize_test.cc"],
+    deps = [
+        ":quantize",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "saturating_add",
+    srcs = ["saturating_add.cc"],
+    hdrs = ["saturating_add.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "saturating_add_test",
+    srcs = ["saturating_add_test.cc"],
+    deps = [
+        ":saturating_add",
+        "@googletest//:gtest_main",
+    ],
+)

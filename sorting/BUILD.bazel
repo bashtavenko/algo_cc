@@ -103,3 +103,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "line_sweeps",
+    srcs = ["line_sweeps.cc"],
+    hdrs = ["line_sweeps.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "line_sweeps_test",
+    srcs = ["line_sweeps_test.cc"],
+    deps = [
+        ":line_sweeps",
+        "@googletest//:gtest_main",
+    ],
+)

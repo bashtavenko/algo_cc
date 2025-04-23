@@ -1,16 +1,23 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
+#include <bitset>
 #include <random>
 #include "absl/strings/str_format.h"
 
 int16_t CountBits(uint32_t x) {
   int16_t num_bits = 0;
   while (x) {
+    LOG(INFO) << "x: " << std::bitset<32>(x).to_string();
     num_bits += x & 1;
     x >>= 1;
   }
   return num_bits;
 }
+
+// Round to nearest multiple of 8
+// 13 → (13+7)=20 → 20&(~7)=16
+// 23 → (23 + 7) = 30 → 30 & (~7) = 24
+int32_t RoundUp8(int32_t x) { return (x + 7) & ~7; }
 
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
@@ -45,6 +52,9 @@ int main(int argc, char** argv) {
   LOG(INFO) << absl::StreamFormat("x = %v y = %v", x, y);
   std::swap(x, y);
   LOG(INFO) << absl::StreamFormat("x = %v y = %v", x, y);
+
+  LOG(INFO) << absl::StreamFormat("RoundUp8: %v => %v", 13, RoundUp8(13));
+  LOG(INFO) << absl::StreamFormat("RoundUp8: %v => %v", 23, RoundUp8(23));
 
   // XOR of two bits is equivalent of mod 2
 

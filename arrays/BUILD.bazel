@@ -312,3 +312,25 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "sliding_window_max",
+    srcs = ["sliding_window_max.cc"],
+    hdrs = ["sliding_window_max.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "sliding_window_max_test",
+    srcs = ["sliding_window_max_test.cc"],
+    deps = [
+        ":sliding_window_max",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "max_avg_subarray",
+    srcs = ["max_avg_subarray.cc"],
+    deps = ["@googletest//:gtest_main"],
+)

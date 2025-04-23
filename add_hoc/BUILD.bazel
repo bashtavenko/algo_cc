@@ -1,0 +1,15 @@
+cc_library(
+    name = "add_hoc",
+    srcs = ["add_hoc.cc"],
+    hdrs = ["add_hoc.h"],
+    deps = [],
+)
+
+cc_binary(
+    name = "add_hoc_main",
+    srcs = ["add_hoc_main.cc"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
+)
