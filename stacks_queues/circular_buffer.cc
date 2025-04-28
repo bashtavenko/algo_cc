@@ -66,4 +66,45 @@ size_t CircularBufferBasic::Size() const {
 
 bool CircularBufferBasic::Full() const { return full_; }
 
+CircularBufferThreadSafe::CircularBufferThreadSafe(size_t size)
+    : buffer_(size), head_(0), tail_(0), max_size_(size), full_(false) {}
+
+void CircularBufferThreadSafe::Push(int32_t item) {
+  absl::MutexLock lock(&mu_);
+
+  if (full_) {
+    head_ = (head_ + 1) % max_size_;  // Drop the oldest
+  }
+  buffer_[tail_] = item;
+  tail_ = (tail_ + 1) % max_size_;
+  full_ = head_ == tail_;
+}
+
+absl::optional<int32_t> CircularBufferThreadSafe::Pop() {
+  absl::MutexLock lock(&mu_);
+  if (!full_ && head_ == tail_) return {};  // Empty
+
+  int32_t item = buffer_[head_];
+  full_ = false;
+  head_ = (head_ + 1) % max_size_;
+  return item;
+}
+
+bool CircularBufferThreadSafe::Empty() const {
+  absl::MutexLock lock(&mu_);
+  return (!full_ && (head_ == tail_));
+}
+
+bool CircularBufferThreadSafe::Full() const {
+  absl::MutexLock lock(&mu_);
+  return full_;
+}
+
+size_t CircularBufferThreadSafe::Size() const {
+  absl::MutexLock lock(&mu_);
+  if (full_) return max_size_;
+  if (tail_ >= head_) return tail_ - head_;
+  return max_size_ + tail_ - head_;
+}
+
 }  // namespace algo

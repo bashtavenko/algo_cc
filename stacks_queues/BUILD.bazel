@@ -64,7 +64,10 @@ cc_library(
     name = "circular_buffer",
     srcs = ["circular_buffer.cc"],
     hdrs = ["circular_buffer.h"],
-    deps = ["@absl//absl/types:optional"],
+    deps = [
+        "@absl//absl/synchronization",
+        "@absl//absl/types:optional",
+    ],
 )
 
 cc_test(

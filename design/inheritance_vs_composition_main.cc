@@ -2,6 +2,8 @@
 #include <glog/logging.h>
 #include <numbers>
 #include <variant>
+#include "gflags/gflags.h"
+#include "glog/logging.h"
 
 // Inheritance vs composition
 // Inheritance - polymorphism through virtual functions. Inheritance breaks
@@ -35,7 +37,7 @@ class Shape {
 
 class Circle : public Shape {
  public:
-  Circle(double r) : radius_(r) { name_ = "Circle"; }
+  explicit Circle(double r) : radius_(r) { name_ = "Circle"; }
   double Area() const override { return std::numbers::pi * radius_ * radius_; }
 
  private:
@@ -44,7 +46,7 @@ class Circle : public Shape {
 
 class Square : public Shape {
  public:
-  Square(double s) : side_(s) { name_ = "Square"; }
+  explicit Square(double s) : side_(s) { name_ = "Square"; }
   double Area() const override { return side_ * side_; }
 
  private:
@@ -54,6 +56,7 @@ class Square : public Shape {
 
 namespace composition {
 
+// Interface Inheritance + Implementation Composition
 class IShape {
  public:
   virtual double Area() const = 0;
@@ -64,7 +67,7 @@ class IShape {
 // This class handles common shape properties like name and drawing
 class ShapeAttributes {
  public:
-  ShapeAttributes(const std::string& name) : name_(name) {}
+  explicit ShapeAttributes(const std::string& name) : name_(name) {}
   void Draw() const { LOG(INFO) << "Drawing a " << name_; }
 
  private:
@@ -112,6 +115,8 @@ class ShapeAttributes {
 };
 
 // Circle uses composition, no inheritance.
+// Advantages: simplicity, no virtual functions
+// Disadvantages: closed type system, more complex
 class Circle {
  public:
   Circle(double r) : radius_(r), attributes_("Circle") {}

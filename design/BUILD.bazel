@@ -6,3 +6,21 @@ cc_binary(
         "@glog",
     ],
 )
+
+cc_binary(
+    name = "plugin_factory",
+    srcs = ["plugin_factory.cc"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_binary(
+    name = "pool_allocator",
+    srcs = ["pool_allocator.cc"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
+)

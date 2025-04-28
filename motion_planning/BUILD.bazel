@@ -1,0 +1,23 @@
+cc_library(
+    name = "motion_planning",
+    srcs = ["motion_planning.cc"],
+    hdrs = ["motion_planning.h"],
+    deps = [],
+)
+
+cc_library(
+    name = "will_collide",
+    srcs = ["will_collide.cc"],
+    hdrs = ["motion_planning.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "motion_planning_test",
+    srcs = ["motion_planning_test.cc"],
+    deps = [
+        ":motion_planning",
+        ":will_collide",
+        "@googletest//:gtest_main",
+    ],
+)
