@@ -26,6 +26,7 @@ void Worker(int id, int iterations) {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = true;
 
   constexpr int kNumThreads = 5;
   constexpr int kIterationsPerThread = 10;
@@ -39,7 +40,7 @@ int main(int argc, char** argv) {
   LOG(INFO) << "Work done notification received.";
 
   for (auto& t : threads) {
-    t.join();
+    t.join();  // Blocks the current thread `t` until `Worker` is done
   }
 
   {

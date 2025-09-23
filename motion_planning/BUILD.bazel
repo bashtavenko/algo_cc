@@ -21,3 +21,23 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "state_machine",
+    srcs = ["state_machine.cc"],
+    hdrs = ["state_machine.h"],
+    deps = [
+        "@absl//absl/strings:str_format",
+        "@glog",
+    ],
+)
+
+cc_binary(
+    name = "state_machine_main",
+    srcs = ["state_machine_main.cc"],
+    deps = [
+        ":state_machine",
+        "@gflags",
+        "@glog",
+    ],
+)

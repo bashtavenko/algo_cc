@@ -5,7 +5,7 @@
 #include "absl/strings/str_format.h"
 
 void EvenOdd(std::vector<int32_t>& data) {
-  size_t lo = 0;                 // even
+  int32_t lo = 0;                // even
   int32_t hi = data.size() - 1;  // odd
   while (lo < hi) {
     if (data[lo] % 2 == 0) {
@@ -20,7 +20,7 @@ void EvenOdd(std::vector<int32_t>& data) {
 std::vector<int32_t> PrefixSum(const std::vector<int32_t>& input) {
   std::vector<int> output(input.size());
   output[0] = input[0];
-  for (int i = 1; i < input.size(); ++i) {
+  for (size_t i = 1; i < input.size(); ++i) {
     output[i] = output[i - 1] + input[i];
   }
   return output;
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
   // [3, 4, 5, 6, 7, 8, 9, 1, 2]  => rotated by 2
   std::rotate(v2.begin(), v2.begin() + 2, v2.end());
 
-  std::sort(v2.begin(), v2.end());  // Default is ASC which is std::les
+  std::sort(v2.begin(), v2.end());  // Default is ASC which is std::less<>()
   std::random_device rd;
   std::mt19937 gen{rd()};
   std::ranges::shuffle(v2, gen);
@@ -96,9 +96,9 @@ int main(int argc, char** argv) {
   std::sort(v2.begin(), v2.end(), std::greater<>());  // Now it is DSC
 
   // Removing value in vector
-  // std::erase + std::remove()
+  // .erase + std::remove() or even better - std::erase()
   // [9, 8, 7, 6...] 8 is gone
-  v2.erase(std::remove(v2.begin(), v2.end(), 8), v2.end());
+  std::erase(v2, 8);
 
   PrefixSum(std::vector<int32_t>{1, 3, 5});
 

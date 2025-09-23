@@ -1,10 +1,19 @@
-## cc:thread vs fibers
+# Boilerplate
+
+* std::thread
+* mutable absl::Mutex mu_; // declaration
+* std::vector<int32_t> buffer_ ABSL_GUARDED_BY(mu_); // declaration
+* absl::MutexLock lock(&mu_); // definition RAII
+* absl::Notification
+* absl::CondVar condition_;
+
+# cc:thread vs fibers
 
 ## Threads (std::thread)
 
 * Definition: A thread is a system-level unit of execution that runs in parallel with other threads. std::thread in C++
   represents a thread that is managed by the operating system.
-* Concurrency: Threads allow for true parallelism on multi-core systems, meaning multiple threads can run
+* Concurrency: Threads allow for true parallelism on multicore systems, meaning multiple threads can run
   simultaneously on different CPU cores.
 * Scheduling: Threads are scheduled by the operating system, which handles the switching between threads (context
   switching). This ensures that if one thread is blocked (e.g., waiting for I/O), another can be executed.

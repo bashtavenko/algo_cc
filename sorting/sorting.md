@@ -1,9 +1,5 @@
 ## Stable
 
-Original array: `[3, 1, 4, 1, 5, 9, 2, 6]`
-After stable sort: `[1, 1, 2, 3, 4, 5, 6, 9]`
-In this case, the two 1's maintain their original relative order.
-
 Original list:
 
 ```

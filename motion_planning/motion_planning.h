@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdint>
 #include <ostream>
+#include <queue>
 #include <vector>
 
 namespace algo {
@@ -50,6 +51,33 @@ struct TrajectoryPoint {
 // Convex polygon
 struct Obstacle {
   std::vector<Point2D> vertices;
+};
+
+// RA topics
+struct AssistProposal {
+  std::string id;
+  std::string type;  // "waypoint" or "stop"
+  double x;
+  double y;
+  double speed;
+};
+
+class SafetyFilter {
+ public:
+  bool Validate(const AssistProposal& p);
+};
+
+class RemoteAssistModule {
+ public:
+  void RequestEngagement();
+  void ReceiveProposal(const AssistProposal& p);
+  void ProcessProposals();
+  void EndSession();
+
+ private:
+  bool engaged_ = false;
+  std::queue<AssistProposal> inbox_;
+  SafetyFilter filter_;
 };
 
 bool WillCollide(const Vehicle& vehicle,

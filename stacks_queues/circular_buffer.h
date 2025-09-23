@@ -68,8 +68,8 @@ class CircularBufferThreadSafe {
   mutable absl::Mutex mu_;  // Protects all shared state
 
   std::vector<int32_t> buffer_ ABSL_GUARDED_BY(mu_);
-  size_t head_ ABSL_GUARDED_BY(mu_);
-  size_t tail_ ABSL_GUARDED_BY(mu_);
+  size_t head_ ABSL_GUARDED_BY(mu_);  // the oldest
+  size_t tail_ ABSL_GUARDED_BY(mu_);  // the newest
   size_t max_size_ ABSL_GUARDED_BY(mu_);
   bool full_ ABSL_GUARDED_BY(mu_);
 };

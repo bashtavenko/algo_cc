@@ -47,7 +47,6 @@ void RunListRecursive(const algo::ListNode* head) {
 algo::ListNode* SearchList(algo::ListNode* head, int32_t key) {
   auto node = head;
   while (node && node->val != key) {
-    // Creates a new local shared_ptr
     node = node->next;
   }
   return node;

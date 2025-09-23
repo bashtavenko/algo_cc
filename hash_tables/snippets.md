@@ -20,9 +20,3 @@ for (const auto& c : a) {
 // int old_freq = value_freq[value];
 ```
 
-```c++
-if (auto it = map.find(value); it != map.end() {
-   ... it->second;
-}
-```
-
