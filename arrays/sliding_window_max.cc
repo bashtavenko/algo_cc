@@ -7,10 +7,11 @@ namespace algo {
 // 3, 4, 1, 2, 7, 5
 // O(nk)
 // Fine if n is small (~10^3 or so), but too slow if n is large (~10^5, 10^6).
+// Sliding window and not JUMPING window
 std::vector<int32_t> SlidingWindowMaxOnk(const std::vector<int32_t>& nums,
                                          int k) {
   std::vector<int32_t> result;
-  for (int i = 0; i <= nums.size() - k; ++i) {
+  for (size_t i = 0; i <= nums.size() - k; ++i) {
     auto current_max = std::max_element(nums.begin() + i, nums.begin() + i + k);
     result.push_back(*current_max);
   }
@@ -32,7 +33,7 @@ std::vector<int32_t> SlidingWindowMax(const std::vector<int32_t>& nums, int k) {
   // If a soldier gets to old(outside the k - range),
   //  they exit front quietly
   std::deque<int32_t> dq;
-  for (int i = 0; i < nums.size(); ++i) {
+  for (size_t i = 0; i < nums.size(); ++i) {
     // Pop front elements outside the current window
     while (!dq.empty() && dq.front() <= i - k) dq.pop_front();
     // Elements smaller than the current value never be max

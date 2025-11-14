@@ -4,6 +4,12 @@
 #include <random>
 #include "absl/strings/str_format.h"
 
+// 2, 1, 3, 7, 8, 5 => 0, 5
+// 2, 1, 3, 7, 8, 5 => 1, 5
+// 2, 5, 3, 7, 8, 1 => 1, 4
+// 2, 8, 3, 7, 5, 1 => 1, 3
+// 2, 8, 3, 7, 5, 1 => 2, 3
+// 2, 8, 7, , 5, 1 => 2, 3
 void EvenOdd(std::vector<int32_t>& data) {
   int32_t lo = 0;                // even
   int32_t hi = data.size() - 1;  // odd
@@ -37,9 +43,9 @@ int main(int argc, char** argv) {
 
   //  std::array<int32_t, 3> a = {1, 2, 3};
   std::vector<int32_t> b = {1, 2, 3, 4, 5, 6, 12};
-  LOG(INFO) << "Back: " << b.back();
+  LOG(INFO) << "Back: " << b.back();  // 12
 
-  // Python "slicing". It is a copy, of course.
+  // Python "slicing". It is a copy, of course - [2, 3, 4]
   std::vector<int32_t> slice(b.begin() + 1, b.begin() + 4);
   b[1] = -1;
   LOG(INFO) << absl::StreamFormat("b[1] = %i, slice[0] = %i", b[1], slice[0]);

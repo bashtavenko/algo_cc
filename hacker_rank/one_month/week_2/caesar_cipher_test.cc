@@ -6,5 +6,6 @@ namespace {
 
 TEST(CaesarCipher, Works) {
   EXPECT_THAT(CaesarCipher("middle-Outz", 2), "okffng-Qwvb");
+  EXPECT_THAT(CaesarCipher("wxyz", 3), "zabc");
 }
 }  // namespace

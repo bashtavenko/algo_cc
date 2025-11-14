@@ -25,7 +25,7 @@
 
 namespace algo {
 
-size_t MaxOperations(std::vector<int32_t>& nums, size_t k);
+size_t MaxOperations(std::vector<int32_t>& nums, int32_t k);
 
 }  // namespace algo
 

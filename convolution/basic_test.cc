@@ -23,7 +23,6 @@ std::vector<std::vector<int32_t>> Conv2DRectangularValid(
     const std::vector<std::vector<int32_t>>& kernel) {
   const int image_size = image.size();
   const int kernel_size = kernel.size();
-
   const int output_rows = image_size - kernel_size + 1;
   const int output_cols = image_size - kernel_size + 1;
 
@@ -109,6 +108,14 @@ TEST(Conv2D, RegularWorks) {
           std::vector<std::vector<int32_t>>{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
           std::vector<std::vector<int32_t>>{{1, 1}, {1, 1}}),
       ElementsAreArray(std::vector<std::vector<int32_t>>{{12, 16}, {24, 28}}));
+}
+
+TEST(Conv2D, Regular_4_3_Works) {
+  EXPECT_THAT(
+      Conv2DRectangularValid(
+          std::vector<std::vector<int32_t>>{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}},
+          std::vector<std::vector<int32_t>>{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}),
+      ElementsAreArray(std::vector<std::vector<int32_t>>{{5, 2}, {2, 2}}));
 }
 
 TEST(Conv2D, FullWorks) {

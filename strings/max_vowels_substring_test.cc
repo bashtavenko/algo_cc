@@ -5,7 +5,7 @@
 namespace algo {
 namespace {
 
-TEST(MaxVowels, Example1Works) { EXPECT_THAT(MaxVowels("abciiidef", 2), 2); }
+TEST(MaxVowels, Example1Works) { EXPECT_THAT(MaxVowels ("abciiidef", 2), 2); }
 
 TEST(MaxVowels, Example2Works) { EXPECT_THAT(MaxVowels("aeiou", 2), 2); }
 

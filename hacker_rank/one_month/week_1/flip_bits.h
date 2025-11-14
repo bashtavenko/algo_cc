@@ -6,6 +6,7 @@
 #include <cstdint>
 
 // Ensures masking to return 0 for signing bit
-int FlipBits(int x) { return ~x & 0xFFFFFFFF; }
+// ~ is bitwise NOT
+int32_t FlipBits(int32_t x) { return ~x & 0xFFFFFFFF; }
 
 #endif  // ALGO_CC_HACKER_RANK_ONE_MONTH_WEEK_1_FLIP_BITS_H_

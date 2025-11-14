@@ -13,6 +13,7 @@ struct Star {
   double x;
   double y;
   double z;
+  // Length of vector is sqrt(v * v)
   double Distance() const { return std::sqrt(x * x + y * y + z * z); }
 
   bool operator<(const Star& that) const {

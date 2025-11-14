@@ -14,10 +14,10 @@ namespace algo {
 // total_sum - left_prefix_sum - num[1] = 28 - 11 - 6 == 11
 // The rest of array is equal
 int32_t PivotIndex(const std::vector<int32_t>& nums) {
-  int32_t total_sum = std::accumulate(nums.begin(), nums.end(), 0);
+  const int32_t total_sum = std::accumulate(nums.begin(), nums.end(), 0);
   int32_t left_sum = 0;
 
-  for (int i = 0; i < nums.size(); ++i) {
+  for (size_t i = 0; i < nums.size(); ++i) {
     if (left_sum == total_sum - left_sum - nums[i]) {
       return i;
     }

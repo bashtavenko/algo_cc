@@ -15,7 +15,7 @@
 // 2 1 0
 // 2 1 1
 // Result: [7, 3]
-// This is an extremely and boring problem.
+// This is an extremely boring problem.
 
 #ifndef ALGO_CC_HACKER_RANK_ONE_MONTH_WEEK_2_DYNAMIC_ARRAY_H_
 #define ALGO_CC_HACKER_RANK_ONE_MONTH_WEEK_2_DYNAMIC_ARRAY_H_
