@@ -9,7 +9,6 @@ namespace algo {
 bool IncreasingTriplets(const std::vector<int32_t>& nums) {
   int32_t x = std::numeric_limits<int32_t>::max();
   int32_t y = std::numeric_limits<int32_t>::max();
-  int32_t z = 0;
 
   for (const auto& v : nums) {
     if (v <= x) {

@@ -10,7 +10,7 @@ uint8_t QuantizeFloatTo8bit(float value, float min_val, float max_val) {
   // Scale to 0-1 range
   const float normalized = (value - min_val) / (max_val - min_val);
 
-  // Scale to 0-255 range and round to nearest integer
+  // Scale to 0-255 range and round to the nearest integer
   return static_cast<uint8_t>(std::round(normalized * 255.0f));
 }
 
@@ -18,7 +18,7 @@ float DeQuantize8bitToFloat(uint8_t quantized, float min_val, float max_val) {
   // Convert back to 0-1 range
   const float normalized = quantized / 255.0f;
 
-  // Scale back to original range
+  // Scale back to the original range
   return min_val + normalized * (max_val - min_val);
 }
 
