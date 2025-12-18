@@ -4,7 +4,8 @@ namespace algo {
 int16_t ParityBruteForce(uint32_t x) {
   int16_t result = 0;
   while (x) {
-    // XOR of two bits is equivalent of mod 2. We can compute it in one step.
+    // We wanted something if x % 2 == 1 ...
+    // XOR of two bits is an equivalent of mod 2. We can compute it in one step.
     result ^= (x & 1);
     x >>= 1;
   }

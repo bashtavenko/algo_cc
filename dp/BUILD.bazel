@@ -77,3 +77,19 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "rod_cutting",
+    srcs = ["rod_cutting.cc"],
+    hdrs = ["rod_cutting.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "rod_cutting_test",
+    srcs = ["rod_cutting_test.cc"],
+    deps = [
+        ":rod_cutting",
+        "@googletest//:gtest_main",
+    ],
+)

@@ -42,7 +42,7 @@ int32_t FindMaximumSubarray(const std::vector<int32_t>& data) {
   for (size_t i = 0; i < data.size(); ++i) {
     running_sum += data[i];
     if (running_sum < min_sum) {
-      // We can find lo and hi indexes for sub-array here and in other block.
+      // We can find lo and hi indexes for subarray here and in another block.
       min_sum = running_sum;
     }
 

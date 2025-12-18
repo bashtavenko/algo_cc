@@ -19,9 +19,9 @@ int32_t Run(absl::string_view s) {
 // An anagram is a word or phrase formed by rearranging the letters of a
 // different word or phrase.
 // "silent" = "listen"
-// The point is that to find anagram the ordered characters of a strings
-// produces the same hashmap.
-// By virtue of hash map the sorted character hashed to be the same.
+// The point is that to find anagram, the ordered characters of strings
+// produce the same hashmap.
+// By virtue of a hash map, the sorted character is hashed to be the same.
 void FindAnagrams() {
   const std::vector<std::string> dictionary{"debitcard", "elvis", "silent",
                                             "badcredit", "lives", "freedom",
@@ -43,8 +43,8 @@ void FindAnagrams() {
 struct ContactList {
   std::vector<std::string> names;
 
-  // Better than for-loop for each names to check equality since it is vector
-  // std::unordered_set has range or initializer constructor
+  // Better than for-loop for each name to check equality since it is a vector.
+  // std::unordered_set has a range or initializer constructor
   bool operator==(const ContactList& that) const {
     return absl::flat_hash_set<std::string>(names.begin(), names.end()) ==
            absl::flat_hash_set<std::string>(that.names.begin(),
@@ -124,6 +124,7 @@ void UpdateHashTable() {
 }
 
 void CustomHash() {
+  // Must have a struct with a function-call operator that returns size_t
   struct PairHash {
     size_t operator()(const std::pair<int32_t, int32_t>& p) const {
       return std::hash<int32_t>{}(p.first) ^
@@ -137,7 +138,7 @@ void CustomHash() {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  FLAGS_logtostderr = 1;
+  FLAGS_logtostderr = true;
   LOG(INFO) << absl::StreamFormat("Hash: %i", Run("foo"));
   LOG(INFO) << absl::StreamFormat("Hash: %i", Run("abc"));
   FindAnagrams();

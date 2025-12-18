@@ -29,7 +29,7 @@
 * Definition: Fibers are user-space units of execution, which can be thought of as lightweight threads. They rely on
   cooperative multitasking, meaning the programmer is responsible for yielding control between fibers.
 * Concurrency: Fibers provide concurrent execution but not true parallelism. They allow switching between tasks (
-  fibers) but only one fiber runs at any given time on a single thread.
+  fibers), but only one fiber runs at any given time on a single thread.
 * Scheduling: Fibers are scheduled by the application (user space) rather than the OS. The programmer explicitly yields
   control from one fiber to another, allowing them to switch at known points without OS intervention.
 * Cooperative Multitasking: Fibers only switch execution when explicitly told to do so (e.g., using a yield function).

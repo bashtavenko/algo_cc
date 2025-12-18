@@ -15,7 +15,7 @@ std::vector<std::string> PhoneMnemonic(absl::string_view phone_number) {
   std::vector<std::string> result;
 
   // If we had two keys, there could be a double for-loop. In 7 keys, it would
-  // be a mess of 7 for-loops and which is why this recurses.
+  // be a mess of 7 for-loops and that is why this recurses.
   // * digit for-loop index
   // * partial - temporary (last) mnemonic
   // * result

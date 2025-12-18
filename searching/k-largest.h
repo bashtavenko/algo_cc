@@ -8,7 +8,7 @@
 // Approaches:
 //  1. Brute force sort
 //  2. min-heap
-//  3. Keep partitioning until we have pivot index in right position.
+//  3. Keep partitioning until we have the pivot index in the right position.
 //     (Randomized select)
 //  4. std::nth_element
 #ifndef ALGO_CC_SEARCHING_K_LARGEST_H_

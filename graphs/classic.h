@@ -33,7 +33,7 @@ class Graph {
  private:
   absl::flat_hash_map<T, absl::flat_hash_set<T>> graph_;
   // Returns true if two vertices are reachable.
-  // Requires client to provide a visited set.
+  // Requires a client to provide a visited set.
   // absl::flat_hash_set<T> is problematic if there are duplicate values.
   bool RunDFS(const T& current, const T& target,
               absl::flat_hash_set<T>& visited) const;

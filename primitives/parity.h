@@ -7,7 +7,7 @@ namespace algo {
 
 // 4.1 Compute parity
 //
-// If numbers of ones is odd, return 1, otherwise return 0
+// If the numbers of ones are odd, return 1, otherwise return 0
 // 1011 => 1
 // 10001000 = > 0
 // This is a brute force.

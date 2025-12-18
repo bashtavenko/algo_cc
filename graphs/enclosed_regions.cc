@@ -1,13 +1,12 @@
 #include "graphs/enclosed_regions.h"
-#include <cstdint>
 #include <queue>
 #include <vector>
 
 namespace algo {
 
-// Sets this cell and its neighbour cells to T for W cells.
+// Sets this cell and its neighbor cells to T for W cells.
 void ChangeWtoT(size_t x, size_t y, std::vector<std::vector<char>>& board) {
-  // Start from top left corner
+  // Start from the top left corner
   struct Coordinate {
     size_t x;  // columns
     size_t y;  // rows
@@ -53,7 +52,7 @@ void FillSurroundedRegions(std::vector<std::vector<char>>& board) {
 
   // Step 2 - change 'T' to 'W'. Cells that reach the boundary will be back out.
   // If there were no 'T' then change to 'B'. Meaning that those cells DID NOT
-  // reach boundary.
+  // reach the boundary.
   for (std::vector<char>& row : board) {
     for (char& c : row) {
       c = c != 'T' ? 'B' : 'W';

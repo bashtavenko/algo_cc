@@ -9,7 +9,7 @@ struct ListNode {
   int32_t val;
   ListNode* next;
   ListNode() : val(0), next(nullptr) {}
-  ListNode(int32_t x) : val(x), next(nullptr) {}
+  explicit ListNode(int32_t x) : val(x), next(nullptr) {}
   ListNode(int32_t x, ListNode* next) : val(x), next(next) {}
 };
 

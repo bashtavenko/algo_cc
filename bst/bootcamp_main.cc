@@ -30,23 +30,21 @@ int32_t GetMin(algo::BSTNode* node) {
 void IterativeInOrder(algo::BSTNode* node) {
   std::stack<algo::BSTNode*> node_stack;
   while (node || !node_stack.empty()) {
-    if (node) {
+    while (node) {
       node_stack.push(node);
       node = node->left;
-    } else {
-      // At the bottom, going up
-      node = node_stack.top();
-      node_stack.pop();
-      LOG(INFO) << node->data;
-      node = node->right;
     }
+    node = node_stack.top();
+    node_stack.pop();
+    LOG(INFO) << node->data;
+    node = node->right;
   }
 }
 
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  FLAGS_logtostderr = 1;
+  FLAGS_logtostderr = true;
 
   using algo::BSTNode;
   auto node_8 = std::make_unique<BSTNode>(8);

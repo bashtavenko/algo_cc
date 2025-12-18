@@ -2,24 +2,22 @@
 #include <glog/logging.h>
 #include <numbers>
 #include <variant>
-#include "gflags/gflags.h"
-#include "glog/logging.h"
 
-// Inheritance vs composition
+// Inheritance vs. composition
 // Inheritance - polymorphism through virtual functions. Inheritance breaks
 // encapsulation. It is white-box inheritance. Relationship is "is-a". Run-time.
-// Composition - classes compose a contained shared attributes. Relationship is
+// Composition - classes compose a contained shared attribute. Relationship is
 // "has-a". Compile-time. Comparison
 // 1. Flexibility - composition is flexible. Allows changing behavior at
 // runtime.
-// 2. Code reuse - same. Either base class or a contained object.
-// 3. Coupling. Inheritance creates tight coupling vs composition uses lose
+// 2. Code reuse - same. Either a base class or a contained object.
+// 3. Coupling. Inheritance creates tight coupling vs. composition uses lose
 // coupling.
 // 4. Extensibility. Composition is easier to extend without modifying existing
 // code. Inheritance may require changes to the base class.
-// 5. Complexity. Inheritance can lead to complex hierarchy. In composition
-// hierarchy are flatter.
-//  Overall
+// 5. Complexity. Inheritance can lead to a complex hierarchy. In composition
+// the hierarchy is flatter.
+//  Overall,
 // The "favor composition over inheritance" principle suggests using composition
 // when possible because it often leads to more flexible, maintainable, and
 // scalable designs. However, inheritance is still useful in many scenarios,

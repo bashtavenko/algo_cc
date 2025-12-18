@@ -10,6 +10,7 @@ namespace algo {
 std::vector<int32_t> SlidingWindowMaxOnk(const std::vector<int32_t>& nums,
                                          int k) {
   std::vector<int32_t> result;
+  // This must be INCLUSIVE
   for (size_t i = 0; i <= nums.size() - k; ++i) {
     auto current_max = std::max_element(nums.begin() + i, nums.begin() + i + k);
     result.push_back(*current_max);

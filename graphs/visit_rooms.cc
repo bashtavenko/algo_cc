@@ -6,7 +6,7 @@ namespace algo {
 
 bool CanVisitAllRooms(const std::vector<std::vector<int32_t>>& rooms) {
   const int n = rooms.size();
-  std::vector<bool> visited(n, false);
+  std::vector visited(n, false);
 
   std::function<void(int)> dfs = [&](int room) {
     if (visited[room]) return;

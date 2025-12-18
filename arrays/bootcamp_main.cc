@@ -93,9 +93,10 @@ int main(int argc, char** argv) {
   // [3, 4, 5, 6, 7, 8, 9, 1, 2]  => rotated by 2
   std::rotate(v2.begin(), v2.begin() + 2, v2.end());
 
-  std::sort(v2.begin(), v2.end());  // Default is ASC which is std::less<>()
-  std::random_device rd;
-  std::mt19937 gen{rd()};
+  std::sort(v2.begin(), v2.end());  // Default is ASC that is std::less<>()
+  // Favor composition over inheritance
+  std::random_device rd;    // A standard interface to a platform-specific non-deterministic random number generator
+  std::mt19937 gen{rd()}; // The classic Mersenne Twister. Composes the random_device
   std::ranges::shuffle(v2, gen);
   // If you want descending, then use std::greater<>()
   // std::less_equal<>() is default and should NOT be used in std::sort

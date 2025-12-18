@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
   using algo::ListNode;
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  FLAGS_logtostderr = 1;
+  FLAGS_logtostderr = true;
 
   auto l3 = std::make_unique<ListNode>(3);
   auto l2 = std::make_unique<ListNode>(2, l3.get());

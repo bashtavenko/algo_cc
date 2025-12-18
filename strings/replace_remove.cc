@@ -15,7 +15,7 @@ uint32_t ReplaceAndRemove(uint32_t size, char8_t s[]) {
     if (s[i] == 'a') ++a_count;
   }
 
-  // Backward. Replace 'a' with "dd" starting from back.
+  // Backward. Replace 'a' with "dd" starting from the back.
   int cur_idx = write_idx - 1;
   write_idx = write_idx + a_count - 1;
   uint32_t const final_size = write_idx + 1;

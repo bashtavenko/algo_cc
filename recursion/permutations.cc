@@ -16,7 +16,7 @@ std::vector<std::vector<int32_t>> Permutate(std::vector<int32_t> data) {
     }
 
     for (size_t j = i; j < data.size(); ++j) {
-      std::swap(data[i], data[j]);  // try new one
+      std::swap(data[i], data[j]);  // try a new one
       recurse(i + 1);
       std::swap(data[i], data[j]);  // backtrack
     }

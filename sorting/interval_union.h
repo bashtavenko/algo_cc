@@ -36,7 +36,7 @@ struct Interval {
       return left.value < that.left.value;
     }
 
-    // left endpoints are equal. Closed should be first;
+    // the left endpoints are equal. Closed should be first;
     return left.is_closed && !that.left.is_closed;
   }
 

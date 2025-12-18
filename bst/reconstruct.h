@@ -1,5 +1,5 @@
 // 14.5 Reconstruct BST.
-// We need PRE-ORDER traversal sequence. Note that this binary SEARCH
+// We need a PRE-ORDER traversal sequence. Note that this binary SEARCH
 // tree.
 //
 //
@@ -11,9 +11,9 @@
 //
 // Since it's PRE-ORDER, left subtree is whatever less than root,
 // right is whatever is greater.
-// Get 20, it's root, find index of first element greater than 20, that's 30
-// Get 10, 8, 12, that's left subtree. Get 30, 25, 40, that's right subtree.
-// Recurse
+// Get 20, it's root, find index of the first element greater than 20, that's 30
+// Get 10, 8, 12; that's the left subtree. Get 30, 25, 40; that's the right
+// subtree. Recurse
 //
 // This is only possible in BST and NOT a binary tree.
 // For BINARY trees we need both pre-order and in-order or alternatively,

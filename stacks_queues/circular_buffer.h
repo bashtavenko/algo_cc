@@ -17,7 +17,7 @@ class CircularBuffer {
   void Enqueue(int32_t x);
   absl::optional<int32_t> Dequeue();
 
-  // This is actual size of the data, not some internal vector sizes.
+  // This is the actual size of the data, not some internal vector sizes.
   size_t Size() const { return num_entries_; };
 
  private:
@@ -28,7 +28,7 @@ class CircularBuffer {
   std::vector<int32_t> entries_;
 };
 
-// This is basic CircularBuffer with int.
+// This is a basic CircularBuffer with int.
 // It is essentially a queue with two pointers
 // head points to the oldest items and tail with
 // the newest one.

@@ -12,11 +12,11 @@ int32_t LineSweeps1D(std::vector<std::pair<int32_t, int32_t>>& input) {
   int32_t max_count = 0;
   std::queue<std::pair<int32_t, int32_t>> q;
   for (const auto& curr_interval : input) {
-    // Pop intervals that ended before current start
+    // Pop intervals that ended before the current start
     while (!q.empty() && q.front().second < curr_interval.first) {
       q.pop();
     }
-    // Add current interval
+    // Add the current interval
     q.push(curr_interval);
     max_count = std::max(max_count, static_cast<int32_t>(q.size()));
   }

@@ -14,7 +14,7 @@ int16_t CountBits(uint32_t x) {
   return num_bits;
 }
 
-// Round to nearest multiple of 8
+// Round to the nearest multiple of 8
 // 13 → (13+7)=20 → 20&(~7)=16
 // 23 → (23 + 7) = 30 → 30 & (~7) = 24
 int32_t RoundUp8(int32_t x) { return (x + 7) & ~7; }
@@ -27,8 +27,8 @@ int main(int argc, char** argv) {
   LOG(INFO) << absl::StreamFormat("Counted %d bits from %x", CountBits(7), 7);
   LOG(INFO) << absl::StreamFormat("6 & 4 = %x", 6 & 4);   // 4
   LOG(INFO) << absl::StreamFormat("1 | 2 = %x", 1 | 2);   // 3
-  LOG(INFO) << absl::StreamFormat("8 > 1 = %x", 8 >> 1);  // 4
-  LOG(INFO) << absl::StreamFormat("1 << 10 = 0x%x", 1 << 10);
+  LOG(INFO) << absl::StreamFormat("8 >> 1 = %x", 8 >> 1);  // 4
+  LOG(INFO) << absl::StreamFormat("1 << 10 = 0x%x", 1 << 10); // 0x400
   // ~ is bitwise NOT
   LOG(INFO) << absl::StreamFormat("~0 0x%x", ~0);  // 0xffffffff
   LOG(INFO) << absl::StreamFormat("std::numeric_limits<int32_t>::min() %i",

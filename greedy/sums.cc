@@ -1,6 +1,5 @@
 #include "greedy/sums.h"
 #include <algorithm>
-#include <cstdint>
 #include <unordered_set>
 #include <vector>
 #include "absl/algorithm/container.h"

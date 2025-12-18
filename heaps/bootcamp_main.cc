@@ -36,9 +36,9 @@ std::vector<std::string> TopWithVector(
   return result;
 }
 
-// In case of custom container, define operator >
-// std::greater<>> min_heap;
-// or, I guess std::less<>> max_heap
+// In case of custom container, define operator
+// std::greater<> min_heap;
+// or std::less<> max_heap (default)
 struct LongestString {
   std::string value;
 
@@ -86,7 +86,7 @@ void Run() {
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
-  FLAGS_logtostderr = 1;
+  FLAGS_logtostderr = true;
   Run();
 
   return EXIT_SUCCESS;

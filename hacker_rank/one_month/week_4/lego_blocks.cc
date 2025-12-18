@@ -3,7 +3,7 @@
 #include <vector>
 
 int LegoBlocks(int n, int m) {
-  constexpr int MOD = 1000000007;
+  constexpr int kMod = 1000000007;
   std::vector<long long> row_ways(m + 1, 0);
   std::vector<long long> total_ways(m + 1, 0);
   std::vector<long long> invalid_ways(m + 1, 0);
@@ -16,21 +16,21 @@ int LegoBlocks(int n, int m) {
   for (int i = 4; i <= m; ++i) {
     row_ways[i] = (row_ways[i - 1] + row_ways[i - 2] + row_ways[i - 3] +
                    row_ways[i - 4]) %
-                  MOD;
+                  kMod;
   }
 
   // Calculate total combinations
   for (int i = 1; i <= m; ++i) {
     total_ways[i] = std::pow(row_ways[i], n);
-    total_ways[i] %= MOD;
+    total_ways[i] %= kMod;
   }
 
   // Calculate invalid combinations
   for (int i = 1; i <= m; ++i) {
     invalid_ways[i] = total_ways[i];
     for (int j = 1; j < i; ++j) {
-      invalid_ways[i] -= (invalid_ways[j] * total_ways[i - j]) % MOD;
-      invalid_ways[i] = (invalid_ways[i] + MOD) % MOD;
+      invalid_ways[i] -= (invalid_ways[j] * total_ways[i - j]) % kMod;
+      invalid_ways[i] = (invalid_ways[i] + kMod) % kMod;
     }
   }
 

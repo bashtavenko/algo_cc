@@ -21,11 +21,11 @@ int32_t NearestExit(std::vector<std::vector<char>>& maze,
   int steps = 0;
 
   while (!q.empty()) {
-    int level_size = q.size();
+    const int level_size = q.size();
 
     for (int i = 0; i < level_size; ++i) {
       // This must be value and not a reference!
-      // Because after popping out of queue, the reference becomes dangling
+      // Because after popping out of the queue, the reference becomes dangling
       auto [row, col] = q.front();
       q.pop();
 
@@ -34,7 +34,7 @@ int32_t NearestExit(std::vector<std::vector<char>>& maze,
         return steps;
       }
 
-      // Check each neighbour
+      // Check each neighbor
       for (const auto& [dx, dy] : kOffsets) {
         int next_row = row + dy;
         int next_col = col + dx;

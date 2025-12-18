@@ -10,7 +10,7 @@ int Transmitters(std::vector<int> x, int k) {
 
   while (i < n) {
     // Place the transmitter at the furthest house within range of x[i]
-    // Because array is sorted, we can check the value of houses
+    // Because an array is sorted, we can check the value of houses
     int loc = x[i] + k;  // loc may not be a real location of the house
     while (i < n && x[i] <= loc) ++i;
 

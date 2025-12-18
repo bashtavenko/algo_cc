@@ -8,7 +8,7 @@ size_t SearchSmallest(const std::vector<int32_t>& data) {
   size_t lo = 0;
   size_t hi = data.size() - 1;  // The only difference is -1
   size_t mid;
-  while (lo < hi) {
+  while (lo < hi) {  // Don't want <=
     mid = lo + (hi - lo) / 2;
     // This is canonical binary search
     // if (target > data[mid]) lo = mid + 1

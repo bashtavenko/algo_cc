@@ -22,7 +22,7 @@ void FlipColorBFS(int32_t x, int32_t y, std::vector<std::vector<bool>>& data) {
     Coordinate curr = q.front();
     q.pop();
     for (auto& [dy, dx] : kShift) {
-      // These are int32_t is not size_t because the values can
+      // These are int32_t not size_t because the values can
       // become negative.
       const int32_t next_y = curr.y + dy;
       const int32_t next_x = curr.x + dx;

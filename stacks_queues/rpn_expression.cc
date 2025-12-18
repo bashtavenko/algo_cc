@@ -24,7 +24,7 @@ int32_t Evaluate(absl::string_view rpn_expression) {
       };
 
   // std::stringstream automatically handles type conversion
-  // int vs char. It also skips whitespaces
+  // int vs. char. It also skips whitespaces
   std::stringstream ss{std::string(rpn_expression)};
 
   while (std::getline(ss, token, kDelimiter)) {

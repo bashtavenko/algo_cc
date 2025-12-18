@@ -5,7 +5,7 @@
 
 namespace algo {
 
-// In simple case of one or two tokens this can be done without stack.
+// In the simple case of one or two tokens, this can be done without a stack.
 bool IsWellFormed(absl::string_view s) {
   const absl::flat_hash_map<char8_t, char8_t> kDictionary = {
       {'{', '}'}, {'(', ')'}, {'[', ']'}};
@@ -17,7 +17,7 @@ bool IsWellFormed(absl::string_view s) {
       tokens.emplace(c);
     } else {
       if (tokens.empty() || kDictionary.at(tokens.top()) != c) {
-        // If we fail to pop up corresponding token, then it is not well-formed.
+        // If we fail to pop up the corresponding token, then it is not well-formed.
         return false;
       }
       tokens.pop();

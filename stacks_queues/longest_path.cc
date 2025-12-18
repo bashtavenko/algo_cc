@@ -18,8 +18,8 @@ int32_t LongestPath(absl::string_view path) {
     const int32_t level = token.find_first_not_of('\t');
     token = token.substr(level);  // Remove tabs
 
-    // Adjust stack to match the current level
-    while (stack.size() > level + 1) {
+    // Adjust the stack to match the current level
+    while (static_cast<int32_t>(stack.size()) > level + 1) {
       stack.pop();
     }
 

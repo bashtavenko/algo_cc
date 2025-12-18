@@ -6,9 +6,9 @@ namespace algo {
 
 size_t SearchFirst(const std::vector<int32_t>& sorted, int32_t target) {
   size_t lo = 0;
-  size_t hi = sorted.size();
+  size_t hi = sorted.size() - 1;
   size_t result = 0;
-  while (lo < hi) {
+  while (lo <= hi) {
     size_t mid = lo + (hi - lo) / 2;
     if (target < sorted[mid]) {
       hi = mid - 1;

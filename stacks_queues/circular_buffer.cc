@@ -1,5 +1,4 @@
 #include "stacks_queues/circular_buffer.h"
-#include <cstdint>
 #include "absl/types/optional.h"
 
 namespace algo {
@@ -9,7 +8,7 @@ void CircularBuffer::Enqueue(int32_t x) {
     // Resize
     // Performs a left rotation on a range of elements.
     // To make sure elements should appear consequently such that they
-    // could be dequeue in the right order.
+    // could be dequeued in the right order.
     std::rotate(entries_.begin(), entries_.begin() + head_, entries_.end());
 
     head_ = 0;
