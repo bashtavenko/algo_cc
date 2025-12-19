@@ -27,10 +27,9 @@ TEST(RodCutting, CutRodBottomUp) {
 }
 
 TEST(RodCutting, CutRod) {
-  CutRodResult result = CutRod(CreateRod(), 7);
-  EXPECT_THAT(result.revenue, Eq(18));
-  std::vector<int32_t> want = {1, 6};
-  EXPECT_THAT(result.cuts, want);
+  auto [revenue, cuts] = CutRod(CreateRod(), 7);
+  EXPECT_THAT(revenue, Eq(18));
+  EXPECT_THAT(cuts, Eq(std::vector<int32_t>{1, 6}));
 }
 }  // namespace
 }  // namespace algo

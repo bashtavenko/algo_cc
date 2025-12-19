@@ -54,21 +54,24 @@ int32_t CutRodBottomUp(const std::vector<Rod>& rods, int32_t length) {
 CutRodResult CutRod(const std::vector<Rod>& rods, int32_t length) {
   std::unordered_map<int32_t, int32_t> cache = {{0, 0}};
   std::unordered_map<int32_t, int32_t> choices;
-  int32_t revenue;
-  for (int32_t l = 1; l <= length; ++l) {
-    revenue = std::numeric_limits<int32_t>::min();
-    for (int32_t i = 1; i <= l; ++i) {
-      if (revenue < rods[i - 1].price + cache[l - i]) {
-        revenue = rods[i - 1].price + cache[l - i];
-        choices[l] = i;
+  int32_t revenue = std::numeric_limits<int32_t>::min();
+  for (int32_t cur_length = 1; cur_length <= length; ++cur_length) {
+    for (int32_t cur_rod = 1; cur_rod <= cur_length; ++cur_rod) {
+      // Don't need to check cache existence since it is built from the bottom
+      // up
+      if (revenue < rods[cur_rod - 1].price + cache[cur_length - cur_rod]) {
+        revenue = rods[cur_rod - 1].price + cache[cur_length - cur_rod];
+        choices[cur_length] = cur_rod;
       }
     }
-    cache[l] = revenue;
+    cache[cur_length] = revenue;
   }
 
+ //  1  2  3  4  5  6  7          cur_length
+ //  1  2  3  2  2  6  1          cur_rod
   std::vector<int32_t> path;
   while (length > 0) {
-    path.emplace_back(choices[length]);
+    path.emplace_back(choices[length]); // What's left after subtracting
     length -= choices[length];
   }
 
