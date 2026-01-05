@@ -1,4 +1,4 @@
-// Find the largest consecutive segment within budget.
+// Find the largest consecutive segment within the budget.
 // Returns the largest segment within budget.
 
 #ifndef ALGO_CC_ARRAYS_SEGMENT_H_

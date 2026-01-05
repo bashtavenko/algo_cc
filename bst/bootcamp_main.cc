@@ -15,14 +15,14 @@ algo::BSTNode* SearchBST(algo::BSTNode* tree, int32_t key) {
                             : SearchBST(tree->right, key);
 }
 
-int32_t GetMinIteratively(algo::BSTNode* node) {
+int32_t GetMinIteratively(const algo::BSTNode* node) {
   while (node->left) {
     node = node->left;
   }
   return node->data;
 }
 
-int32_t GetMin(algo::BSTNode* node) {
+int32_t GetMin(const algo::BSTNode* node) {
   if (!node->left) return node->data;
   return GetMin(node->left);
 }

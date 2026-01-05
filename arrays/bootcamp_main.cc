@@ -96,8 +96,9 @@ int main(int argc, char** argv) {
   std::sort(v2.begin(), v2.end());  // Default is ASC that is std::less<>()
   // Favor composition over inheritance
   std::random_device rd;    // A standard interface to a platform-specific non-deterministic random number generator
-  std::mt19937 gen{rd()}; // The classic Mersenne Twister. Composes the random_device
-  std::ranges::shuffle(v2, gen);
+  // std::mt19937 gen{rd()}; // The classic Mersenne Twister. Composes the random_device
+  std::default_random_engine seed(rd());
+  std::ranges::shuffle(v2, seed);
   // If you want descending, then use std::greater<>()
   // std::less_equal<>() is default and should NOT be used in std::sort
   std::sort(v2.begin(), v2.end(), std::greater<>());  // Now it is DSC
