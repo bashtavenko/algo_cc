@@ -15,6 +15,20 @@ cc_library(
     deps = ["@absl//absl/synchronization"],
 )
 
+cc_library(
+    name = "singleton",
+    hdrs = ["singleton.h"],
+)
+
+cc_test(
+    name = "singleton_test",
+    srcs = ["singleton_test.cc"],
+    deps = [
+        ":singleton",
+        "@googletest//:gtest_main",
+    ],
+)
+
 cc_binary(
     name = "thread_pool_main",
     srcs = ["thread_pool_main.cc"],

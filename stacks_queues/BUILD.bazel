@@ -190,3 +190,18 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+cc_library(
+    name = "bounded_queue",
+    hdrs = ["bounded_queue.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "bounded_queue_test",
+    srcs = ["bounded_queue_test.cc"],
+    deps = [
+        ":bounded_queue",
+        "@googletest//:gtest_main",
+    ],
+)

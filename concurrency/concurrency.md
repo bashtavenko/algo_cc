@@ -1,13 +1,55 @@
 # Boilerplate
 
 * std::thread
-* mutable absl::Mutex mu_; // declaration
-* std::vector<int32_t> buffer_ ABSL_GUARDED_BY(mu_); // declaration
-* absl::MutexLock lock(&mu_); // definition RAII
+* mutable `absl::Mutex mu_`; // declaration vs. `std::mutex mu_`;
+* std::vector<int32_t> buffer_ ABSL_GUARDED_BY(mu_); // declaration vs. GUARDED_BY(mu_)
+* absl::MutexLock lock(&mu_); // vs. `std::lock_guard;`
 * absl::Notification
-* absl::CondVar condition_;
+* absl::CondVar condition_; vs.`std::condition_variable condition_`;`
 
-# cc:thread vs fibers
+Conditional variables – put threads to sleep effectively and wake them up when a condition is met.
+
+# Basics
+
+Mutex - the actual synchronization primitive `std::mutex mu_;`
+`std::mutex` is a non-reentrant mutex. It can deadlock from the same thread that holds it.
+`std::recursive_mutex` is a reentrant mutex. It can lock multiple times from the same thread.
+`std::shared_mutex` readers-writer lock.
+
+Lock - acquires and releases the mutex `std::lock_guard<std::mutex> lock(mu_);`
+Lock types `std::unique_lock` or `std::scoped_lock`
+
+## Atomic operations
+
+Lock-free synchronization primitives
+`std::atomic<int> counter{0};` - safe won't race, no locking
+
+```cpp
+std::atomic<int> value{0};
+
+value.store(42);           // Atomic write
+int x = value.load();      // Atomic read
+value.fetch_add(5);        // Atomic add, returns old value
+value++;                   // Shorthand for fetch_add(1)
+
+// Compare-and-swap (CAS)
+int expected = 10;
+value.compare_exchange_strong(expected, 20);
+// If value == 10, set to 20; otherwise update expected with current value
+```
+
+Use atomic for simple counters, flags, pointers and especially for lock-free data structures.
+
+### Memory ordering
+
+```cpp
+value.store(42, std::memory_order_relaxed);  // Fastest, no synchronization
+value.store(42, std::memory_order_release);  // Release semantics
+value.load(std::memory_order_acquire);       // Acquire semantics
+value.store(42, std::memory_order_seq_cst);  // Default, strongest guarantees
+```
+
+# cc:thread vs. fibers
 
 ## Threads (std::thread)
 
@@ -38,3 +80,11 @@
   more efficient in terms of memory and scheduling overhead because the context switching happens in user space.
 * Shared Memory: Like threads, fibers share the same memory space, but since they run in a cooperative multitasking
   environment, synchronization is often simpler because the user controls when switches happen.
+
+## Race Conditions and basic concurrency primitives
+
+* Lock in consistent order
+* Minimize lock duration
+* Use automic operations
+* Use sharable mutable state
+* Use higher level primitives such as thread-safe queues

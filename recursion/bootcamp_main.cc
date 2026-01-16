@@ -10,6 +10,10 @@ int64_t RunGCD(int64_t x, int64_t y) { return y == 0 ? x : RunGCD(y, x % y); }
 // LCM (4, 6) are 12, 24, 36
 int64_t RunLCM(int64_t x, int64_t y) { return (x * y) / RunGCD(x, y); }
 
+constexpr int32_t Factorial(int32_t n) {
+  return n <= 1 ? 1 : n * Factorial(n - 1);
+}
+
 int main(int argc, char** argv) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
@@ -19,6 +23,8 @@ int main(int argc, char** argv) {
   LOG(INFO) << "GCD: " << RunGCD(50, 6);    // 2
   LOG(INFO) << "GCD: " << RunGCD(13, 3);    // 1
   LOG(INFO) << "LCM: " << RunLCM(4, 6);     // 12
+
+  LOG(INFO) << "Factorial: " << Factorial(5);
 
   return EXIT_SUCCESS;
 }

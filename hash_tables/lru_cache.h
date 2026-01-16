@@ -35,8 +35,8 @@ class LRUCache {
   // For each key it has not only the value but where it came from.
   // 'a' -> (100, 1)
   // 'b' -> (102, 2)
-  //  We cannot change the order of hash map, therefore we need
-  //  keep order in the linked list.
+  //  We cannot change the order of the hash map, therefore, we need
+  //  to keep order in the linked list.
   using Table =
       absl::flat_hash_map<char8_t,
                           std::pair<std::list<char8_t>::iterator, int32_t>>;

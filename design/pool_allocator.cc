@@ -25,6 +25,7 @@ class PoolAllocator {
 
  private:
   union Node {
+    // Essentially C array char foo[4];
     alignas(T) char storage[sizeof(T)];
     Node* next;
   };
