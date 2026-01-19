@@ -112,3 +112,30 @@ Use NoSQL for real-time analytics, known specific patterns
 Shard 1: users A-M
 Shard 2: users N-Z
 Shard 3: archive
+
+## At-least-once delivery and idempotency
+
+### At-least-once semantics
+Message is processed at least once but possibly multiple times.
+System will retry sending or processing a message until it is acknowledged. 
+
+This avoids data loss, but consumers must be able to tolerate duplicate messages.
+
+### Idempotency
+A request can be processed multiple times without changing the result.
+
+`set status=PAID”` idempotent
+`balance += 100` not idempotent
+
+## Blocking vs non‑blocking sockets
+
+### Blocking sockets
+`recv()` or `send()` do no return utill the data is available, buffer is ready, or error
+Simplifies code but scales poorly with the number of connections
+
+### Non-blocking sockets
+Calls return immediately; if the operation blocks,
+they fail with an error such as `EWOULDBLOCK` / `EAGAIN`
+
+### IOCP
+I/O completion ports (IOCP) are a Windows-specific mechanism for handling I/O completion notifications.

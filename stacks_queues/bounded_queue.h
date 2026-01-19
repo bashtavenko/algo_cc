@@ -1,6 +1,3 @@
-// Thread-safe, fixed-sze, in-memory bounded queue.
-// A bounded queue is a FIFO queue with a fixed maximum capacity that
-// enforces backpressure.
 #ifndef ALGO_CC_BOUNDED_QUEUE_H
 #define ALGO_CC_BOUNDED_QUEUE_H
 #include <cstdint>
@@ -9,6 +6,9 @@
 
 namespace algo {
 
+// Thread-safe, fixed-sze, in-memory bounded queue.
+// A bounded queue is a FIFO queue with a fixed maximum capacity that
+// enforces backpressure.
 template <typename T>
 class BoundedQueue {
  public:

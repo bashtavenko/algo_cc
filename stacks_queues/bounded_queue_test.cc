@@ -11,12 +11,12 @@ TEST(BoundedQeue, ProducerConsumer) {
   BoundedQueue<int32_t> queue(3);
 
   std::vector<int> produced = {1, 2, 3, 4, 5};
-  std::vector<int> consumed;
+  std::vector<int32_t> consumed;
   consumed.reserve(produced.size());
 
   // Producer thread
   std::thread producer([&]() {
-    for (int x : produced) {
+    for (int32_t x : produced) {
       queue.Push(x);
     }
   });
