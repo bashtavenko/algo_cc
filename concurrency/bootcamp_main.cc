@@ -12,7 +12,7 @@ absl::Notification work_done_;
 void Worker(int id, int iterations) {
   for (int i = 0; i < iterations; ++i) {
     // RAII
-    absl::MutexLock lock(&mu_);
+    absl::MutexLock lock(mu_);
     ++shared_counter_;
     LOG(INFO) << "Thread " << id << " incremented counter to "
               << shared_counter_;
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
   }
 
   {
-    absl::MutexLock lock(&mu_);
+    absl::MutexLock lock(mu_);
     LOG(INFO) << "Final counter value: " << shared_counter_;
   }
   return EXIT_SUCCESS;
