@@ -23,6 +23,7 @@
 //        file system.If there is no file in the system,
 //    return 0.
 
+#include <cstdint>
 #include "absl/strings/string_view.h"
 
 namespace algo {

@@ -1,4 +1,5 @@
 #include "stacks_queues/remove_stars.h"
+#include <algorithm>
 #include <stack>
 
 namespace algo {

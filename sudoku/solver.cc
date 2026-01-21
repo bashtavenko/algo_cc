@@ -1,4 +1,5 @@
 #include "sudoku/solver.h"
+#include <cmath>
 #include "absl/algorithm/container.h"
 
 namespace algo {

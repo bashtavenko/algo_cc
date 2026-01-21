@@ -1,5 +1,6 @@
 #include "stacks_queues/dota2.h"
 #include <queue>
+#include <string>
 
 namespace algo {
 

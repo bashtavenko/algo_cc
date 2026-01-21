@@ -1,4 +1,5 @@
 #include "strings/reformat_license_key.h"
+#include <algorithm>
 
 namespace algo {
 
