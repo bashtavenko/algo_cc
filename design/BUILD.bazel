@@ -26,3 +26,12 @@ cc_binary(
         "@glog",
     ],
 )
+
+cc_binary(
+    name = "move_semantics_main",
+    srcs = ["move_semantics.cc"],
+    deps = [
+            "@gflags",
+            "@glog",
+        ],
+)

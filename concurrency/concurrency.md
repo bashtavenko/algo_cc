@@ -1,5 +1,21 @@
-# Boilerplate
+# Process vs. Threads
 
+Process - OS level isolation unit. Owns virtual address space. Own OS resources (file descriptiors, sockets, signal
+handlers). Failure is isolated – segfault kills that process.
+
+Thread – an execution inside the process. Shares the same address space as other threads in the same process. Has its own stack, registers).
+Failure affects the whole process. Thread-Local Storage (TLS). One instance per thread. Not on stack, not on heap.
+
+## Memory layout of the process
+
+Kernel space (hidden)
+Stack (per-thread) grows down
+Heap (shared) grows up
+BSS (zero-initialized)
+Data (globals/statics)
+Text / Code segment
+
+## Primitives
 * std::thread
 * mutable `absl::Mutex mu_`; // declaration vs. `std::mutex mu_`;
 * std::vector<int32_t> buffer_ ABSL_GUARDED_BY(mu_); // declaration vs. GUARDED_BY(mu_)
@@ -54,7 +70,7 @@ value.store(42, std::memory_order_seq_cst);  // Default, strongest guarantees
 ## Threads (std::thread)
 
 * Definition: A thread is a system-level unit of execution that runs in parallel with other threads. std::thread in C++
-  represents a thread that is managed by the operating system.
+  represents a thread managed by the operating system.
 * Concurrency: Threads allow for true parallelism on multicore systems, meaning multiple threads can run
   simultaneously on different CPU cores.
 * Scheduling: Threads are scheduled by the operating system, which handles the switching between threads (context

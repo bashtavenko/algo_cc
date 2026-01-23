@@ -139,3 +139,6 @@ they fail with an error such as `EWOULDBLOCK` / `EAGAIN`
 
 ### IOCP
 I/O completion ports (IOCP) are a Windows-specific mechanism for handling I/O completion notifications.
+
+## Empty base Optimization (EBO)
+Every object must have a non-zero size.
