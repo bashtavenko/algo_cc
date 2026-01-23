@@ -40,3 +40,12 @@ cc_binary(
         "@glog",
     ],
 )
+
+cc_binary(
+    name = "threading_sync_maim",
+    srcs = ["threading_sync.cc"],
+    deps = [
+        "@gflags",
+        "@glog"
+    ]
+)
