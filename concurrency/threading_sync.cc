@@ -1,9 +1,8 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
-#include "concurrency/thread_pool.h"
-#include <mutex>
 #include <atomic>
 #include <condition_variable>
+#include <mutex>
 
 struct Position {
   int32_t x;
@@ -11,7 +10,7 @@ struct Position {
 };
 
 class Facade {
-public:
+ public:
   void Enqueue(Position position) {
     {
       std::lock_guard<std::mutex> lock(mutex_);
@@ -22,7 +21,7 @@ public:
 
   Position GetLatest() {
     std::unique_lock<std::mutex> lock(mutex_);
-    cv_.wait(lock, [&]{ return !position_.empty(); });
+    cv_.wait(lock, [&] { return !position_.empty(); });
     return position_.back();
   }
 
@@ -31,15 +30,14 @@ public:
     return position_;  // Copy out
   }
 
-private:
+ private:
   mutable std::mutex mutex_;
   std::condition_variable cv_;
   std::vector<Position> position_;
 };
 
-
 class FacadeAtomic {
-public:
+ public:
   FacadeAtomic() : has_value_(false) {}
 
   // Enqueue should not be blocked by GetLatest
@@ -47,7 +45,6 @@ public:
     latest_.store(position, std::memory_order_release);
     has_value_.store(true, std::memory_order_release);
   }
-
 
   // GetLatest can be blocked by should not block the Enqueue()
   // After wait it should return the latest.
@@ -59,18 +56,23 @@ public:
     return latest_.load(std::memory_order_acquire);
   }
 
-private:
+ private:
   std::atomic<Position> latest_;
   std::atomic<bool> has_value_;
 };
 
-
 int main(int argc, char** argv) {
-  using algo::ThreadPool;
-
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
+  FLAGS_logtostderr = true;
+ Facade facade;
+  facade.Enqueue({1, 2});
+  LOG(INFO) << facade.GetLatest().x << ", " << facade.GetLatest().y;
 
+  FacadeAtomic facade_atomic;
+  facade_atomic.Enqueue({23, 12});
+  LOG(INFO) << facade_atomic.GetLatest().x << ", "
+            << facade_atomic.GetLatest().y;
 
   return EXIT_SUCCESS;
 }
