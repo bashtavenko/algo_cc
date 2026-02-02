@@ -58,5 +58,15 @@ int main(int argc, char** argv) {
   Wrapper w3;
   w3 = std::move(w2); // Move (assignment)
 
-  return 0;
+  // Undefined behavior
+  int32_t a[3] = {1, 2, 3};
+  int32_t x = a[3];   // UB: index 3 is past the end (valid are 0,1,2)
+  LOG(INFO) << "UB: " << x;
+
+  int32_t x1 = 2'000'000'000;
+  int32_t y1 = 2'000'000'000;
+  int z = x1 + y1;   // UB: signed overflow
+  LOG(INFO) << "UB signed overflow: " << z;
+
+  return EXIT_SUCCESS;
 }

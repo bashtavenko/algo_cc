@@ -1,8 +1,9 @@
 // 12.3 LRU cache
-// Least Recently Used cache. Discard  least recently used items first.
+//  Eviction policy - Least Recently Used cache. Discard least recently used
+//  items first.
 // We need ordered hash table.
 // Two approaches:
-// 1. Use cache of size n. Grow it until it is 2n and then find median age
+// 1. Use cache of size n. Grow it until it is 2n and then find the median age
 //    of items and purge them.
 // 2. Maintain a separate queue of keys. Hash table stores location in the
 //    queue.
@@ -12,7 +13,7 @@
 
 #include <list>
 #include "absl/container/flat_hash_map.h"
-#include "absl/types/optional.h"
+#include <mutex>
 
 namespace algo {
 
@@ -38,13 +39,15 @@ class LRUCache {
   //  We cannot change the order of the hash map, therefore, we need
   //  to keep order in the linked list.
   using Table =
-      absl::flat_hash_map<char8_t,
+      std::unordered_map<char8_t,
                           std::pair<std::list<char8_t>::iterator, int32_t>>;
   size_t capacity_;
   Table table_;
 
   // Moves key lru_cache to front. Updates key in table_
   void MoveToFront(char8_t key, const Table::iterator& it);
+
+  mutable std::mutex mutex_;
 };
 
 }  // namespace algo

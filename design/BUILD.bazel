@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 cc_binary(
     name = "inheritance_vs_composition_main",
@@ -31,7 +31,30 @@ cc_binary(
     name = "move_semantics_main",
     srcs = ["move_semantics.cc"],
     deps = [
-            "@gflags",
-            "@glog",
-        ],
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_binary(
+    name = "playground",
+    srcs = ["playground.cc"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_library(
+    name = "templating",
+    hdrs = ["templating.h"],
+)
+
+cc_test(
+    name = "templating_test",
+    srcs = ["templating_test.cc"],
+    deps = [
+        ":templating",
+        "@googletest//:gtest_main",
+    ],
 )

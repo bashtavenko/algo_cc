@@ -49,11 +49,14 @@ class FacadeAtomic {
   // GetLatest can be blocked by should not block the Enqueue()
   // After wait it should return the latest.
   Position GetLatest() const {
-    // Busy-wait until we have at least one value
-    while (!has_value_.load(std::memory_order_acquire)) {
-      // optional: std::this_thread::yield(); or sleep/backoff
-    }
+    // 1. Use wait()
+    has_value_.wait(false, std::memory_order_acquire);
     return latest_.load(std::memory_order_acquire);
+    // 2. Use classic while loop
+    // while (!has_value_.load(std::memory_order_acquire)) {
+      // optional: std::this_thread::yield(); or sleep/backoff
+    //}
+    //return latest_.load(std::memory_order_acquire);
   }
 
  private:

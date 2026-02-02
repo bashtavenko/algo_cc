@@ -142,3 +142,10 @@ I/O completion ports (IOCP) are a Windows-specific mechanism for handling I/O co
 
 ## Empty base Optimization (EBO)
 Every object must have a non-zero size.
+
+## Rule of 5
+1.Destructor
+2.Copy constructor
+3.Copy assignment operator
+3.Move constructor
+5.Move assignment operator

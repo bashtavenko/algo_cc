@@ -1,6 +1,7 @@
 ### Key improvements in C++11/14/17/20
 
 **C++ 11 (major improvement)**
+
 * Range-based for lookup ```for (auto& x : container)```
 * Lambda
 * Move semantics
@@ -12,14 +13,17 @@
 * `int32_t`
 
 **C++ 14 (refinement)**
+
 * `std::make_unique`
 * Labmda with auto
 
 **C++ 17 (practical improvement)**
+
 * Structured bindings ```for auto& [x, y] = pair```
 * std::optional, std::variant, std::any, inline, `std::filesystem`
 
 **C++ 20 (Next revolution)**
+
 * Concepts
 * Ranges library
 * Modules
@@ -28,8 +32,10 @@
 * `consteval`
 
 ### R-value vs L-value
+
 * L-value - named identity  `int data = 3`. R-value - temp, no persistance idexity `get_one() + get_two()`
 * Steal its resources instead of copy. Avoid expensive copies
+
 ```c++
 class MyClass {
     int* data;
@@ -67,7 +73,7 @@ public:
 };
 ```
 
-### Perfect forwarding and variadic templates. 
+### Perfect forwarding and variadic templates.
 
 ```c++
 Variadic
@@ -88,6 +94,7 @@ Perfect forwarding
 Pass arguments exactly as they were received.
 
 This ensures:
+
 * lvalues stay lvalues
 * rvalues stay rvalues
 * move semantics are preserved
@@ -100,7 +107,9 @@ void wrapper(T&& arg) {
     real_function(std::forward<T>(arg));  // Preserves lvalue/rvalue
 }
 ```
+
 push_back vs. emplace_back
+
 ```c++
 std::vector<std::pair<int, std::string>> vec;
 
@@ -114,8 +123,8 @@ emplace_back takes advantage of perfect forwarding
 
 ```
 
-
 ## RVO and NRVO
+
 Copy elision - optimization to avoid unnecessary copies. Guaranteed from C++17
 
 ```c++
@@ -124,7 +133,33 @@ std::vector<int32_t> CreateVector() {
 }
 ```
 
+## UB - undefined behavior
 
+Occurs when the program executes code whose effect is “not specified by the standard”.
 
+```c++
+int32_t a[3] = {1, 2, 3};
+int32_t x = a[3];   // UB: index 3 is past the end (valid are 0,1,2)
+LOG(INFO) << "UB: " << x;
+```
 
+```c++
+int32_t x1 = 2'000'000'000;
+  int32_t y1 = 2'000'000'000;
+  int z = x1 + y1;   // UB: signed overflow
+  LOG(INFO) << "UB signed overflow: " << z;
+```
 
+ASAN, Cppcheck, PVS-Studio
+
+## Constexpr vs consteval
+
+`constexpr` - compile-time if all args are constant expressions. High flexibility.
+`consteval` - Always compile-time, fails to compile if any arg is not constant expression. Guaranteed zero runtime cost.
+Inflexible  
+
+```c++
+constexpr int32_t Square(int32_t x) { return x * x; }
+int32_t runtime_val = 5;
+int32_t should_be_25 = Square(runtime_val); // Runs at RUNTIME
+```

@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 cc_binary(
     name = "bootcamp_main",
@@ -86,6 +86,22 @@ cc_test(
     srcs = ["k_largest_test.cc"],
     deps = [
         ":k_largest",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "k_most_frequent",
+    srcs = ["k_most_frequent.cc"],
+    hdrs = ["k_most_frequent.h"],
+    deps = [],
+)
+
+cc_test(
+    name = "k_most_frequent_test",
+    srcs = ["k_most_frequent_test.cc"],
+    deps = [
+        ":k_most_frequent",
         "@googletest//:gtest_main",
     ],
 )
