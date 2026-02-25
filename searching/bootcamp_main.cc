@@ -7,8 +7,8 @@
 
 int32_t Search(int32_t target, const std::vector<int32_t>& data) {
   size_t lo = 0;
-  size_t hi = data.size() - 1;
-  while (lo <= hi) {
+  size_t hi = data.size();
+  while (lo < hi) {
     size_t mid = lo + (hi - lo) / 2;
     if (target < data[mid]) {
       hi = mid - 1;  // the target must be something on the left
