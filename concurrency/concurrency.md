@@ -38,7 +38,7 @@ Lock types `std::unique_lock` or `std::scoped_lock`
 ## Atomic operations
 
 Lock-free synchronization primitives
-`std::atomic<int> counter{0};` - safe won't race, no locking
+`std::atomic<int> counter(0);` - safe won't race, no locking
 `load()` obtains the value `load(std::memory_order_acquire)`
 `store()` replaces the value of the atomic object
 `exchange()` replaces the value

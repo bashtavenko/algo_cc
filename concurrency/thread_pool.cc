@@ -10,7 +10,7 @@ ThreadPool::ThreadPool(size_t num_threads) : stop_(false) {
 }
 ThreadPool::~ThreadPool() {
   {
-    absl::MutexLock lock(queue_mutex_);
+    absl::MutexLock lock(mu_);
     stop_ = true;
   }
   condition_.SignalAll();
@@ -21,7 +21,7 @@ ThreadPool::~ThreadPool() {
 
 void ThreadPool::Enqueue(std::function<void()> f) {
   {
-    absl::MutexLock lock(queue_mutex_);
+    absl::MutexLock lock(mu_);
     tasks_.emplace(std::move(f));
   }
   condition_.Signal();
@@ -32,9 +32,9 @@ void ThreadPool::worker_thread_() {
     std::function<void()> task;
     {
       // Mutex lock scope
-      absl::MutexLock lock(queue_mutex_);
+      absl::MutexLock lock(mu_);
       while (!stop_ && tasks_.empty()) {
-        condition_.Wait(&queue_mutex_);  // Sleep when there's no work
+        condition_.Wait(&mu_);  // Sleep when there's no work
       }
       if (stop_ && tasks_.empty()) {
         return;

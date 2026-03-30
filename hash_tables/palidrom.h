@@ -12,11 +12,11 @@
 //'aabbcbbaa' a: 4, b: 4, c: 1 odd
 #ifndef ALGO_CC_HASH_TABLES_PALIDROM_H_
 #define ALGO_CC_HASH_TABLES_PALIDROM_H_
-#include "absl/strings/string_view.h"
+#include <string_view>
 
 namespace algo {
 
-bool CanFormPalidrome(absl::string_view s);
+bool CanFormPalidrome(std::string_view s);
 
 }  // namespace algo
 

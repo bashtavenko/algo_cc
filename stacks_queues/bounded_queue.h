@@ -1,6 +1,5 @@
 #ifndef ALGO_CC_BOUNDED_QUEUE_H
 #define ALGO_CC_BOUNDED_QUEUE_H
-#include <cstdint>
 #include <mutex>
 #include <vector>
 
@@ -18,7 +17,7 @@ class BoundedQueue {
   // Blocks if full. Guarantees that Push never writes when the queue is full.
   void Push(T item) {
     // Acquires the mutex to protect the queue state
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::unique_lock lock(mutex_);
     // Unlocks automatically - wait until space is available.
     not_full_.wait(lock, [this] { return size_ < capacity_; });
 
@@ -29,7 +28,7 @@ class BoundedQueue {
   }
   // Blocks if empty
   T Pop() {
-    std::unique_lock<std::mutex> lock(mutex_);
+    std::unique_lock lock(mutex_);
     not_empty_.wait(lock, [this] { return size_ > 0; });
 
     T item = std::move(buffer_[head_]);

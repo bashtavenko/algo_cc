@@ -1,7 +1,6 @@
 ### Key improvements in C++11/14/17/20
 
 **C++ 11 (major improvement)**
-
 * Range-based for lookup ```for (auto& x : container)```
 * Lambda
 * Move semantics
@@ -13,26 +12,23 @@
 * `int32_t`
 
 **C++ 14 (refinement)**
-
 * `std::make_unique`
-* Labmda with auto
+* Lambda with auto
 
 **C++ 17 (practical improvement)**
-
 * Structured bindings ```for auto& [x, y] = pair```
 * std::optional, std::variant, std::any, inline, `std::filesystem`
+* RVO and NVRO
 
 **C++ 20 (Next revolution)**
-
 * Concepts
 * Ranges library
 * Modules
 * Three-way comparison ```<=>```
-* Designated initializers
+* Designated initializers ```.x, .y```
 * `consteval`
 
 ### R-value vs L-value
-
 * L-value - named identity  `int data = 3`. R-value - temp, no persistance idexity `get_one() + get_two()`
 * Steal its resources instead of copy. Avoid expensive copies
 
@@ -145,9 +141,9 @@ LOG(INFO) << "UB: " << x;
 
 ```c++
 int32_t x1 = 2'000'000'000;
-  int32_t y1 = 2'000'000'000;
-  int z = x1 + y1;   // UB: signed overflow
-  LOG(INFO) << "UB signed overflow: " << z;
+int32_t y1 = 2'000'000'000;
+int z = x1 + y1;   // UB: signed overflow
+LOG(INFO) << "UB signed overflow: " << z;
 ```
 
 ASAN, Cppcheck, PVS-Studio

@@ -10,7 +10,7 @@ int32_t LongestPath(absl::string_view path) {
   stack.push(0);  // Base level with no prefix path
   std::string token;
   constexpr char kDelimiter = '\n';
-  std::stringstream ss{std::string(path)};
+  std::stringstream ss(path.data());
   int32_t max_length = 0;
 
   while (std::getline(ss, token, kDelimiter)) {

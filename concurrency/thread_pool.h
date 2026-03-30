@@ -4,7 +4,6 @@
 #define ALGO_CC_CONCURRENCY_THREAD_POOL_H_
 
 #include <functional>
-#include <iostream>
 #include <queue>
 #include <thread>
 #include <vector>
@@ -21,10 +20,10 @@ class ThreadPool {
 
  private:
   std::vector<std::thread> workers_;
-  std::queue<std::function<void()>> tasks_ ABSL_GUARDED_BY(queue_mutex_);
-  absl::Mutex queue_mutex_;
+  std::queue<std::function<void()>> tasks_;
+  absl::Mutex mu_;
   absl::CondVar condition_;
-  bool stop_ ABSL_GUARDED_BY(queue_mutex_) = false;
+  bool stop_  = false;
   void worker_thread_();
 };
 

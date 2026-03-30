@@ -99,6 +99,11 @@ struct Point {
   friend H AbslHashValue(H h, const Point& c) {
     return H::combine(std::move(h), c.x, c.y);
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Point& p) {
+    os << absl::StrFormat("(%i, %i)", p.x, p.y);
+    return os;
+  }
 };
 
 void UpdateHashTable() {
@@ -114,13 +119,6 @@ void UpdateHashTable() {
   table.erase(p);
   p.x = 4;
   table[p] = val;  // Updates {{{4, 2},"foo}
-
-  // The best one
-  table[p] = "bla";
-  it = table.find(p);
-  p.x = 4;
-  //  table[p] == std::move(it->second);  // Don't need val
-  table.erase(it);
 }
 
 void CustomHash() {

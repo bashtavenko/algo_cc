@@ -1,5 +1,6 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
+#include <string_view>
 #include "absl/strings/str_format.h"
 
 // Basic int to string conversion
@@ -14,7 +15,7 @@
 // const int32_t level = token.find_first_not_of('\t');
 // token = token.substr(level);  // Remove tabs
 
-bool IsPalindrom(absl::string_view s) {
+bool IsPalindrom(std::string_view s) {
   size_t lo = 0;
   size_t hi = s.size() - 1;
   while (lo < hi) {
@@ -25,7 +26,7 @@ bool IsPalindrom(absl::string_view s) {
   return true;
 }
 
-bool IsPalindrom2(absl::string_view s) {
+bool IsPalindrom2(std::string_view s) {
   size_t lo = 0;
   size_t hi = s.size() - 1;
   while (lo < hi) {
@@ -36,7 +37,7 @@ bool IsPalindrom2(absl::string_view s) {
   return true;
 }
 
-void MakeAllSubstrings(absl::string_view s) {
+void MakeAllSubstrings(std::string_view s) {
   for (size_t len = 1; len < s.size(); ++len) {
     for (int i = 0; i < s.length() - len; ++i) {
       LOG(INFO) << s.substr(i, len);

@@ -4,12 +4,12 @@
 //
 #ifndef ALGO_CC_HASH_TABLES_LETTER_CONSTRUCTABLE_H_
 #define ALGO_CC_HASH_TABLES_LETTER_CONSTRUCTABLE_H_
-#include "absl/strings/string_view.h"
+#include <string_view>
 
 namespace algo {
 
-bool IsLetterConstructable(absl::string_view letter_text,
-                           absl::string_view magazine_text);
+bool IsLetterConstructable(std::string_view letter_text,
+                           std::string_view magazine_text);
 
 }  // namespace algo
 

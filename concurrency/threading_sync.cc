@@ -9,29 +9,40 @@ struct Position {
   int32_t y;
 };
 
+// The main idea is to use two different types of lock, std::lock_guard
+// and std::unique_lock + std::condition_variable
 class Facade {
  public:
   void Enqueue(Position position) {
     {
-      std::lock_guard<std::mutex> lock(mutex_);
+      std::lock_guard lock(mutex_);
       position_.emplace_back(position);
     }
     cv_.notify_all();
   }
 
   Position GetLatest() {
-    std::unique_lock<std::mutex> lock(mutex_);
+    // Must use std::unique_lock
+     std::unique_lock lock(mutex_);
+    // Alternative of lambda in cv_.wait is
+    // while (position_.empty()) {
+    //      cv_.wait(lock);
+    // }
     cv_.wait(lock, [&] { return !position_.empty(); });
     return position_.back();
   }
 
-  std::vector<Position> SnapshotAll() {
-    std::lock_guard<std::mutex> lock(mutex_);
+  std::vector<Position> SnapshotAll() {    
+    std::unique_lock lock(mutex_);
+    while (position_.empty()) {
+      cv_.wait(lock);
+    }
     return position_;  // Copy out
   }
 
  private:
-  mutable std::mutex mutex_;
+  // mutable allows locking mutex inside a const member function
+  std::mutex mutex_;
   std::condition_variable cv_;
   std::vector<Position> position_;
 };
@@ -41,7 +52,7 @@ class FacadeAtomic {
   FacadeAtomic() : has_value_(false) {}
 
   // Enqueue should not be blocked by GetLatest
-  void Enqueue(Position position) {
+  void Enqueue(const Position& position) {
     latest_.store(position, std::memory_order_release);
     has_value_.store(true, std::memory_order_release);
   }
@@ -71,6 +82,8 @@ int main(int argc, char** argv) {
  Facade facade;
   facade.Enqueue({1, 2});
   LOG(INFO) << facade.GetLatest().x << ", " << facade.GetLatest().y;
+  auto result = facade.SnapshotAll();
+  LOG(INFO) << "Result: " << result.size();
 
   FacadeAtomic facade_atomic;
   facade_atomic.Enqueue({23, 12});

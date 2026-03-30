@@ -7,6 +7,12 @@
 //    of items and purge them.
 // 2. Maintain a separate queue of keys. Hash table stores location in the
 //    queue.
+//    Key idea - on lookup move the new value to front
+//    If it was [a, b] and we looked up 'b', it will be [b, a]
+//    On insert pop extra if needed
+//    Design
+//    1. linked list (need to re-arrange position)
+//    2. hash map which points to the linked list
 
 #ifndef ALGO_CC_HASH_TABLES_LRU_CACHE_H_
 #define ALGO_CC_HASH_TABLES_LRU_CACHE_H_
@@ -31,10 +37,11 @@ class LRUCache {
   // a<->b<->c<->d
   std::list<char8_t> lru_queue_;
 
-  // Second main block - hash table
-  // Has normal key and value plus linkage to lru_queue
+  // The second main block - hash table
+  // It has a regular key and value plus linkage to lru_queue
   // For each key it has not only the value but where it came from.
-  // 'a' -> (100, 1)
+  // {'a': 1, 'b': 2}
+  // 'a' -> (100, 1)   'a' - key; 1 - value; 100 - iterator
   // 'b' -> (102, 2)
   //  We cannot change the order of the hash map, therefore, we need
   //  to keep order in the linked list.

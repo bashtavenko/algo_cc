@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 cc_library(
     name = "bst_node",
@@ -126,6 +126,22 @@ cc_test(
     srcs = ["equivalent_test.cc"],
     deps = [
         ":equivalent",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_library(
+    name = "get_closest",
+    srcs = ["get_closest.cc"],
+    hdrs = ["get_closest.h"],
+    deps = [":bst_node"],
+)
+
+cc_test(
+    name = "get_closest_test",
+    srcs = ["get_closest_test.cc"],
+    deps = [
+        ":get_closest",
         "@googletest//:gtest_main",
     ],
 )
