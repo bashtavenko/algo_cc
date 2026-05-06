@@ -8,7 +8,7 @@ namespace {
 using ::testing::ElementsAreArray;
 
 enum class Padding {
-  // kValid - padding means that kernel fully overlaps the image.
+  // kValid - padding means that the kernel fully overlaps the image.
   // No padding, smaller output.
   // Matlab 'valid' in conv2
   kValid,
@@ -18,21 +18,22 @@ enum class Padding {
   kFull
 };
 
-std::vector<std::vector<int32_t>> Conv2DRectangularValid(
+// Kernel fully overlaps the image. No padding.
+std::vector<std::vector<int32_t>> ConvSquareValid(
     const std::vector<std::vector<int32_t>>& image,
     const std::vector<std::vector<int32_t>>& kernel) {
-  const int image_size = image.size();
-  const int kernel_size = kernel.size();
-  const int output_rows = image_size - kernel_size + 1;
-  const int output_cols = image_size - kernel_size + 1;
+  const size_t image_size = image.size();
+  const size_t kernel_size = kernel.size();
+  const size_t output_rows = image_size - kernel_size + 1;
+  const size_t output_cols = image_size - kernel_size + 1;
 
   std::vector<std::vector<int32_t>> output(
       output_rows, std::vector<int32_t>(output_cols, 0));
-  for (int i = 0; i < output_rows; ++i) {
-    for (int j = 0; j < output_cols; ++j) {
+  for (size_t i = 0; i < output_rows; ++i) {
+    for (size_t j = 0; j < output_cols; ++j) {
       int32_t sum = 0;
-      for (int ki = 0; ki < kernel_size; ++ki) {
-        for (int kj = 0; kj < kernel_size; ++kj) {
+      for (size_t ki = 0; ki < kernel_size; ++ki) {
+        for (size_t kj = 0; kj < kernel_size; ++kj) {
           sum += image[i + ki][j + kj] * kernel[ki][kj];
         }
       }
@@ -104,7 +105,7 @@ std::vector<std::vector<int32_t>> Conv2D(
 
 TEST(Conv2D, RegularWorks) {
   EXPECT_THAT(
-      Conv2DRectangularValid(
+      ConvSquareValid(
           std::vector<std::vector<int32_t>>{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
           std::vector<std::vector<int32_t>>{{1, 1}, {1, 1}}),
       ElementsAreArray(std::vector<std::vector<int32_t>>{{12, 16}, {24, 28}}));
@@ -112,8 +113,9 @@ TEST(Conv2D, RegularWorks) {
 
 TEST(Conv2D, Regular_4_3_Works) {
   EXPECT_THAT(
-      Conv2DRectangularValid(
-          std::vector<std::vector<int32_t>>{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}},
+      ConvSquareValid(
+          std::vector<std::vector<int32_t>>{
+              {0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}},
           std::vector<std::vector<int32_t>>{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}),
       ElementsAreArray(std::vector<std::vector<int32_t>>{{5, 2}, {2, 2}}));
 }
