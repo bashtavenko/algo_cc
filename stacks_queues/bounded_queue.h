@@ -15,7 +15,7 @@ class BoundedQueue {
       : buffer_(capacity), head_(0), tail_(0), size_(0), capacity_(capacity) {}
 
   // Blocks if full. Guarantees that Push never writes when the queue is full.
-  void Push(T item) {
+  void Push(const T& item) {
     // Acquires the mutex to protect the queue state
     std::unique_lock lock(mutex_);
     // Unlocks automatically - wait until space is available.

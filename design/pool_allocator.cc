@@ -1,6 +1,8 @@
 #include "gflags/gflags.h"
 #include "glog/logging.h"
 
+// Alternative is to use std::pmr (Polymorphic Memory Resources)
+// std::pmr::polymorphic_allocator
 template <typename T, size_t N>
 class PoolAllocator {
  public:

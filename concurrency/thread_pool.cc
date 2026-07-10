@@ -2,7 +2,7 @@
 
 namespace algo {
 
-ThreadPool::ThreadPool(size_t num_threads) : stop_(false) {
+ThreadPool::ThreadPool(size_t num_threads) {
   workers_.reserve(num_threads);
   for (size_t i = 0; i < num_threads; ++i) {
     workers_.emplace_back([this] { this->worker_thread_(); });

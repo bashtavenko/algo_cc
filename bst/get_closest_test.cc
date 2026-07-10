@@ -8,7 +8,7 @@ namespace {
 
 using testing::Optional;
 
-TEST(FindFirstGreaterThanK, Works) {
+TEST(FindGetCloset, Works) {
   //             20
   //         10          30
   //      8      12  25      40

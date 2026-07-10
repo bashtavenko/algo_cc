@@ -28,6 +28,15 @@ cc_binary(
 )
 
 cc_binary(
+    name = "pool_allocator_simple",
+    srcs = ["pool_allocator_simple.cc"],
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
+)
+
+cc_binary(
     name = "move_semantics_main",
     srcs = ["move_semantics.cc"],
     deps = [

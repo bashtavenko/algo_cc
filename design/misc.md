@@ -10,9 +10,8 @@ Cache coherency – consistency of shared data stored in multiple local caches
 Modern CPU have hardware prefetchers.
 `std::vector` store data contiguously
 
-AOS (array of structures) `std::vector<Point`
-is better than SOA (structure of arrays)
-`std::vector<float> x, y is SOA
+AoS → better when you need all fields of one object (random access, single entity lookup)
+SoA → better when you need one field across many objects (batch processing, SIMD)
 
 ```c++
 // AOS accessing ALL fields of ONE object

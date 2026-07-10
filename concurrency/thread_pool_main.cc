@@ -6,6 +6,7 @@ int main(int argc, char** argv) {
   using algo::ThreadPool;
 
   google::InitGoogleLogging(argv[0]);
+  FLAGS_logtostderr = true;
   gflags::ParseCommandLineFlags(&argc, &argv, /*remove_flags=*/true);
 
   ThreadPool pool(4);  // Create a thread pool with 4 worker threads

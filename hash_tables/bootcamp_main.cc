@@ -106,8 +106,16 @@ struct Point {
   }
 };
 
+struct PointHash {
+  std::size_t operator()(const Point& p) const noexcept {
+    std::size_t h1 = std::hash<int32_t>{}(p.x);
+    std::size_t h2 = std::hash<int32_t>{}(p.y);
+    return h1 ^ (h2 << 1);
+  }
+};
+
 void UpdateHashTable() {
-  absl::flat_hash_map<Point, std::string> table;
+  std::unordered_map<Point, std::string, PointHash> table;
   Point p{1, 2};
   table[p] = "foo";
   auto it = table.find(p);
@@ -131,6 +139,56 @@ void CustomHash() {
   };
   std::unordered_set<std::pair<int32_t, int32_t>, PairHash> visited;
   visited.insert(std::make_pair(0, 0));
+}
+
+void ArrayOfStructOrStructOfArrays() {
+  struct User {
+    int32_t id;
+    std::string name;
+    double score;
+
+    bool operator==(const User& other) const {
+      return id == other.id && name == other.name && score == other.score;
+    }
+  };
+
+  struct Users {
+    std::vector<int32_t> ids;
+    std::vector<std::string> names;
+    std::vector<double> scores;
+
+    bool operator==(const Users& other) const {
+      // TODO: this is just to compile
+      return ids.size() == other.ids.size();
+    }
+  };
+
+  struct UserHash {
+    size_t operator()(const User& user) const {
+      std::size_t h1 = std::hash<int32_t>{}(user.id);
+      std::size_t h2 = std::hash<std::string>{}(user.name);
+      std::size_t h3 = std::hash<double>{}(user.score);
+      return h1 ^ (h2 << 1) ^ (h3 << 1);
+    }
+  };
+
+  struct UsersHash {
+    size_t operator()(const Users& users) const {
+      // TODO: this is just to compile
+      return std::hash<std::size_t>{}(users.ids.size());
+    }
+  };
+
+  // AOS accessing ALL fields of ONE object. Good for lookup.
+  std::unordered_set<User, UserHash> user_aos = {
+      User{.id = 1, .name = "Alice", .score = 100.0},
+      User{.id = 2, .name = "Bob", .score = 200.}};
+
+  // SOA has one field across MANY objects. Good for batch processing
+  std::unordered_set<Users, UsersHash> users_soa = {
+      {.ids = std::vector{1, 2, 3},
+       .names = std::vector<std::string>{"Alice", "Bob"},
+       .scores = std::vector{100., 200.}}};
 }
 
 int main(int argc, char** argv) {
