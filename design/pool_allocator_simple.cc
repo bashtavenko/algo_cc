@@ -13,12 +13,12 @@ class Buffer {
 
 class BufferPool {
  public:
-  BufferPool(size_t pool_size, size_t buffer_bytes) {
+  BufferPool(size_t pool_size, size_t buffer_size) {
     buffers_.reserve(pool_size);
     free_list_.reserve(pool_size);
 
     for (size_t i = 0; i < pool_size; ++i) {
-      buffers_.emplace_back(buffer_bytes);
+      buffers_.emplace_back(buffer_size);
       free_list_.push_back(&buffers_.back());
     }
   }
