@@ -96,4 +96,18 @@ Result MaxSubarray(const std::vector<int32_t>& arr) {
   }
   return {start, end, max_sum};
 }
+
+  // This is the simplified version that only returns the sum and no indexes.
+  int32_t MaxSubarrayKadane(const std::vector<int32_t>& nums) {
+  int32_t current_sum = nums[0];
+  int32_t max_sum = nums[0];
+
+  for (size_t i = 1; i < nums.size(); ++i) {
+    current_sum = std::max(nums[i], current_sum + nums[i]);
+    max_sum = std::max(max_sum, current_sum);
+  }
+
+  return max_sum;
+}
+
 }  // namespace algo

@@ -1,0 +1,18 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+    name = "geometry",
+    hdrs = ["geometry.h"],
+    deps = ["@absl//absl/strings:str_format"],
+)
+
+cc_test(
+    name = "cross_product_test",
+    srcs = ["cross_product_test.cc"],
+    deps = [
+        ":geometry",
+        "@absl//absl/log",
+        "@absl//absl/log:check",
+        "@googletest//:gtest_main",
+    ],
+)

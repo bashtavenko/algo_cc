@@ -6,7 +6,7 @@
 namespace algo {
 
 int32_t NumberOfWays(int32_t row, int32_t col) {
-  std::vector<std::vector<int32_t>> ways(row, std::vector<int32_t>(col, 0));
+  std::vector ways(row, std::vector(col, 0));
 
   std::function<int32_t(int32_t, int32_t)> run = [&](int32_t y, int32_t x) {
     if (y == 0 && x == 0) return 1;

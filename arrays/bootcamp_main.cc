@@ -54,9 +54,8 @@ int main(int argc, char** argv) {
   std::vector<std::vector<int32_t>> matrix = {{1, 2, 3}, {4, 5, 6}};
   LOG(INFO) << absl::StreamFormat("It is %ix%i matrix.", matrix.size(),
                                   matrix[0].size());
-  // With initialization
-  auto matrix_fixed =
-      std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(3, -1));
+  // With initialization and template deduction
+  auto matrix_fixed = std::vector(2, std::vector(3, -1));
   LOG(INFO) << absl::StreamFormat("%ix%i [1][2] = %i", matrix_fixed.size(),
                                   matrix_fixed[0].size(), matrix_fixed[1][2]);
 
