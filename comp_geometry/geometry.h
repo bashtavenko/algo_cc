@@ -50,6 +50,10 @@ struct Point {
     return os;
   }
 };
+
+// Determines whether two-line segments intersect.
+bool SegmentIntersect(const Point& p1, const Point& p2, const Point& p3, const Point& p4);
+
 } // namespace geometry
 
 

@@ -68,5 +68,8 @@ int main(int argc, char** argv) {
   int z = x1 + y1;   // UB: signed overflow
   LOG(INFO) << "UB signed overflow: " << z;
 
+  // Lambda custom deleter
+  // return std::shared_ptr<Buffer>(buf, [this](Buffer* b) { Release(b); });
+
   return EXIT_SUCCESS;
 }
