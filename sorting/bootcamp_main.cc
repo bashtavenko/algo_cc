@@ -21,6 +21,7 @@ void Run() {
     return a.grade_point_average > b.grade_point_average;
   });
 
+
   LOG(INFO) << "Lambda comparator";
   for (const auto& student : data) {
     LOG(INFO) << absl::StreamFormat("%s - %f", student.name,
