@@ -1,5 +1,6 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
+#include <execution>
 #include <iostream>
 #include <vector>
 #include "absl/synchronization/mutex.h"
@@ -21,6 +22,16 @@ void Worker(int id, int iterations) {
   if (id == 0) {
     work_done_.Notify();
   }
+}
+
+void ProcessDataParallel(std::vector<double>& data) {
+  // std::execution::seq - standard sequential execution
+  // std::execution::par - parallel execution across multiple threads
+  // std::execution::par_unseq - paralllel and unsequential execution SIMD
+  std::for_each(std::execution::par_unseq, data.begin(), data.end(),
+                [](double& val) { val = val * val + 3.14159; });
+  LOG(INFO) << "Parallel total:"
+            << std::reduce(std::execution::par, data.begin(), data.end(), 0.0);
 }
 
 int main(int argc, char** argv) {
@@ -47,5 +58,8 @@ int main(int argc, char** argv) {
     absl::MutexLock lock(mu_);
     LOG(INFO) << "Final counter value: " << shared_counter_;
   }
+
+  std::vector<double> data = {1., 2., 3};
+  ProcessDataParallel(data);
   return EXIT_SUCCESS;
 }

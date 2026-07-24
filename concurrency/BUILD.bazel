@@ -1,8 +1,9 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 cc_binary(
     name = "bootcamp_main",
     srcs = ["bootcamp_main.cc"],
+    linkopts = ["-ltbb"],  # requires for_each
     deps = [
         "@absl//absl/synchronization",
         "@gflags",
@@ -44,12 +45,12 @@ cc_binary(
 cc_binary(
     name = "threading_sync_maim",
     srcs = ["threading_sync.cc"],
-    deps = [
-        "@gflags",
-        "@glog"
-    ],
     target_compatible_with = select({
         "@platforms//os:macos": ["@platforms//:incompatible"],
         "//conditions:default": [],
     }),
+    deps = [
+        "@gflags",
+        "@glog",
+    ],
 )

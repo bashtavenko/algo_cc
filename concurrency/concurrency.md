@@ -108,3 +108,34 @@ value.store(42, std::memory_order_seq_cst);  // Default, strongest guarantees
 * Use automic operations
 * Use sharable mutable state
 * Use higher level primitives such as thread-safe queues
+
+## Concurrency vs Parallelism
+Concurrency is about structure. Parallelism is about throughput
+
+## Concurrency models
+### OS threads
+Long-running background tasks.
+
+Terrible for massive I/O concurrency - heavy memory overhead, context switching
+std::thread - maps directly to an OS-level kernel thread.
+std::jthread - joining thread, RAII
+
+### Tasks Futures (std::async) 
+`std::async` paired wth `std::future`. Convenient for simple fork-join. Lack chaining like `.then()`  
+
+### C++ 20 Coroutines
+One-off asynch computation
+
+Stackless Coroutins with `co_wait`, `co_yeild`, `co_return`
+
+Fibers unlike coroutines are stackful, user-mode. Fibers consume significant more memory.
+
+### Parallel algorithms C++17
+CPU-bound data collection. Overhead is a thread pool synchronizaiton
+`std::for_each`, `std::transform`, `std::reduce`
+
+### Message Passing  (MPI)
+Message Passing Interface. Multi-node supercomputing. 
+Distributed-memory parallelism. Standard for multi-node parallelism. `MPI_Send`, `MPI_Recv`
+
+## Summary
